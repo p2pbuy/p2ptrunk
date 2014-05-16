@@ -18,13 +18,13 @@ abstract class Api_AbstractController extends Yaf_Controller_Abstract {
 		return true;
 	}
 	public function acl(){
-		//或者acl配置
+		//获得acl配置
 		$aclConf = Tools_Conf::get('Api_ACL');
 		//判断签名是否相等
 		foreach($this->_checkFields as $value){
 			$_checkFieldstr .= $value;
 		}
-		$sign = md5($aclConf[$this->_context['source']]['name'].$_checkFieldstr.$aclConf[$this->_context['source']]['web.secret_key']);
+		$sign = md5($aclConf[$this->_context['source']]['name'].$_checkFieldstr.$aclConf[$this->_context['source']]['secret_key']);
 		if($sign != $this->_context['sign']){
 			throw new Comm_Exception('sign was wrong');
 		}

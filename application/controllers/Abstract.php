@@ -10,7 +10,6 @@ abstract class AbstractController extends Yaf_Controller_Abstract{
 	 * Enter description here ...
 	 */
 	public function indexAction(){
-		echo 'I am indexAction';
 		$this->hookAction();
 		return true;
 	}
