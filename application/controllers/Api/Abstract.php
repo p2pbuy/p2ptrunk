@@ -20,6 +20,13 @@ abstract class Api_AbstractController extends Yaf_Controller_Abstract {
 	public function acl(){
 		//获得acl配置
 		$aclConf = Tools_Conf::get('Api_ACL');
+		//判断是否有权访问
+		$urlAcl = explode(',', $aclConf[$this->_context['source']]['acl']);
+		$urlArray = parse_url($_SERVER['REQUEST_URI']);
+		if(!in_array($urlArray['path'], $urlAcl)){
+			throw new Comm_Exception('request deny');
+		}
+		
 		//判断签名是否相等
 		foreach($this->_checkFields as $value){
 			$_checkFieldstr .= $value;
@@ -29,11 +36,10 @@ abstract class Api_AbstractController extends Yaf_Controller_Abstract {
 			throw new Comm_Exception('sign was wrong');
 		}
 		
-		$urlAcl = explode(',', $aclConf[$this->_context['source']]['acl']);
-		$urlArray = parse_url($_SERVER['REQUEST_URI']);
-		if(!in_array($urlArray['path'], $urlAcl)){
-			throw new Comm_Exception('request deny');
-		}
+		return true;
+	}
+	public function renderAjax($code, $msg = '', $data = array()){
+		echo json_encode(array('code'=>$code,'msg'=>$msg,'data'=>json_encode($data)));
 		return true;
 	}
 }

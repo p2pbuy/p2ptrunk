@@ -7,8 +7,9 @@ class Aj_RegController extends AbstractController{
 		$info['email'] = Comm_Context::get('email');
 		$info['nick'] = Comm_Context::get('nick');
 		$info['passwd'] = Comm_Context::get('passwd');
+		$info['type'] = Comm_Context::get('type');
 		
-		$re = Dw_User::reg($info);
+		$re = Dw_User::regByApi($info);
 		var_dump($re);exit;
 		return true;
 	}
