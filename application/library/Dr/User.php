@@ -2,7 +2,7 @@
 class Dr_User extends Dr_Abstract{
 	//生成uid
 	public static function createUid(){
-		return '1000000000000008';
+		return '1000000000000010';
 	}
 	
 	//获得用户信息
@@ -12,20 +12,43 @@ class Dr_User extends Dr_Abstract{
 		}
 		try{
 			$cache = new Cache_User();
-			$re = $cache->getUserInfo($uid);
+			$userInfo = $cache->getUserInfo($uid);
 			
-			if($re == false){
-				$db = self::connectDB('main');
-				$sql = "select * from `users` where `uid` = {$uid}";
-				$re = $db->fetch_all ( $sql );
+			if($userInfo == false){
+				$db = new Db_User();
+				$userInfo = $db->getUserInfoByUid($uid);
 				if($re != false){
-					$cache->setUserInfo($uid,$re);
+					$cache->setUserInfo($uid,$userInfo);
 				}
 			}
 		}catch(Exception $e){
 			return false;
 		}
 		
-		return $re;
+		return $userInfo;
+	}
+	
+	//账号密码是否正确
+	public static function userpasswd($username,$passwd){
+		if(empty($username) || empty($passwd)){
+			return false;
+		}
+		try{
+			$userpwd = $username.$passwd;
+			$cache = new Cache_User();
+			//$userPwdIsTure = $cache->getUserPwdIsTrue($userpwd);
+			
+			if($userPwdIsTure == false){
+				$db = new Db_User();
+				$userPwdIsTure = $db->getUserInfoByUserPasswd($username,$passwd);
+				if($userPwdIsTure['uid'] != false){
+					$cache->setUserPwdIsTrue($userpwd,$userPwdIsTure);
+				}
+			}
+		}catch(Exception $e){
+			return false;
+		}
+		
+		return $userPwdIsTure;
 	}
 }

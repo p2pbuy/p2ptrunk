@@ -1,10 +1,5 @@
 <?php
 class Dw_User extends Dw_Abstract{
-	//连接数据库
-	public static function connectDB($pool){
-		$db = Db_Db::pool($pool);
-		return $db;
-	}
 	//注册用户
 	public static function regByApi($info){
 		try{
@@ -27,9 +22,8 @@ class Dw_User extends Dw_Abstract{
 			foreach($info as $value){
 				$data[] = $value;
 			}
-			$db = self::connectDB('main');
-			$sql = "insert into `users`(`uid`,`passwd`,`nick`,`email`) values (?,?,?,?);";
-			$re = $db->exec ( $sql, $data );
+			$db = new Db_User();
+			$re = $db->setUserInfo($data);
 		}catch(Exception $e){
 			return false;
 		}
