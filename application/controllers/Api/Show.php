@@ -13,7 +13,7 @@ class Api_ShowController extends Api_AbstractController{
 		
 		$re = Dr_User::show($info['uid']);
 
-		$this->renderAjax(Tools_Conf::get('Show_Code.succ'),'',$re);
+		$this->renderAjax(Tools_Conf::get('Show_Code.api.succ'),'',$re);
 		return true;
 	}
 }

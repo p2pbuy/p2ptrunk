@@ -122,4 +122,8 @@ class Cache_Memcached extends Memcached implements Cache_Interface{
 			parent::delete($key);
 		}
 	}
+	
+	/**
+	 * 
+	 */
 }

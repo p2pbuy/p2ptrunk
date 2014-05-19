@@ -28,7 +28,7 @@ class Dw_User extends Dw_Abstract{
 				$data[] = $value;
 			}
 			$db = self::connectDB('main');
-			$sql = "insert into `users`(`passwd`,`nick`,`email`,`type`) values (?,?,?,?);";
+			$sql = "insert into `users`(`uid`,`passwd`,`nick`,`email`) values (?,?,?,?);";
 			$re = $db->exec ( $sql, $data );
 		}catch(Exception $e){
 			return false;

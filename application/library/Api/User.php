@@ -20,7 +20,6 @@ class Api_User extends Api_Abstract{
             'email' => $info['email'],
             'nick' => $info['nick'],
     		'passwd' => $info['passwd'],
-    		'type' => $info['type'],
     		'sign' => $info['sign'],
     		'source' => $info['source'],
         );
