@@ -19,7 +19,7 @@ class Api_UserpwdController extends Api_AbstractController{
 		$info['username'] = $this->_context['username'];
 		$info['passwd'] = md5($this->_context['passwd']);
 		
-		$re = Dr_User::userpasswd($info['username'],$info['passwd']);
+		$re = Dr_Login::userpasswd($info['username'],$info['passwd']);
 		if($re == false){
 			$code = Tools_Conf::get('Show_Code.api.fail');
 			$msg = 'passwd was wrong';
