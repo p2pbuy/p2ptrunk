@@ -4,12 +4,12 @@
  */
 class Aj_RegController extends AbstractController{
 	public function hookAction(){
-		$info['email'] = Comm_Context::get('email');
-		$info['nick'] = Comm_Context::get('nick');
-		$info['passwd'] = Comm_Context::get('passwd');
+		$info['email'] = Comm_Context::post('email');
+		$info['nick'] = Comm_Context::post('nick');
+		$info['passwd'] = Comm_Context::post('passwd');
 		
-		$re = Dw_User::regByApi($info);
-		var_dump($re);exit;
+		$result = Dw_User::regByApi($info);
+		$this->renderAjax($result['code']);
 		return true;
 	}
 }

@@ -6,8 +6,10 @@
  *
  */
 class Reg_RegController extends AbstractController{
+	private $tpl = 'reg/reg.phtml';
 	public function hookAction(){
-		echo 'I am reg/reg';
+		$data = array();
+		$this->renderPage($this->tpl,$data);
 		return true;
 	}
 }

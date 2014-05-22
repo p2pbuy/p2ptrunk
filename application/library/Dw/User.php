@@ -9,10 +9,11 @@ class Dw_User extends Dw_Abstract{
 			$info['source'] = 'web';
 			$info['sign'] = md5($aclConf[$info['source']]['name'].$info['email'].$aclConf[$info['source']]['secret_key']);
 			$re = Api_User::reg($info);
+			$result = json_decode($re,true);
 		}catch(Exception $e){
 			return false;
 		}
-		return $re;
+		return $result;
 	}
 	
 	//注册用户入库
