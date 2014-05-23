@@ -35,4 +35,13 @@ class Dr_User extends Dr_Abstract{
 		
 		return $userInfo;
 	}
+	
+	//根据cookie获得uid
+	public static function getUidByCookie(){
+		if(empty($_COOKIE['PUCE'])){
+			return false;
+		}
+		$PUCE = explode(',', $_COOKIE['PUCE']);
+		return $PUCE[0];
+	}
 }

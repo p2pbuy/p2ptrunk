@@ -1,12 +1,11 @@
 <?php
 /**
- * 注册页面
- * Enter description here ...
- * @author liang
- *
+ * 未登录首页
+ * @author liang5
+ * 2014-5-22
  */
-class Reg_RegController extends AbstractController{
-	public $tpl = 'reg/reg.phtml';
+class Login_LoginController extends AbstractController{
+	public $tpl = 'login/login.phtml';
 	public $authorize = self::MAYBELOGIN;
 	public function hookAction(){
 		$data = array();

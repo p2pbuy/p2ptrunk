@@ -39,7 +39,7 @@ abstract class Api_AbstractController extends Yaf_Controller_Abstract {
 		return true;
 	}
 	public function renderAjax($code, $msg = '', $data = array()){
-		echo json_encode(array('code'=>$code,'msg'=>$msg,'data'=>json_encode($data)));
+		echo json_encode(array('code'=>$code,'msg'=>$msg,'data'=>$data));
 		return true;
 	}
 }

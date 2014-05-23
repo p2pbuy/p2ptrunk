@@ -3,6 +3,7 @@
  * 注册提交页面
  */
 class Aj_RegController extends AbstractController{
+	public $authorize = self::NOTLOGIN;
 	public function hookAction(){
 		$info['email'] = Comm_Context::post('email');
 		$info['nick'] = Comm_Context::post('nick');
