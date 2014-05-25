@@ -1,8 +1,12 @@
 <?php
 class IndexController extends AbstractController{
+	public $tpl = 'index.phtml';
 	public $authorize = self::MAYBELOGIN;
 	public function hookAction(){
-		var_dump($this->uid,$this->viewer);
+		$orderBuyInfos = Dr_Order::showOrderBuy();
+		
+		$data['orderBuyInfos'] = $orderBuyInfos;
+		$this->renderPage($this->tpl,$data);
 		return true;
 	}
 }

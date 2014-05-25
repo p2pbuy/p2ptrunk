@@ -23,9 +23,9 @@ class Db_User extends Db_Abstract{
 	 * @param array $data
 	 */
 	public function setUserInfo($data = array()){
-		$tableNum = Tools_Helper::getMoore($data[0], 32);
-		$tableName = 'users_'.$tableNum;
-		$sql = "insert into `{$tableName}`(`uid`,`passwd`,`nick`,`email`) values (?,?,?,?);";
+		//$tableNum = Tools_Helper::getMoore($data[0], 32);
+		//$tableName = 'users_'.$tableNum;
+		$sql = "insert into `users`(`uid`,`passwd`,`nick`,`email`) values (?,?,?,?);";
 		return  $this->dbObj->exec ( $sql, $data );
 	}
 	
