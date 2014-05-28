@@ -24,7 +24,10 @@ class Dr_User extends Dr_Abstract{
 			
 			if($userInfo == false){
 				$db = new Db_User();
-				$userInfo = $db->getUserInfoByUid($uid);
+				$re = $db->getUserByUid($uid);
+				$userInfo = $re[0];
+				$re = $db->getUserInfoByUid($uid); 
+				$userInfo['extends'] = $re[0];
 				if($re != false){
 					$cache->setUserInfo($uid,$userInfo);
 				}

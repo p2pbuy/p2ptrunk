@@ -19,15 +19,18 @@ class Dw_User extends Dw_Abstract{
 	//注册用户入库
 	public static function regByDb($info){
 		try{
-			$data = array();
+			$dataSetUser = array();
+			$dataSetUserInfo = array();
 			foreach($info as $value){
-				$data[] = $value;
+				$dataSetUser[] = $value;
 			}
+			$dataSetUserInfo[] = $info['uid'];
 			$db = new Db_User();
-			$re = $db->setUserInfo($data);
+			$reSetUser = $db->setUser($dataSetUser);
+			$reSetUserInfo = $db->setUserInfo($dataSetUserInfo);
 		}catch(Exception $e){
 			return false;
 		}
-		return $re;
+		return $reSetUser && $reSetUserInfo;
 	}
 }

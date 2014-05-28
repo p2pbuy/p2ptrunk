@@ -13,7 +13,7 @@ class Api_Order extends Api_Abstract{
     }
     
     /**
-     * 注册用户信息
+     * 创建买家订单
      */
     public static function createBuyOrder($info){
     	$params = array(
@@ -28,5 +28,19 @@ class Api_Order extends Api_Abstract{
         );
 
         return self::instance()->post(self::getApiUrl('api/order/createorderbuy'), $params);
+    }
+    
+    /**
+     * 走私者认领订单
+     */
+	public static function smugglerTakeOrder($info){
+    	$params = array(
+    		'boid' => $info['boid'],
+            'uid' => $info['uid'],
+    		'sign' => $info['sign'],
+    		'source' => $info['source'],
+        );
+
+        return self::instance()->post(self::getApiUrl('api/order/smugglertakeorder'), $params);
     }
 }

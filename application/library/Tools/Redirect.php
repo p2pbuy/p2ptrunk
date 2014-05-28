@@ -14,6 +14,15 @@ class Tools_Redirect{
 		return true;
 	}
 	
+	/**
+	 * 跳转到首页
+	 */
+	public static function index(){
+		$url = 'http://'.Tools_Conf::get('Domain.domain');
+		self::response($url);
+		return true;
+	}
+	
 	private static function response($url, $code = 0) {
         header('Location: ' . $url);
         exit;

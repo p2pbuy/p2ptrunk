@@ -23,6 +23,6 @@ class Api_User extends Api_Abstract{
     		'sign' => $info['sign'],
     		'source' => $info['source'],
         );
-        return self::instance()->get(self::getApiUrl('api/reg'), $params);
+        return self::instance()->post(self::getApiUrl('api/reg'), $params);
     }
 }

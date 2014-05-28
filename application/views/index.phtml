@@ -6,12 +6,16 @@
 </head>
 <body>
 <?php foreach($orderBuyInfos as $orderBuyInfo):?>
+<form method="post" action="/aj/order/takeorder">
 订单编号：<?=$orderBuyInfo['boid']?></br>
 订单标题：<?=$orderBuyInfo['title']?></br>
 商品描述：<?=$orderBuyInfo['description']?></br>
 商品价格：<?=$orderBuyInfo['price']?></br>
 购买数量：<?=$orderBuyInfo['quantity']?></br>
 补充说明：<?=$orderBuyInfo['additional']?></br>
+<input type="hidden" name="boid" value="<?=$orderBuyInfo['boid']?>" />
+<input type="submit" value="我要接单" />
+</form>
 </br>
 </br>
 <?php endforeach;?>

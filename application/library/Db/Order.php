@@ -14,7 +14,7 @@ class Db_Order extends Db_Abstract{
 	 * @param array $data
 	 */
 	public function setOrderBuyInfo($data = array()){
-		$sql = "insert into `buyorder`(`uid`,`title`,`description`,`price`,`quantity`,`additional`) values (?,?,?,?,?,?);";
+		$sql = "insert into `buyorder` (`uid`,`title`,`description`,`price`,`quantity`,`additional`) values (?,?,?,?,?,?);";
 		return  $this->dbObj->exec ( $sql, $data );
 	}
 	
@@ -24,5 +24,13 @@ class Db_Order extends Db_Abstract{
 	public function getOrderBuyInfo($data = array()){
 		$sql = "select * from `buyorder` order by createtime desc limit {$data['start']},{$data['count']}";
 		return $this->dbObj->fetch_all ( $sql );
+	}
+	
+	/**
+	 * 写入走私者认领订单信息
+	 */
+	public function setTakeOrderInfo($data = array()){
+		$sql = "insert into `smugglertakeorder` (`boid`,`uid`) values (?,?);";
+		return  $this->dbObj->exec ( $sql, $data );
 	}
 }

@@ -10,23 +10,41 @@ class Db_User extends Db_Abstract{
 	}
 	
 	/**
-	 * 获得用户信息
+	 * 获得用户基本信息
 	 * @param bigint $uid
 	 */
-	public function getUserInfoByUid($uid){
+	public function getUserByUid($uid){
 		$sql = "select * from `users` where `uid` = {$uid}";
 		return $this->dbObj->fetch_all ( $sql );
 	}
 	
 	/**
-	 * 写入用户信息
+	 * 写入用户基本信息
+	 * @param array $data
+	 */
+	public function setUser($data = array()){
+		//$tableNum = Tools_Helper::getMoore($data[0], 32);
+		//$tableName = 'users_'.$tableNum;
+		$sql = "insert into `users` (`uid`,`passwd`,`nick`,`email`) values (?,?,?,?);";
+		return  $this->dbObj->exec ( $sql, $data );
+	}
+	
+	/**
+	 * 获得用户扩展信息
+	 * @param bigint $uid
+	 */
+	public function getUserInfoByUid($uid){
+		$sql = "select * from `userinfo` where `uid` = {$uid}";
+		return $this->dbObj->fetch_all ( $sql );
+	}
+	
+	/**
+	 * 写入用户扩展信息
 	 * @param array $data
 	 */
 	public function setUserInfo($data = array()){
-		//$tableNum = Tools_Helper::getMoore($data[0], 32);
-		//$tableName = 'users_'.$tableNum;
-		$sql = "insert into `users`(`uid`,`passwd`,`nick`,`email`) values (?,?,?,?);";
-		return  $this->dbObj->exec ( $sql, $data );
+		$sql = "insert into `userinfo` (`uid`) values (?)";
+		return $this->dbObj->exec($sql, $data);
 	}
 	
 	public function getUserInfoByUserPasswd($username,$passwd){
