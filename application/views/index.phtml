@@ -1,24 +1,93 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title><?=_('带购')?></title>
+    <link rel="stylesheet" type="text/css" href="http://182.92.129.19/css/theme.css">
+	<meta charset="utf-8" />
+	<title><?=_('代购')?></title>
+	<meta name="generator" content="BBEdit 10.5" />
 </head>
 <body>
-<?php foreach($orderBuyInfos as $orderBuyInfo):?>
+ <div id="header">
+	<ul id="header_left">
+		<div id="logo"><li><a href="#">带购</a></li></div>
+		<li><a href="#">手机代购</a></li>
+		<li><a href="#">海淘梯子</a></li>
+		<li><a href="#">社区</a></li>
+	</ul>
+	<ul id="header_right">
+		<?php if($islogined == true):?><li><a href="/login/logout"><?=_('退出登录')?></a></li><?php endif;?>
+		<li><a href="#">帮助中心</a></li>
+		<li><a href="#"><?=$usertype?></a></li>
+		<li><a href="#">我的订单</a></li>
+		<li><a href="#"><?=$nick?></a></li>
+		<?php if($islogined == false):?><li><a href="/login/login"><?=_('登录')?></a></li><?php endif;?>
+	</ul>
+ </div>
+ <div id="breadcrumb">
+ <p><a href="#">首页</a> > <a href="#">目的地</a> > <text id="currentpage"><a href="#">北美</a></text></p>
+ </div>
+ <div id="big_title_en">
+ <p>North America</p>
+ </div>
+ <div id="sub_title_cn">
+ <p>北美</p>
+ </div>
+ <div id="homepage_post">
+ 	<ul>
+ 	    <li><a href="/order/buy" target="_blank">发布北美代购需求</a></li>
+ 		<li>172位买手正在旅行</br>98827位买手即将出发</li>
+ 	</ul>
+ </div>
+ <div id="country_cate">
+ <p><a href="#"><text class="country_selected">北美热门国家</text></a> | <a href="#">全部国家</a></p>
+ </div>
+ 
+ <?php foreach($results as $result):?>
+ <div class="list_1">
+ <img src="img/usa.png" alt="item1" height="180px" width="294px"/>
+ <div class="item_title">
+ 	<ul>
+ 	  <li class="first_title"><?=$result['title']?></li>
+ 	  <li>32位买手正好旅行</li>
+ 	  <li>827位买手即将出发</li>
+ 	  <li class="item_content">
+      <?=$result['description']?><br>
+      <?=$result['additional']?>
+      </li></br></br></br></br></br></br></br>
+      <li class="hot_destination_title">热门旅行地:</li>
+      <li><a href="#">旧约</a></li>
+      <li><a href="#">芝加哥</a></li>
+      <li><a href="#">旧金山</a></li></br></br></br>
+      <div class="buyer_trip">
+      <li class="hot_destination_title">买手行程:</li>
+      <li><a href="#">白夜</a></li>
+      <li><a href="#">硅谷淘金之旅</a></li>
+      <li><a href="#">科技产品一网打尽</a></li>
+      <li><a href="#"><?=$result['person']['nick']?></a></li>
+      <form method="post" action="/aj/order/takeorder">
+      <input type="hidden" name="boid" value="<?=$result['boid']?>" />
+      <li><input type="submit" value="我要接单"/></li>
+      </form>
+      </div>
+    </ul>
+ </div>
+ </div>
+ <?php endforeach;?>
+</body>
+</html>
+
+
+<?php foreach($results as $result):?>
 <form method="post" action="/aj/order/takeorder">
-订单编号：<?=$orderBuyInfo['boid']?></br>
-订单标题：<?=$orderBuyInfo['title']?></br>
-商品描述：<?=$orderBuyInfo['description']?></br>
-商品价格：<?=$orderBuyInfo['price']?></br>
-购买数量：<?=$orderBuyInfo['quantity']?></br>
-补充说明：<?=$orderBuyInfo['additional']?></br>
-<input type="hidden" name="boid" value="<?=$orderBuyInfo['boid']?>" />
+订单编号：<?=$result['boid']?></br>
+订单标题：<?=$result['title']?></br>
+商品描述：<?=$result['description']?></br>
+商品价格：<?=$result['price']?></br>
+购买数量：<?=$result['quantity']?></br>
+补充说明：<?=$result['additional']?></br>
+<input type="hidden" name="boid" value="<?=$result['boid']?>" />
 <input type="submit" value="我要接单" />
 </form>
 </br>
 </br>
 <?php endforeach;?>
-</body>
-
-</html>

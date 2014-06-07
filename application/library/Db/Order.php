@@ -15,7 +15,13 @@ class Db_Order extends Db_Abstract{
 	 */
 	public function setOrderBuyInfo($data = array()){
 		$sql = "insert into `buyorder` (`uid`,`title`,`description`,`price`,`quantity`,`additional`) values (?,?,?,?,?,?);";
-		return  $this->dbObj->exec ( $sql, $data );
+		$re = $this->dbObj->exec ( $sql, $data );
+		if($re == true){
+			$lastInsertId = $this->dbObj->__call('lastInsertId',array());
+			$lastInsertId = str_pad($lastInsertId, 20, '0', STR_PAD_LEFT);
+			$re = $lastInsertId;
+		}
+		return $re;
 	}
 	
 	/**

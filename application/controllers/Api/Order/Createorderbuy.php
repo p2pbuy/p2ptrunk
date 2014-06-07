@@ -23,7 +23,7 @@ class Api_Order_CreateorderbuyController extends Api_AbstractController{
 		$info['title'] = $this->_context['title'];
 		$info['description'] = $this->_context['description'];
 		$info['price'] = $this->_context['price'];
-		$info['quantity'] = $this->_context['quantity'];
+		$info['quantity'] = ($this->_context['quantity']) ? $this->_context['quantity'] : 1;
 		$info['additional'] = $this->_context['additional'];
 		
 		$re = Dw_Order::createOrderBuyByDb($info);
@@ -32,9 +32,10 @@ class Api_Order_CreateorderbuyController extends Api_AbstractController{
 			$msg = 'create buyorder fail';
 		}else{
 			$code = Tools_Conf::get('Show_Code.api.succ');
+			$boid = $re;
 		}
 
-		$this->renderAjax($code,$msg);
+		$this->renderAjax($code,$msg,array('boid'=>$boid));
 		return true;
 	}
 }

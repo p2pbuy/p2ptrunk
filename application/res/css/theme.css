@@ -1,0 +1,85 @@
+body { padding: 0; margin: 0; font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; width:1024px;}
+h1{font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;}
+p {padding: 0; margin: 0;}
+/*1*/
+#header{background:#dddddd; height:40px;width:100%;padding: 0; margin: 0;}
+#header ul{list-style:none;padding: 0; margin: 0;}
+#header_left li a{text-decoration:none; color:#555555;}
+#header_right li a{text-decoration:none; color:#555555;}
+#header_left li a:hover{color:#333333;}
+#header_right li a:hover{color:#333333;}
+#header ul{list-style:none;line-height:40px;}
+#header_left li{float:left; margin-left:20px;font-size:12px;color:#555555;}
+#header_right{position:relative;}
+#header_right li{float:right; margin-right:20px;font-size:12px;color:#555555;}
+#logo li a{font-size:20px; color:#333333;margin-right:40px;}
+#logo li a:hover{color:#333333;}
+#breadcrumb{margin-top:20px;padding: 0; color:#555555; font-size:12px;line-height:20px;text-indent: 20px;}  
+#breadcrumb a{color:#555555;text-decoration: none;}
+#breadcrumb a:hover{text-decoration: underline;}
+#currentpage a{color:#5697ce;}
+#big_title_en p{font-size:32px; color:#555555;line-height:20px;text-indent: 20px;margin-top:20px;}
+#sub_title_cn p{font-size:24px; color:#555555;line-height:20px;text-indent: 20px;margin-top:20px;}
+#homepage_post{margin-right:20px;margin-top:-58px;}
+#homepage_post ul li{float:right;list-style: none;color:#777777; margin-right:20px;font-size:18px;}
+#homepage_post ul li a{text-decoration: none; background:#057404;padding:20px;color:white; font-size:18px;border-radius:5px;}
+#country_cate{margin-top:90px;margin-left:20px; border-bottom: 1px solid #dddddd;padding-bottom:10px;}
+#country_cate p a{color:#777777;text-decoration: none;}
+#country_cate p{color:#555555;font-size: 18px;}
+.country_selected{color:#5697ce;}
+.list_1{margin-top:20px;padding-bottom: 20px;margin-left:20px;height:100%; border-bottom: 1px solid #dddddd;}
+.list_1 img{float:left;border:1px solid #dddddd;position: absolute;}
+.item_title ul{margin-left:280px;}
+.item_title ul li{float: left;list-style:none;margin-right:16px;line-height:20px;}
+.item_title ul li a{color:#5697ce;text-decoration: none; font-size:14px;}
+.first_title{font-size:24px; color:#2e2e2e;}
+.item_content{margin-top:32px;width:600px;font-size:12px;color:#555555;position:absolute;}
+.hot_destination li{float:left; list-style: none;line-height:20px;margin-right:16px;}
+.hot_destination li a{text-decoration: none;}
+.hot_destination_title{font-size:14px;}
+.buyer_trip{margin-top:-36px;}
+
+/*2*/
+
+.wizard {margin-left:-20px; position:absolute;width:1024px;height:40px;}
+.wizard ul li{list-style:none;float:left;margin-right:12px; font-size:14px; color:#555555;background: #f3f3f3; padding:10px;}
+#wizard_current{background: #5697ce; color:white;}
+.wizard_current a{text-decoration: none; }
+#ordering_form{clear: both;margin-left:20px;margin-top:70px; position:absolute;}
+#ordering_form h2{font-size:18px;}
+form{font-size:14px;color:#555555;margin-top: 20px;}
+.form_title{font-size:14px;color:#555555;margin-bottom:16px;margin-top:10px;border:1px solid #dddddd;padding:5px;}
+form textarea{border:1px solid #dddddd;margin-top:8px;}
+form input{margin-right:10px;}
+.submit{background:#067505; color:white;font-size:14px;padding:10px;margin-bottom: 40px;margin-top:16px;}
+.sub_description{margin-top:16px;font-size:12px;}
+.buyer a{text-decoration: none;color:#5697ce;}
+.buyer_trip a{text-decoration: none;color:#5697ce;}
+table{width:390px;margin-top:20px;}
+#check_list_table{width:700px;margin-top:20px;}
+table,td{border-bottom:1px solid #dddddd;border-collapse:collapse;}
+#table_header{background:#f3f3f3; border:none;}
+th,td{padding:10px;}th{text-align:left;}
+.form_checkbox{font-size:12px;margin-top:16px;}
+.table_content{color:#777777;}
+#confirm_section_form{border:1px solid #dddddd;height:220px;width:700px;margin-left:20px;margin-top:80px;padding:20px;position: absoulte;}
+#receiver{border:1px solid #dddddd;height:415px;width:700px;margin-left:20px;margin-top:20px;padding:20px;position: absoulte;}
+#check_list{border:1px solid #dddddd;height:380px;width:700px;margin-left:20px;margin-top:20px;padding:20px;position: absoulte;}
+#address_area{margin-left:-40px;margin-top:-10px;}
+#address_area ul li{list-style: none;float: left; margin-right:8px;line-height:20px;}
+.submit_btn{background:#067505; color:white;font-size:14px;padding:10px;margin-bottom: 40px;margin-top:16px;float:right;}
+.total_money{line-height: 20px;margin-top:40px;margin-left:360px;position:absolute;}
+.money_highlight{color:orange;}
+.exchange_documents a{font-size:12px; color: #5697ce; text-decoration: none;}
+.order_success_title{margin-top:60px;margin-left:20px;line-height:20px;width:500px;color:#067505;font-size:12px;}
+.track_order{font-size:12px;color:#5697ce;margin-left:20px;margin-top:20px;}
+#check_list_table{margin-left:20px;margin-top:20px;}
+.down_payment_btn{background:#067505; color:white;font-size:14px;padding:10px;margin-bottom: 40px;margin-top:50px;margin-left:20px;float:left;}
+.total_money_2{line-height: 20px;margin-top:40px;margin-left:20px;position:absolute;}
+.downpayment_tooltip{font-size:12px;color:#555555;margin-left:20px;margin-top:20px;position:absolute;}
+.item_ID{color:#777777;}
+.cancel_order{font-size:12px;color:#5697ce;float:right;}
+.current_step{color:#067505;}
+.paypal{color:red;font-size:12px;position:absolute;margin-left:120px;margin-top:60px;}
+.order_received{margin-top:60px;margin-left:20px;line-height:20px;width:500px;color:#067505;font-size:14px;font-weight:bold;}
+.buyer_ceritficate a{color:#5697CE;font-size:12px;text-decoration: none;}

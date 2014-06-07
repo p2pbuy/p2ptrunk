@@ -5,7 +5,16 @@ class IndexController extends AbstractController{
 	public function hookAction(){
 		$orderBuyInfos = Dr_Order::showOrderBuy();
 		
-		$data['orderBuyInfos'] = $orderBuyInfos;
+		foreach($orderBuyInfos as $orderBuyInfo){
+			$person = Dr_User::show($orderBuyInfo['uid']);
+			$orderBuyInfo['person'] = $person;
+			$results[] = $orderBuyInfo;
+		}
+		
+		$data['nick'] = $this->viewer['nick'];
+		$data['usertype'] = ($this->viewer['extends']['type'] == 2) ? '我是买手' : '我是买家';
+		$data['results'] = $results;
+		$data['islogined'] = (empty($this->viewer)) ? false : true;
 		$this->renderPage($this->tpl,$data);
 		return true;
 	}

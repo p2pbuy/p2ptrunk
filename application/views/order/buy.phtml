@@ -1,11 +1,90 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title><?=_('买家订单')?></title>
+    <link rel="stylesheet" type="text/css" href="http://182.92.129.19/css/theme.css">
+	<meta charset="utf-8" />
+	<title><?=_('确认订单')?></title>
+	<meta name="generator" content="BBEdit 10.5" />
 </head>
 <body>
-<form action="/aj/order/buy" method="post">
+ <div id="header">
+	<ul id="header_left">
+		<div id="logo"><li><a href="#">带购</a></li></div>
+		<li><a href="#">手机代购</a></li>
+		<li><a href="#">海淘梯子</a></li>
+		<li><a href="#">社区</a></li>
+	</ul>
+	<ul id="header_right">
+		<li><a href="#">帮助中心</a></li>
+		<li><a href="#">我是买手</a></li>
+		<li><a href="#">我的订单</a></li>
+		<li><a href="#">敏感的胖子</a></li>
+	</ul>
+ </div>
+ <div id="breadcrumb">
+ <p><a href="#">我的带购</a> > <a href="#">我的订单</a> > <text id="currentpage"><a href="#">创建订单</a></text></p>
+ </div>
+ 
+ <div class="wizard">
+ <ul>
+ 	<a href="#"><li id="wizard_current">买家提交订单</li></a>
+ 	<li>买手确认接单</li>
+ 	<li>买家预付费用</li>
+ 	<li>买家购买商品</li>
+ 	<li>买家补齐货款</li>
+ 	<li>买家发货</li>
+ 	<li>买家确认收货</li>
+ </ul>
+ </div>
+
+ <div id="ordering_form">
+ <p>填写带购订单</p>
+
+ <form action="/aj/order/buy" method="post">
+	订单标题<br> <input type="text" name="title" class="form_title"><br>
+	商品描述<br><textarea name="description" rows="4" cols="50"></textarea><br><br>
+	商品价格<br> <input type="text" name="price" class="form_title">美元<br>
+	商品数量<br> <input type="text" name="quantity" class="form_title"><br>
+	补充说明<br><textarea name="additional" rows="4" cols="50"></textarea><br><br>
+	<input type="file" name="uploaded_file" value="上传附件"><br>
+	<p class="sub_description">基于<text class="buyer"><a href="#">白夜</a></text>的<text class="buyer_trip"><a href="">硅谷科技之旅旅</a></text>行行程购买</p>
+	<table>
+    <tr id="table_header">
+    <th>费用项目</th>
+    <th>预付标准</th>		
+  
+    </tr>
+    <tr>
+    <td>商品总价</td>
+    <td class="table_content">全款</td>		
+ 
+    </tr>
+    <tr>
+    <td>关税</td>
+    <td class="table_content">按照相关规定支付，过关后支付</td>		
+ 
+    </tr>
+    <tr>
+    <td>买手佣金</td>
+    <td class="table_content">％5， 预付</td>		
+
+    </tr>
+    <tr>
+    <td>国内快递</td>
+    <td class="table_content">买手包邮</td>		
+
+    </tr>
+    </table>
+    <input type="checkbox" name="check" value="" class="checkbox_all"><text class="form_checkbox">同时发布到买手任务区， 允许其他买手抢单，费率默认为以上费率。</text><br>
+	<input type="submit" value="下一步" name='submit' class="submit">
+ </form> 
+ </div>
+
+</body>
+</html>
+
+
+<!-- <form action="/aj/order/buy" method="post">
 代购订单</br></br>
 订单标题：<input name="title" type="text" /></br>
 商品描述：<input name="description" type="text" style="height:60px" /></br>
@@ -14,6 +93,4 @@
 补充说明：<input name="additional" type="text" style="height:60px"/></br>
 <input type="submit" value="order now" />
 </form>
-</body>
-
-</html>
+ -->
