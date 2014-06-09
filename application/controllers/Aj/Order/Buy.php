@@ -19,7 +19,7 @@ class Aj_Order_BuyController extends AbstractController{
 		$info['additional'] = Comm_Context::post('additional');
 		$info['uid'] = $this->uid;
 		
-		$result = Dw_Order::createOrderBuyByApi($info);
+		$result = Dw_Order::createBuyOrderByApi($info);
 		$this->renderAjax($result['code'],'',$result['data']);
 		return true;
 	}

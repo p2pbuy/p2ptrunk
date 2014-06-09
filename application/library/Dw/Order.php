@@ -6,7 +6,7 @@
  */
 class Dw_Order extends Dw_Abstract{
 	//通过接口生成买家订单
-	public static function createOrderBuyByApi($info){
+	public static function createBuyOrderByApi($info){
 		try{
 			$aclConf = Tools_Conf::get('Api_ACL');
 			$info['source'] = 'web';
@@ -20,14 +20,14 @@ class Dw_Order extends Dw_Abstract{
 	}
 	
 	//将买家订单写入数据库
-	public static function createOrderBuyByDb($info){
+	public static function createBuyOrderByDb($info){
 		try{
 			$data = array();
 			foreach($info as $value){
 				$data[] = $value;
 			}
 			$db = new Db_Order();
-			$re = $db->setOrderBuyInfo($data);
+			$re = $db->setBuyOrderInfo($data);
 		}catch(Exception $e){
 			return false;
 		}

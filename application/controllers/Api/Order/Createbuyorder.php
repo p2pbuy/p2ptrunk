@@ -4,7 +4,7 @@
  * @author liang
  * @version 2014-5-25
  */
-class Api_Order_CreateorderbuyController extends Api_AbstractController{
+class Api_Order_CreatebuyorderController extends Api_AbstractController{
 	public function checkParams(){
 		$this->_context['source'] = Comm_Context::post('source');
 		$this->_context['uid'] = Comm_Context::post('uid');
@@ -26,7 +26,7 @@ class Api_Order_CreateorderbuyController extends Api_AbstractController{
 		$info['quantity'] = ($this->_context['quantity']) ? $this->_context['quantity'] : 1;
 		$info['additional'] = $this->_context['additional'];
 		
-		$re = Dw_Order::createOrderBuyByDb($info);
+		$re = Dw_Order::createBuyOrderByDb($info);
 		if($re == false){
 			$code = Tools_Conf::get('Show_Code.api.fail');
 			$msg = 'create buyorder fail';

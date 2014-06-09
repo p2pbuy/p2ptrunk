@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="http://182.92.129.19/css/theme.css">
+	<meta charset="utf-8" />
+	<title><?=_('我的订单')?></title>
+	<meta name="generator" content="BBEdit 10.5" />
+</head>
+<body>
+昵称：<?=$viewer['nick']?>
+</br>
+用户类型：<?php if($viewer['extends']['type'] == 2):?>买手<?php else:?>买家<?php endif;?>
+</br>
+</br>
+</br>
+我的订单
+</br>
+</br>
+<?php foreach($myOrders as $myOrder):?>
+订单ID：<?=$myOrder['boid'];?></br>
+订单名称：<?=$myOrder['title'];?></br>
+订单描述：<?=$myOrder['description'];?></br>
+商品价格：<?=$myOrder['price'];?></br>
+商品数量：<?=$myOrder['quantity'];?></br>
+补充说明：<?=$myOrder['additional'];?></br>
+创建时间：<?=$myOrder['createtime'];?></br>
+</br>
+已经存在的竞价：
+</br>
+<?php if(empty($bidPrices[$myOrder['boid']])):?>
+	还没有出价
+<?php else:?>
+	<?php foreach($bidPrices[$myOrder['boid']] as $bidPrice):?>
+		出价：<?=$bidPrice['price']?></br>
+		出价时间：<?=$bidPrice['createtime']?></br>
+		出价人ID：<?=$bidPrice['uid']?></br>
+		<input type="button" value="确认竞价"/>
+		</br>
+		</br>
+	<?php endforeach;?>
+<?php endif;?>
+</br>
+</br>
+</br>
+<?php endforeach;?>
+</body>
+</html>

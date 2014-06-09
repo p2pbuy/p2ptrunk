@@ -27,7 +27,7 @@ class Api_Order extends Api_Abstract{
     		'source' => $info['source'],
         );
 
-        return self::instance()->post(self::getApiUrl('api/order/createorderbuy'), $params);
+        return self::instance()->post(self::getApiUrl('api/order/createbuyorder'), $params);
     }
     
     /**
@@ -42,5 +42,31 @@ class Api_Order extends Api_Abstract{
         );
 
         return self::instance()->post(self::getApiUrl('api/order/smugglertakeorder'), $params);
+    }
+    
+    /**
+     * 根据boid获取订单信息
+     */
+    public static function showBuyOrderByBoids($info){
+    	$params = array(
+    		'boids' => $info['boids'],
+    		'sign' => $info['sign'],
+    		'source' => $info['source'],
+    	);
+    	
+    	return self::instance()->get(self::getApiUrl('api/order/showbuyorderbyboids'), $params);
+    }
+    
+    /**
+     * 根据uid获取订单信息
+     */
+    public static function showBuyOrderByUid($info){
+    	$params = array(
+    		'uid' => $info['uid'],
+    		'sign' => $info['sign'],
+    		'source' => $info['source'],
+    	);
+    	
+    	return self::instance()->get(self::getApiUrl('api/order/showbuyorderbyuid'), $params);
     }
 }

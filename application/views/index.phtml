@@ -18,7 +18,7 @@
 		<?php if($islogined == true):?><li><a href="/login/logout"><?=_('退出登录')?></a></li><?php endif;?>
 		<li><a href="#">帮助中心</a></li>
 		<li><a href="#"><?=$usertype?></a></li>
-		<li><a href="#">我的订单</a></li>
+		<li><a href="/order/myorder" target="_blank">我的订单</a></li>
 		<li><a href="#"><?=$nick?></a></li>
 		<?php if($islogined == false):?><li><a href="/login/login"><?=_('登录')?></a></li><?php endif;?>
 	</ul>
@@ -64,11 +64,8 @@
       <li><a href="#">硅谷淘金之旅</a></li>
       <li><a href="#">科技产品一网打尽</a></li>
       <li><a href="#"><?=$result['person']['nick']?></a></li>
-      <form method="post" action="/aj/order/takeorder">
-      <input type="hidden" name="boid" value="<?=$result['boid']?>" />
-      <li><input type="submit" value="我要接单"/></li>
-      </form>
-      </div>
+      </div></br>
+      <li><a href="/order/takeorder?boids=<?=$result['boid']?>" target="_blank">我要接单</a></li>
     </ul>
  </div>
  </div>

@@ -13,7 +13,7 @@ class Db_Order extends Db_Abstract{
 	 * 写入买家订单信息
 	 * @param array $data
 	 */
-	public function setOrderBuyInfo($data = array()){
+	public function setBuyOrderInfo($data = array()){
 		$sql = "insert into `buyorder` (`uid`,`title`,`description`,`price`,`quantity`,`additional`) values (?,?,?,?,?,?);";
 		$re = $this->dbObj->exec ( $sql, $data );
 		if($re == true){
@@ -27,8 +27,24 @@ class Db_Order extends Db_Abstract{
 	/**
 	 * 读取买家订单信息
 	 */
-	public function getOrderBuyInfo($data = array()){
+	public function getBuyOrderInfo($data = array()){
 		$sql = "select * from `buyorder` order by createtime desc limit {$data['start']},{$data['count']}";
+		return $this->dbObj->fetch_all ( $sql );
+	}
+	
+	/**
+	 * 根据boid读取买家订单信息
+	 */
+	public function getBuyOrderInfoByBoids($data = array()){
+		$sql = "select * from `buyorder` where boid in ({$data['boids']})";
+		return $this->dbObj->fetch_all ( $sql );
+	}
+	
+	/**
+	 * 根据uid读取买家订单信息
+	 */
+	public function getBuyOrderInfoByUid($data = array()){
+		$sql = "select * from `buyorder` where uid = '{$data['uid']}' order by createtime desc limit {$data['start']},{$data['count']}";
 		return $this->dbObj->fetch_all ( $sql );
 	}
 	

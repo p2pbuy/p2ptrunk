@@ -3,12 +3,12 @@ class IndexController extends AbstractController{
 	public $tpl = 'index.phtml';
 	public $authorize = self::MAYBELOGIN;
 	public function hookAction(){
-		$orderBuyInfos = Dr_Order::showOrderBuy();
+		$buyOrderInfos = Dr_Order::showBuyOrder();
 		
-		foreach($orderBuyInfos as $orderBuyInfo){
-			$person = Dr_User::show($orderBuyInfo['uid']);
-			$orderBuyInfo['person'] = $person;
-			$results[] = $orderBuyInfo;
+		foreach($buyOrderInfos as $buyOrderInfo){
+			$person = Dr_User::show($buyOrderInfo['uid']);
+			$buyOrderInfo['person'] = $person;
+			$results[] = $buyOrderInfo;
 		}
 		
 		$data['nick'] = $this->viewer['nick'];
