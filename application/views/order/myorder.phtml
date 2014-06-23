@@ -31,10 +31,14 @@
 	还没有出价
 <?php else:?>
 	<?php foreach($bidPrices[$myOrder['boid']] as $bidPrice):?>
+		<form method="post" action="/order/confirmorder">
 		出价：<?=$bidPrice['price']?></br>
 		出价时间：<?=$bidPrice['createtime']?></br>
 		出价人ID：<?=$bidPrice['uid']?></br>
-		<input type="button" value="确认竞价"/>
+		<input type="hidden" name="boid" value="<?=$myOrder['boid'];?>"/>
+		<input type="hidden" name="bidprice" value="<?=$bidPrice['price']?>"/>
+		<input type="submit" value="确认竞价"/>
+		</form>
 		</br>
 		</br>
 	<?php endforeach;?>

@@ -7,10 +7,10 @@
 class Aj_Order_BuyController extends AbstractController{
 	public $authorize = self::MUSTLOGIN;
 	public function hookAction(){
-		if($this->viewer['extends']['type'] != 1){
+		/*if($this->viewer['extends']['type'] != 1){
 			$this->renderAjax(Tools_Conf::get('Show_Code.api.fail'),'You must be a buyer');
 			return true;
-		}
+		}*/
 
 		$info['title'] = Comm_Context::post('title');
 		$info['description'] = Comm_Context::post('description');

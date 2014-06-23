@@ -25,6 +25,7 @@ class Dw_User extends Dw_Abstract{
 				$dataSetUser[] = $value;
 			}
 			$dataSetUserInfo[] = $info['uid'];
+			$dataSetUserInfo[] = 1;
 			$db = new Db_User();
 			$reSetUser = $db->setUser($dataSetUser);
 			$reSetUserInfo = $db->setUserInfo($dataSetUserInfo);

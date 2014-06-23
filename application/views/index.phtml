@@ -72,19 +72,3 @@
  <?php endforeach;?>
 </body>
 </html>
-
-
-<?php foreach($results as $result):?>
-<form method="post" action="/aj/order/takeorder">
-订单编号：<?=$result['boid']?></br>
-订单标题：<?=$result['title']?></br>
-商品描述：<?=$result['description']?></br>
-商品价格：<?=$result['price']?></br>
-购买数量：<?=$result['quantity']?></br>
-补充说明：<?=$result['additional']?></br>
-<input type="hidden" name="boid" value="<?=$result['boid']?>" />
-<input type="submit" value="我要接单" />
-</form>
-</br>
-</br>
-<?php endforeach;?>

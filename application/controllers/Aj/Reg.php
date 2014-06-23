@@ -10,7 +10,7 @@ class Aj_RegController extends AbstractController{
 		$info['passwd'] = Comm_Context::post('passwd');
 		
 		$result = Dw_User::regByApi($info);
-		$this->renderAjax($result['code']);
+		$this->renderAjax($result['code'],$result['msg']);
 		return true;
 	}
 }

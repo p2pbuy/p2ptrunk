@@ -43,7 +43,7 @@ class Db_User extends Db_Abstract{
 	 * @param array $data
 	 */
 	public function setUserInfo($data = array()){
-		$sql = "insert into `userinfo` (`uid`) values (?)";
+		$sql = "insert into `userinfo` (`uid`,`type`) values (?,?)";
 		return $this->dbObj->exec($sql, $data);
 	}
 	

@@ -7,7 +7,7 @@ class Dr_User extends Dr_Abstract{
 		$uid = '1000001'.str_pad($rand,9,'0',STR_PAD_LEFT);
 		//$uid = '1000000000000001';
 		$userInfo = self::show($uid);
-		if(!empty($userInfo)){
+		if(!empty($userInfo['uid'])){
 			return self::createUid();
 		}
 		return $uid;
@@ -21,7 +21,7 @@ class Dr_User extends Dr_Abstract{
 		try{
 			$cache = new Cache_User();
 			$userInfo = $cache->getUserInfo($uid);
-			
+			$userInfo = false;
 			if($userInfo == false){
 				$db = new Db_User();
 				$re = $db->getUserByUid($uid);

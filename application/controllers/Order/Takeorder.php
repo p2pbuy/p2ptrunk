@@ -8,10 +8,10 @@ class Order_TakeorderController extends AbstractController{
 	public $authorize = self::MUSTLOGIN;
 	public $tpl = 'order/takeorder.phtml';
 	public function hookAction(){
-		if($this->viewer['extends']['type'] != 2){
+		/*if($this->viewer['extends']['type'] != 2){
 			echo 'You must be a sumaggler';
 			return true;
-		}
+		}*/
 		
 		$boids = Comm_Context::get('boids');
 		if(empty($boids)){

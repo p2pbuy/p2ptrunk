@@ -19,12 +19,12 @@ class Api_Order_SmugglertakeorderController extends Api_AbstractController{
 		$info['uid'] = $this->_context['uid'];
 		
 		$userInfo = Dr_User::show($info['uid']);
-		if($userInfo['extends']['type'] != 2){
+		/*if($userInfo['extends']['type'] != 2){
 			$code = Tools_Conf::get('Show_Code.api.fail');
 			$msg = 'you must be a smuggler';
 			$this->renderAjax($code,$msg);
 			return true;
-		}
+		}*/
 		
 		$re = Dw_Order::smugglerTakeOrderByDb($info);
 		if($re == false){

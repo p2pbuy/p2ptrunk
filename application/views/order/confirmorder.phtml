@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="http://182.92.129.19/css/theme.css">
+	<meta charset="utf-8" />
+	<title>确认订单</title>
+	<meta name="generator" content="BBEdit 10.5" />
+</head>
+<body>
+ <div id="header">
+	<ul id="header_left">
+		<div id="logo"><li><a href="#">带购</a></li></div>
+		<li><a href="#">手机代购</a></li>
+		<li><a href="#">海淘梯子</a></li>
+		<li><a href="#">社区</a></li>
+	</ul>
+	<ul id="header_right">
+		<li><a href="#">帮助中心</a></li>
+		<li><a href="#">我是买手</a></li>
+		<li><a href="#">我的订单</a></li>
+		<li><a href="#">敏感的胖子</a></li>
+	</ul>
+ </div>
+ <div id="breadcrumb">
+ <p><a href="#">我的带购</a> > <a href="#">我的订单</a> > <text id="currentpage"><a href="#">确认订单</a></text></p>
+ </div>
+ 
+ <div class="wizard">
+ <ul>
+    <li>买家提交订单</li>
+ 	<li>买手确认接单</li>
+  	<a href="#"><li id="wizard_current">买家预付费用</li></a>
+ 	<li>买家购买商品</li>
+ 	<li>买家补齐货款</li>
+ 	<li>买家发货</li>
+ 	<li>买家确认收货</li>
+ </ul>
+ </div>
+
+
+  
+  
+<p class="order_success_title">订单提交成功，请等候买手接单 <text class="item_ID">订单号：<?=$boid?></text><text class="cancel_order">取消订单</text><p/>   
+<div id="order_success">
+   <p class="track_order">跟踪订单</p>
+  
+
+   <table id="check_list_table">
+    <tr id="table_header">
+    <th>进度环节</th>
+    <th>状态</th>		
+    <th>操作人</th>
+    
+  
+    </tr>
+    <tr>
+    <td class="current_step">提交订单</td>
+    <td class="table_content">订单已经提交</td>
+    <td class="table_content">买家（<?=$viewer['nick']?>）</td>
+   		
+ 
+    </tr>
+    <tr>
+    <td>买手接单</td>
+    <td class="table_content">已提交指定买手（账单大门）等待买手接单</td>
+    <td class="table_content">系统提交</td>
+    
+    </tr>
+    <tr>
+    <td>买手预付费用</td>
+    <td class="table_content">未支付</td>
+    <td class="table_content">％5， 预付</td>
+ 		
+
+    </tr>
+  
+    </table>
+	
+  
+  <p><text class="downpayment_tooltip">提前预付定金，买手会更快的接单哦</text></p>
+  <p class="total_money_2">预付总额（人民币）： <text class="money_highlight">¥<?=$bidprice?></text><p>
+  </br>
+  <form target="_blank" method="get" action="https://shenghuo.alipay.com/send/payment/fill.htm?_tosheet=true&_pdType=afcabecbafgggffdhjch">
+  <input type="submit" value="预付定金" name='submit' class="down_payment_btn">
+  </form>
+  <p class="paypal">使用支付宝交易，第三方资金监管保证</p>
+   </form>
+</div>
+
+</body>
+</html>
