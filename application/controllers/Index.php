@@ -3,7 +3,7 @@ class IndexController extends AbstractController{
 	public $tpl = 'index.phtml';
 	public $authorize = self::MAYBELOGIN;
 	public function hookAction(){
-		$buyOrderInfos = Dr_Order::showBuyOrder();
+		$buyOrderInfos = Dr_Order::showBuyOrderByApi();
 		
 		foreach($buyOrderInfos as $buyOrderInfo){
 			$person = Dr_User::show($buyOrderInfo['uid']);

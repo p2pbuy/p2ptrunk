@@ -1,0 +1,28 @@
+ <?php foreach($results as $result):?>
+ <div class="list_1">
+ <img src="img/usa.png" alt="item1" height="180px" width="294px"/>
+ <div class="item_title">
+ 	<ul>
+ 	  <li class="first_title"><?=$result['title']?></li>
+ 	  <li>32位买手正好旅行</li>
+ 	  <li>827位买手即将出发</li>
+ 	  <li class="item_content">
+      <?=$result['description']?><br>
+      <?=$result['additional']?>
+      </li></br></br></br></br></br></br></br>
+      <li class="hot_destination_title">热门旅行地:</li>
+      <li><a href="#">旧约</a></li>
+      <li><a href="#">芝加哥</a></li>
+      <li><a href="#">旧金山</a></li></br></br></br>
+      <div class="buyer_trip">
+      <li class="hot_destination_title">买手行程:</li>
+      <li><a href="#">白夜</a></li>
+      <li><a href="#">硅谷淘金之旅</a></li>
+      <li><a href="#">科技产品一网打尽</a></li>
+      <li><a href="#"><?=$result['person']['nick']?></a></li>
+      </div></br>
+      <li><a href="/order/takeorder?boids=<?=$result['boid']?>" target="_blank">我要接单</a></li>
+    </ul>
+ </div>
+ </div>
+ <?php endforeach;?>

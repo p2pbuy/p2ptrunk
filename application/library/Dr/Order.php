@@ -5,8 +5,28 @@
  * @version 2014-5-25
  */
 class Dr_Order extends Dr_Abstract{
+	public static function showBuyOrderByApi($info = array()){
+		try{
+			//获得acl配置
+			$aclConf = Tools_Conf::get('Api_ACL');
+			
+			$info['source'] = 'web';
+			$info['sign'] = md5($aclConf[$info['source']]['name'].$aclConf[$info['source']]['secret_key']);
+			$re = Api_Order::showBuyOrder($info);
+			$result = json_decode($re,true);
+			if($result['code'] == 100000){
+				$data = $result['data'];
+			}else{
+				return false;
+			}
+		}catch(Exception $e){
+			return false;
+		}
+		return $data;
+	}
+	
 	public static function showBuyOrder($info = array()){
-		$info['count'] = ($info['count']) ? intval($info['count']) : 20;
+		$info['count'] = ($info['count']) ? intval($info['count']) : 5;
 		$info['page'] = ($info['page']) ? intval($info['page']) : 1;
 		$info['start'] = ($info['page'] - 1) * $info['count'];
 		try{

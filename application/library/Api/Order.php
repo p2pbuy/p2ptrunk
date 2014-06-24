@@ -45,6 +45,20 @@ class Api_Order extends Api_Abstract{
     }
     
     /**
+     * 获取订单列表信息
+     */
+    public static function showBuyOrder($info){
+    	$params = array(
+    		'count' => $info['count'],
+    		'page' => $info['page'],
+    		'sign' => $info['sign'],
+    		'source' => $info['source'],
+    	);
+    	
+    	return self::instance()->get(self::getApiUrl('api/order/showbuyorder'), $params);
+    }
+    
+    /**
      * 根据boid获取订单信息
      */
     public static function showBuyOrderByBoids($info){
