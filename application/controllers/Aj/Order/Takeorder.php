@@ -8,11 +8,33 @@ class Aj_Order_TakeorderController extends AbstractController{
 	public $authorize = self::MUSTLOGIN;
 	public function hookAction(){
 		$info['boid'] = Comm_Context::post('boid');
-		$info['uid'] = $this->uid;
+		$info['biduid'] = Comm_Context::post('biduid');
+		$info['bidprice'] = Comm_Context::post('bidprice');
+		$info['bid'] = Comm_Context::post('bid');
+		$info['buid'] = $this->uid;
+		//检查订单是否是当前买家的订单
+		$data['uid'] = $info['buid'];
+		$buyOrders = Dr_Order::showBuyOrderByUidByApi($data);
+		foreach($buyOrders as $buyOrder){
+			$myOrders[] = $buyOrder['boid'];
+		}
+		if(!in_array($info['boid'], $myOrders)){
+			$code = Tools_Conf::get('Show_Code.aj.fail');
+			$msg = 'The order is not your order';
+		}else{
+			$data['boid'] = $info['boid'];
+			$data['uid'] = $info['biduid'];
+			$re = Dw_Order::smugglerTakeOrderByApi($data);
+			if($re['code'] == 100000){
+				$code = Tools_Conf::get('Show_Code.aj.succ');
+				$msg = 'succ';
+			}else{
+				$code = Tools_Conf::get('Show_Code.aj.fail');
+				$msg = $re['msg'];
+			}
+		}
 		
-		$result = Dw_Order::smugglerTakeOrderByApi($info);
-		
-		$this->renderAjax($result['code'],$result['msg']);
+		$this->renderAjax($code,$msg);
 		return true;
 	}
 }

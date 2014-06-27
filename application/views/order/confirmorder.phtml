@@ -16,9 +16,9 @@
 	</ul>
 	<ul id="header_right">
 		<li><a href="#">帮助中心</a></li>
-		<li><a href="#">我是买手</a></li>
+		<li><a href="#"><?=$usertype?></a></li>
 		<li><a href="#">我的订单</a></li>
-		<li><a href="#">敏感的胖子</a></li>
+		<li><a href="#"><?=$viewer['nick']?></a></li>
 	</ul>
  </div>
  <div id="breadcrumb">
@@ -80,12 +80,14 @@
   <p><text class="downpayment_tooltip">提前预付定金，买手会更快的接单哦</text></p>
   <p class="total_money_2">预付总额（人民币）： <text class="money_highlight">¥<?=$bidprice?></text><p>
   </br>
-  <form target="_blank" method="get" action="https://shenghuo.alipay.com/send/payment/fill.htm?_tosheet=true&_pdType=afcabecbafgggffdhjch">
-  <input type="submit" value="预付定金" name='submit' class="down_payment_btn">
+  <form target="_blank" method="get" action="https://shenghuo.alipay.com/send/payment/fill.htm">
+  <input type="button" value="预付定金" id="payment" class="down_payment_btn" act_data="bid=<?=$bid?>&boid=<?=$boid?>&biduid=<?=$biduid?>&bidprice=<?=$bidprice?>"/>
   </form>
   <p class="paypal">使用支付宝交易，第三方资金监管保证</p>
    </form>
 </div>
-
+<script src="/js/jquery-1.11.1.min.js"></script>
+<script src="/js/common.js"></script>
+<script src="/js/order/confirmorder.js"></script>
 </body>
 </html>

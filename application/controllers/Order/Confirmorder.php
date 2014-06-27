@@ -10,6 +10,8 @@ class Order_ConfirmorderController extends AbstractController{
 	public function hookAction(){
 		$boid = Comm_Context::post('boid');
 		$bidPrice = Comm_Context::post('bidprice');
+		$bid = Comm_Context::post('bid');
+		$biduid = Comm_Context::post('biduid');
 		$uid = $this->uid;
 		
 		//查看是否是当前人的订单
@@ -23,6 +25,9 @@ class Order_ConfirmorderController extends AbstractController{
 		$data['boid'] = $boid;
 		$data['bidprice'] = $bidPrice;
 		$data['viewer'] = $this->viewer;
+		$data['usertype'] = ($this->viewer['extends']['type'] == 2) ? '我是买手' : '我是买家';
+		$data['bid'] = $bid;
+		$data['biduid'] = $biduid;
 		$this->renderPage($this->tpl,$data);
 		return true;
 	}

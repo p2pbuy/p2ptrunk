@@ -9,21 +9,25 @@ class Order_MyorderController extends AbstractController{
 	public $tpl = 'order/myorder.phtml';
 	public function hookAction(){
 		$info['uid'] = $this->uid;
-		$myOrderids = '';
-		$myOrders = Dr_Order::showBuyOrderByUidByApi($info);
+		$myBuyOrderids = '';
+		//获得我发布的订单列表
+		$myBuyOrders = Dr_Order::showBuyOrderByUidByApi($info);
+		$myTakeOrders = Dr_Order::showTakeOrderByUidByApi($info);
 		unset($info);
-		$myOrders = ($myOrders) ? $myOrders : array();
+		$myBuyOrders = ($myBuyOrders) ? $myBuyOrders : array();
 		
-		foreach($myOrders as $myOrder){
-			$myOrderids .= $myOrder['boid'].',';
+		foreach($myBuyOrders as $myBuyOrder){
+			$myBuyOrderids .= $myBuyOrder['boid'].',';
 		}
-		$myOrderids = substr($myOrderids, 0, -1);
+		$myBuyOrderids = substr($myBuyOrderids, 0, -1);
 		
-		$info['boids'] = $myOrderids;
+		$info['boids'] = $myBuyOrderids;
 		$bidPrices = Dr_Bid::getBidPriceByBoidsByApi($info);
 		
+		
 		$data['viewer'] = $this->viewer;
-		$data['myOrders'] = $myOrders;
+		$data['myBuyOrders'] = $myBuyOrders;
+		$data['myTakeOrders'] = $myTakeOrders;
 		$data['bidPrices'] = $bidPrices;
 		$this->renderPage($this->tpl,$data);
 		return true;

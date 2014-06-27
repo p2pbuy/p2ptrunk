@@ -105,4 +105,37 @@ class Dr_Order extends Dr_Abstract{
 		}
 		return $buyOrderInfo;
 	}
+	
+	public static function showTakeOrderByUid($info = array()){
+		$info['count'] = ($info['count']) ? intval($info['count']) : 5;
+		$info['page'] = ($info['page']) ? intval($info['page']) : 1;
+		$info['start'] = ($info['page'] - 1) * $info['count'];
+		try{
+			$db = new Db_Order();
+			$takeOrderInfo = $db->getTakeOrderInfoByUid($info);
+		}catch(Exception $e){
+			return false;
+		}
+		return $takeOrderInfo;
+	}
+	
+	public static function showTakeOrderByUidByApi($info = array()){
+		try{
+			//获得acl配置
+			$aclConf = Tools_Conf::get('Api_ACL');
+			
+			$info['source'] = 'web';
+			$info['sign'] = md5($aclConf[$info['source']]['name'].$info['uid'].$aclConf[$info['source']]['secret_key']);
+			$re = Api_Order::showTakeOrderByUid($info);
+			$result = json_decode($re,true);
+			if($result['code'] == 100000){
+				$data = $result['data'];
+			}else{
+				return false;
+			}
+		}catch(Exception $e){
+			return false;
+		}
+		return $data;
+	}
 }

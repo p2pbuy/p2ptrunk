@@ -16,33 +16,53 @@
 我的订单
 </br>
 </br>
-<?php foreach($myOrders as $myOrder):?>
-订单ID：<?=$myOrder['boid'];?></br>
-订单名称：<?=$myOrder['title'];?></br>
-订单描述：<?=$myOrder['description'];?></br>
-商品价格：<?=$myOrder['price'];?></br>
-商品数量：<?=$myOrder['quantity'];?></br>
-补充说明：<?=$myOrder['additional'];?></br>
-创建时间：<?=$myOrder['createtime'];?></br>
+<?php foreach($myBuyOrders as $myBuyOrder):?>
+订单ID：<?=$myBuyOrder['boid'];?></br>
+订单名称：<?=$myBuyOrder['title'];?></br>
+订单描述：<?=$myBuyOrder['description'];?></br>
+商品价格：<?=$myBuyOrder['price'];?></br>
+商品数量：<?=$myBuyOrder['quantity'];?></br>
+补充说明：<?=$myBuyOrder['additional'];?></br>
+创建时间：<?=$myBuyOrder['createtime'];?></br>
 </br>
 已经存在的竞价：
 </br>
-<?php if(empty($bidPrices[$myOrder['boid']])):?>
+<?php if(empty($bidPrices[$myBuyOrder['boid']])):?>
 	还没有出价
 <?php else:?>
-	<?php foreach($bidPrices[$myOrder['boid']] as $bidPrice):?>
+	<?php foreach($bidPrices[$myBuyOrder['boid']] as $bidPrice):?>
 		<form method="post" action="/order/confirmorder">
 		出价：<?=$bidPrice['price']?></br>
 		出价时间：<?=$bidPrice['createtime']?></br>
 		出价人ID：<?=$bidPrice['uid']?></br>
-		<input type="hidden" name="boid" value="<?=$myOrder['boid'];?>"/>
-		<input type="hidden" name="bidprice" value="<?=$bidPrice['price']?>"/>
+		<input type="hidden" name="bid" value="<?=$bidPrice['id'];?>"/>
+		<input type="hidden" name="boid" value="<?=$myBuyOrder['boid'];?>"/>
+		<input type="hidden" name="bidprice" value="<?=$bidPrice['price'];?>"/>
+		<input type="hidden" name="biduid" value="<?=$bidPrice['uid']?>"/>
 		<input type="submit" value="确认竞价"/>
 		</form>
 		</br>
 		</br>
 	<?php endforeach;?>
 <?php endif;?>
+</br>
+</br>
+</br>
+<?php endforeach;?>
+</br>
+</br>
+</br>
+我接下的订单
+</br>
+</br>
+<?php foreach($myTakeOrders as $myTakeOrder):?>
+订单ID：<?=$myTakeOrder['boid'];?></br>
+订单名称：<?=$myTakeOrder['title'];?></br>
+订单描述：<?=$myTakeOrder['description'];?></br>
+商品价格：<?=$myTakeOrder['price'];?></br>
+商品数量：<?=$myTakeOrder['quantity'];?></br>
+补充说明：<?=$myTakeOrder['additional'];?></br>
+创建时间：<?=$myTakeOrder['createtime'];?></br>
 </br>
 </br>
 </br>

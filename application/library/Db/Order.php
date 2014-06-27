@@ -55,4 +55,19 @@ class Db_Order extends Db_Abstract{
 		$sql = "insert into `smugglertakeorder` (`boid`,`uid`) values (?,?);";
 		return  $this->dbObj->exec ( $sql, $data );
 	}
+	
+	/**
+	 * 根据uid读取买手已经接到的订单
+	 */
+	public function getTakeOrderInfoByUid($data = array()){
+		$sql = "select * from `smugglertakeorder` where uid = '{$data['uid']}' order by createtime desc limit {$data['start']},{$data['count']}";
+		return $this->dbObj->fetch_all ( $sql );
+	}
+	
+	/**
+	 * 根据boid更新订单
+	 */
+	public function updOrderInfo($data = array()){
+		$sql = "update `buyorder` set `lock` = ? where `boid` = ?";
+	}
 }

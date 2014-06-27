@@ -83,4 +83,17 @@ class Api_Order extends Api_Abstract{
     	
     	return self::instance()->get(self::getApiUrl('api/order/showbuyorderbyuid'), $params);
     }
+    
+    /**
+     * 根据uid获取该uid接到的订单信息
+     */
+    public static function showTakeOrderByUid($info){
+    	$params = array(
+    		'uid' => $info['uid'],
+    		'sign' => $info['sign'],
+    		'source' => $info['source'],
+    	);
+    	
+    	return self::instance()->get(self::getApiUrl('api/order/showtakeorderbyuid'), $params);
+    }
 }

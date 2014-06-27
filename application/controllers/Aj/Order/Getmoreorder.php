@@ -11,6 +11,10 @@ class Aj_Order_GetmoreorderController extends AbstractController{
 		$info['page'] = Comm_Context::post('page','int');
 		$info['count'] = Comm_Context::post('count','int');
 		
+		if(empty($info['page']) || empty($info['count'])){
+			return false;
+		}
+		
 		$buyOrderInfos = Dr_Order::showBuyOrderByApi($info);
 		
 		if($buyOrderInfos == false){

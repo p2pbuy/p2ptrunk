@@ -62,4 +62,15 @@ class Dw_Order extends Dw_Abstract{
 		}
 		return $re;
 	}
+	
+	//更新订单属性
+	public static function updateBuyOrderByBoidByDb($info){
+		try{
+			$db = new Db_Order();
+			$re = $db->updOrderInfo($data);
+		}catch(Exception $e){
+			return false;
+		}
+		return $re;
+	}
 }
