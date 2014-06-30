@@ -68,6 +68,7 @@ class Db_Order extends Db_Abstract{
 	 * 根据boid更新订单
 	 */
 	public function updOrderInfo($data = array()){
-		$sql = "update `buyorder` set `lock` = ? where `boid` = ?";
+		$sql = "update `buyorder` set {$data['set']} where {$data['where']}";
+		return  $this->dbObj->exec ( $sql, $data['upddata'] );
 	}
 }

@@ -66,6 +66,18 @@ class Dw_Order extends Dw_Abstract{
 	//更新订单属性
 	public static function updateBuyOrderByBoidByDb($info){
 		try{
+			$data['where'] = '`boid` = ?';
+			foreach($info as $key => $value){
+				if(!empty($value) && $key != 'boid'){
+					$data['set'] .= "`{$key}` = ?,";
+					$data['upddata'][] = $value;
+				}
+			}
+			if(empty($data['set'])){
+				return false;
+			}
+			$data['set'] = substr($data['set'], 0, -1);
+			$data['upddata'][] = $info['boid'];
 			$db = new Db_Order();
 			$re = $db->updOrderInfo($data);
 		}catch(Exception $e){
