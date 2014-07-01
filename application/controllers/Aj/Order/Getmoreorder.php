@@ -23,6 +23,9 @@ class Aj_Order_GetmoreorderController extends AbstractController{
 			$html = false;
 		}else{
 			foreach($buyOrderInfos as $buyOrderInfo){
+				if($buyOrderInfo['lock'] == 1){
+					continue;
+				}
 				$person = Dr_User::show($buyOrderInfo['uid']);
 				$buyOrderInfo['person'] = $person;
 				$results[] = $buyOrderInfo;

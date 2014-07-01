@@ -96,4 +96,15 @@ class Api_Order extends Api_Abstract{
     	
     	return self::instance()->get(self::getApiUrl('api/order/showtakeorderbyuid'), $params);
     }
+    
+    /**
+     * 根据boid更新订单状态
+     */
+    public static function updateBuyOrderByBoid($info){
+    	foreach($info as $key => $value){
+    		$params[$key] = $value;
+    	}
+    	
+    	return self::instance()->post(self::getApiUrl('api/order/updatebuyorderbyboid'), $params);
+    }
 }

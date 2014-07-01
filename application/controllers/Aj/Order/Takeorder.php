@@ -15,6 +15,7 @@ class Aj_Order_TakeorderController extends AbstractController{
 		//检查订单是否是当前买家的订单
 		$data['uid'] = $info['buid'];
 		$buyOrders = Dr_Order::showBuyOrderByUidByApi($data);
+		unset($data);
 		foreach($buyOrders as $buyOrder){
 			$myOrders[] = $buyOrder['boid'];
 		}
@@ -24,8 +25,15 @@ class Aj_Order_TakeorderController extends AbstractController{
 		}else{
 			$data['boid'] = $info['boid'];
 			$data['uid'] = $info['biduid'];
-			$re = Dw_Order::smugglerTakeOrderByApi($data);
-			if($re['code'] == 100000){
+			$reTakeOrder = Dw_Order::smugglerTakeOrderByApi($data);
+			unset($data);
+			
+			$data['boid'] = $info['boid'];
+			$data['lock'] = 1;
+			$reUpdOrder =Dw_Order::updateBuyOrderByBoidByApi($data);
+			unset($data);
+
+			if($reTakeOrder['code'] == 100000 || $reUpdOrder == 100000){
 				$code = Tools_Conf::get('Show_Code.aj.succ');
 				$msg = 'succ';
 			}else{

@@ -6,6 +6,9 @@ class IndexController extends AbstractController{
 		$buyOrderInfos = Dr_Order::showBuyOrderByApi();
 		
 		foreach($buyOrderInfos as $buyOrderInfo){
+			if($buyOrderInfo['lock'] == 1){
+				continue;
+			}
 			$person = Dr_User::show($buyOrderInfo['uid']);
 			$buyOrderInfo['person'] = $person;
 			$results[] = $buyOrderInfo;

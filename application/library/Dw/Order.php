@@ -85,4 +85,18 @@ class Dw_Order extends Dw_Abstract{
 		}
 		return $re;
 	}
+	
+	//通过接口更新订单属性
+	public static function updateBuyOrderByBoidByApi($info){
+		try{
+			$aclConf = Tools_Conf::get('Api_ACL');
+			$info['source'] = 'web';
+			$info['sign'] = md5($aclConf[$info['source']]['name'].$info['boid'].$aclConf[$info['source']]['secret_key']);
+			$re = Api_Order::updateBuyOrderByBoid($info);
+			$result = json_decode($re,true);
+		}catch(Exception $e){
+			return false;
+		}
+		return $result;
+	}
 }
