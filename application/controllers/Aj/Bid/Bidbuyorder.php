@@ -22,7 +22,7 @@ class Aj_Bid_BidbuyorderController extends AbstractController{
 
 		if($result == false){
 			$code = Tools_Conf::get('Show_Code.api.fail');
-			$msg = 'bid fail';
+			$msg = 'bid failed';
 		}else{
 			$code = $result['code'];
 			$msg = $result['msg'];

@@ -6,18 +6,21 @@
 	<title><?=_('我要接单')?></title>
 	<meta name="generator" content="BBEdit 10.5" />
 </head>
-<body>
+<body id="bidbuyorder_form">
 
-<form action="/aj/bid/bidbuyorder" method="post">
+<form onsubmit="return false;">
 订单名称：<?=$buyOrder['title'];?></br>
 订单描述：<?=$buyOrder['description'];?></br>
 商品价格：<?=$buyOrder['price'];?>(人民币)</br>
 商品数量：<?=$buyOrder['quantity'];?></br>
 补充说明：<?=$buyOrder['additional'];?></br>
 创建时间：<?=$buyOrder['createtime'];?></br>
-竞价价格：<input type="text" name="bidprice"/></br>
-<input type="hidden" name="boid" value="<?=$buyOrder['boid']?>"/>
-<input type="submit" value="我要竞价">
+竞价价格：<input type="text" node-type="bidprice"/></br>
+<input type="hidden" node-type="boid" value="<?=$buyOrder['boid']?>"/>
+<input type="button" action-type="bidBuyOrder" value="我要竞价">
 </form>
+<script src="/js/jquery-1.11.1.min.js"></script>
+<script src="/js/common.js"></script>
+<script src="/js/order/takeorder.js"></script>
 </body>
 </html>

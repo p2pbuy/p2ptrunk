@@ -40,12 +40,12 @@
  <div id="ordering_form">
  <p>填写带购订单</p>
 
- <form action="/aj/order/buy" method="post">
-	订单标题<br> <input type="text" name="title" class="form_title"><br>
-	商品描述<br><textarea name="description" rows="4" cols="50"></textarea><br><br>
-	商品价格<br> <input type="text" name="price" class="form_title">美元<br>
-	商品数量<br> <input type="text" name="quantity" class="form_title"><br>
-	补充说明<br><textarea name="additional" rows="4" cols="50"></textarea><br><br>
+ <form onsubmit="return false;">
+	订单标题<br> <input type="text" node-type="title" class="form_title"><br>
+	商品描述<br><textarea node-type="description" rows="4" cols="50"></textarea><br><br>
+	商品价格<br> <input type="text" node-type="price" class="form_title">美元<br>
+	商品数量<br> <input type="text" node-type="quantity" class="form_title"><br>
+	补充说明<br><textarea node-type="additional" rows="4" cols="50"></textarea><br><br>
 	<input type="file" name="uploaded_file" value="上传附件"><br>
 	<p class="sub_description">基于<text class="buyer"><a href="#">白夜</a></text>的<text class="buyer_trip"><a href="">硅谷科技之旅旅</a></text>行行程购买</p>
 	<table>
@@ -76,21 +76,11 @@
     </tr>
     </table>
     <input type="checkbox" name="check" value="" class="checkbox_all"><text class="form_checkbox">同时发布到买手任务区， 允许其他买手抢单，费率默认为以上费率。</text><br>
-	<input type="submit" value="下一步" name='submit' class="submit">
+	<input type="button" value="下一步" class="submit" action-type="createBuyOrder">
  </form> 
  </div>
-
+<script src="/js/jquery-1.11.1.min.js"></script>
+<script src="/js/common.js"></script>
+<script src="/js/order/buy.js"></script>
 </body>
 </html>
-
-
-<!-- <form action="/aj/order/buy" method="post">
-代购订单</br></br>
-订单标题：<input name="title" type="text" /></br>
-商品描述：<input name="description" type="text" style="height:60px" /></br>
-商品价格：<input name="price" type="text"/></br>
-购买数量：<input name="quantity" type="text"/></br>
-补充说明：<input name="additional" type="text" style="height:60px"/></br>
-<input type="submit" value="order now" />
-</form>
- -->
