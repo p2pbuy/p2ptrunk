@@ -7,13 +7,14 @@
 class Aj_Img_UploadController extends AbstractController{
 	public $authorize = self::MAYBELOGIN;
 	public function hookAction(){
-		$fileName= '/tmp/cuba.png';
+		$fileName= '/tmp/phpBs9Bsc';
 		$fileStr = file_get_contents($fileName);
 		
-		$url = 'http://127.0.0.1/api/img/upload';
+		
+		$url = 'http://127.0.0.1/api/upload/uploadimg?vbb=111';
 		$ch = curl_init($url);
 		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PUT');	
-		curl_setopt($ch, CURLOPT_POSTFIELDS, $fileStr);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, array('aaa'=>111,'fileStr'=>$fileStr));
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		$ret = curl_exec($ch);
 		$info = curl_getinfo($ch);

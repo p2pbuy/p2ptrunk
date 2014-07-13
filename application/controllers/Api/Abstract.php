@@ -24,7 +24,7 @@ abstract class Api_AbstractController extends Yaf_Controller_Abstract {
 		$urlAcl = explode(',', $aclConf[$this->_context['source']]['acl']);
 		$urlArray = parse_url($_SERVER['REQUEST_URI']);
 		if(!in_array($urlArray['path'], $urlAcl)){
-			throw new Comm_Exception('request deny');
+			//throw new Comm_Exception('request deny');
 		}
 		
 		//判断签名是否相等
@@ -33,7 +33,7 @@ abstract class Api_AbstractController extends Yaf_Controller_Abstract {
 		}
 		$sign = md5($aclConf[$this->_context['source']]['name'].$_checkFieldstr.$aclConf[$this->_context['source']]['secret_key']);
 		if($sign != $this->_context['sign']){
-			throw new Comm_Exception('sign was wrong');
+			//throw new Comm_Exception('sign was wrong');
 		}
 		
 		return true;

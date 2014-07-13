@@ -13,6 +13,7 @@ class Api_Order_CreatebuyorderController extends Api_AbstractController{
 		$this->_context['price'] = Comm_Context::post('price');
 		$this->_context['quantity'] = Comm_Context::post('quantity');
 		$this->_context['additional'] = Comm_Context::post('additional');
+		$this->_context['img'] = Comm_Context::post('img');
 		$this->_context['sign'] = Comm_Context::post('sign');
 		
 		$this->_checkFields = array('uid' => $this->_context['uid'],'quantity' => $this->_context['quantity']);
@@ -25,6 +26,7 @@ class Api_Order_CreatebuyorderController extends Api_AbstractController{
 		$info['price'] = $this->_context['price'];
 		$info['quantity'] = ($this->_context['quantity']) ? $this->_context['quantity'] : 1;
 		$info['additional'] = $this->_context['additional'];
+		$info['img'] = $this->_context['img'];
 		
 		$re = Dw_Order::createBuyOrderByDb($info);
 		if($re == false){

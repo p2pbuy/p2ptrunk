@@ -40,13 +40,13 @@
  <div id="ordering_form">
  <p>填写带购订单</p>
 
- <form onsubmit="return false;">
-	订单标题<br> <input type="text" node-type="title" class="form_title"><br>
-	商品描述<br><textarea node-type="description" rows="4" cols="50"></textarea><br><br>
-	商品价格<br> <input type="text" node-type="price" class="form_title">美元<br>
-	商品数量<br> <input type="text" node-type="quantity" class="form_title"><br>
-	补充说明<br><textarea node-type="additional" rows="4" cols="50"></textarea><br><br>
-	<input type="file" name="uploaded_file" value="上传附件"><br>
+ <form onsubmit="return false;" id="createOrder">
+	订单标题<br> <input type="text" name="title" node-type="title" class="form_title"><br>
+	商品描述<br><textarea name="description" node-type="description" rows="4" cols="50"></textarea><br><br>
+	商品价格<br> <input type="text" name="price" node-type="price" class="form_title">美元<br>
+	商品数量<br> <input type="text" name="quantity" node-type="quantity" class="form_title"><br>
+	补充说明<br><textarea name="additional" rows="4" cols="50"></textarea><br><br>
+	<input type="file" name="file" value="上传附件">请使用jpg，gif，png图片，大小请不要超过1MB<br>
 	<p class="sub_description">基于<text class="buyer"><a href="#">白夜</a></text>的<text class="buyer_trip"><a href="">硅谷科技之旅旅</a></text>行行程购买</p>
 	<table>
     <tr id="table_header">

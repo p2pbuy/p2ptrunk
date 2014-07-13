@@ -77,10 +77,10 @@ class Api_HttpClient {
             foreach($args as $key => $value){
             	$request->add_query_field($key, $value,$urlencode);
             }
-            if($url == 'http://relation.mobile.mcp.weibo.cn/get_users.php'){
+            /*if($url == 'http://relation.mobile.mcp.weibo.cn/get_users.php'){
                 $option = array('httpauth' => 'relation_visitor_1:9210699591413','httpauthtype' => HTTP_AUTH_BASIC);
                 $request->setOptions($option);
-            }
+            }*/
         } else {
             $request = new Comm_HttpRequest($url);
             $request->set_method("POST");
