@@ -21,6 +21,7 @@ class Api_Upload extends Api_Abstract{
 		
     	$params = array(
     		'filename' => $info['filename'],
+    		'filetype' => $info['filetype'],
     	    'sign' => $info['sign'],
     		'source' => $info['source'],
     	);

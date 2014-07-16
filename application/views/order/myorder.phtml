@@ -67,5 +67,23 @@
 </br>
 </br>
 <?php endforeach;?>
+</br>
+</br>
+</br>
+我出过价的订单
+</br>
+</br>
+<?php foreach($myBidOrders as $myBidOrder):?>
+订单ID：<?=$myBidOrder['boid'];?></br>
+订单名称：<?=$myBidOrder['title'];?></br>
+订单描述：<?=$myBidOrder['description'];?></br>
+商品价格：<?=$myBidOrder['price'];?></br>
+商品数量：<?=$myBidOrder['quantity'];?></br>
+补充说明：<?=$myBidOrder['additional'];?></br>
+创建时间：<?=$myBidOrder['createtime'];?></br>
+</br>
+</br>
+</br>
+<?php endforeach;?>
 </body>
 </html>

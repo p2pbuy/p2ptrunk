@@ -10,9 +10,22 @@ class Order_MyorderController extends AbstractController{
 	public function hookAction(){
 		$info['uid'] = $this->uid;
 		$myBuyOrderids = '';
+		$myBidOrders = array();
+		
 		//获得我发布的订单列表
 		$myBuyOrders = Dr_Order::showBuyOrderByUidByApi($info);
 		$myTakeOrders = Dr_Order::showTakeOrderByUidByApi($info);
+		//我的出价信息
+		$myBidInfos = Dr_Bid::getBidInfoByUidByApi($info);
+		unset($info);
+		//我曾经出过价的订单
+		foreach($myBidInfos as $myBidInfo){
+			$boids .= $myBidInfo['boid'].',';
+		}
+		$boids = substr($boids,0,-1);
+		$info['boids'] = $boids;
+		$myBidOrders = Dr_Order::showBuyOrderByBoidsByApi($info);
+
 		unset($info);
 		$myBuyOrders = ($myBuyOrders) ? $myBuyOrders : array();
 		
@@ -28,6 +41,7 @@ class Order_MyorderController extends AbstractController{
 		$data['viewer'] = $this->viewer;
 		$data['myBuyOrders'] = $myBuyOrders;
 		$data['myTakeOrders'] = $myTakeOrders;
+		$data['myBidOrders'] = $myBidOrders;
 		$data['bidPrices'] = $bidPrices;
 		$this->renderPage($this->tpl,$data);
 		return true;

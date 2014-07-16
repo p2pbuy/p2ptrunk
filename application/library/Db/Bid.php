@@ -24,4 +24,13 @@ class Db_Bid extends Db_Abstract{
 		$sql = "select * from `bidbuyorder` where boid in ({$data['boids']})";
 		return $this->dbObj->fetch_all ( $sql );
 	}
+	
+	/**
+	 * 根据uid读取竞价信息
+	 */
+	public function getBidInfoByUid($data = array()){
+		$data = array_values($data);
+		$sql = "select * from `bidbuyorder` where uid = ?";
+		return $this->dbObj->fetch_all ( $sql, $data);
+	}
 }

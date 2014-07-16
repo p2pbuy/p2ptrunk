@@ -15,7 +15,7 @@ class Api_Bid extends Api_Abstract{
     /**
      * 竞价
      */
-    public static function bidBuyOrder($info){
+    public static function bidBuyOrder($info = array()){
     	$params = array(
     		'boid' => $info['boid'],
     		'bidprice' => $info['bidprice'],
@@ -30,7 +30,7 @@ class Api_Bid extends Api_Abstract{
     /**
      * 根据boid获得竞价
      */
-    public static function getBidPriceByBoid($info){
+    public static function getBidPriceByBoid($info = array()){
     	$params = array(
     		'boids' => $info['boids'],
     		'sign' => $info['sign'],
@@ -38,5 +38,18 @@ class Api_Bid extends Api_Abstract{
         );
 
         return self::instance()->get(self::getApiUrl('api/bid/getbidpricebyboids'), $params);
+    }
+    
+    /**
+     * 根据uid获得竞价信息
+     */
+    public static function getBidInfoByUid($info = array()){
+    	$params = array(
+    		'uid' => $info['uid'],
+    		'sign' => $info['sign'],
+    		'source' => $info['source'],
+        );
+
+        return self::instance()->get(self::getApiUrl('api/bid/getbidinfobyuid'), $params);
     }
 }

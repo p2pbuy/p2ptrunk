@@ -24,7 +24,8 @@ class Dw_Upload extends Dw_Abstract{
 		try{
 			$aclConf = Tools_Conf::get('Api_ACL');
 			$info['source'] = 'web';
-			$info['sign'] = md5($aclConf[$info['source']]['name'].$info['filename'].$aclConf[$info['source']]['secret_key']);
+			$info['filetype'] = $info['file']['type'];
+			$info['sign'] = md5($aclConf[$info['source']]['name'].$info['filename'].$info['filetype'].$aclConf[$info['source']]['secret_key']);
 			$re = Api_Upload::uploadImg($info);
 			$result = json_decode($re,true);
 		}catch(Exception $e){
