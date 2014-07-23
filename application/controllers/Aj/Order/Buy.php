@@ -22,13 +22,15 @@ class Aj_Order_BuyController extends AbstractController{
 			$result['code'] = Tools_Conf::get('Show_Code.aj.fail');
 			$data = '0';
 		}else{
-			//上传图片
-			$fileInfo = $_FILES;
-			$fileInfo['filename'] = time().substr(md5(rand(0,99999)), 6, 8);
-			$uploadFile = Dw_Upload::uploadImg($fileInfo);
-			if($uploadFile['code'] != Tools_Conf::get('Show_Code.aj.succ')){
-				echo "<script>window.". $_POST['cbkname'] ."={'code':{$uploadFile['code']},'msg':'{$uploadFile['msg']}','data':0}</script>";
-				return true;
+			if(!empty($_FILES['file']['type']) && !empty($_FILES['file']['tmp_name']) && $_FILES['file']['size'] > 0){
+				//上传图片
+				$fileInfo = $_FILES;
+				$fileInfo['filename'] = time().substr(md5(rand(0,99999)), 6, 8);
+				$uploadFile = Dw_Upload::uploadImg($fileInfo);
+				if($uploadFile['code'] != Tools_Conf::get('Show_Code.aj.succ')){
+					echo "<script>window.". $_POST['cbkname'] ."={'code':{$uploadFile['code']},'msg':'{$uploadFile['msg']}','data':0}</script>";
+					return true;
+				}
 			}
 			
 			//创建订单

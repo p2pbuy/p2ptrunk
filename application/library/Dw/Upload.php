@@ -13,7 +13,7 @@ class Dw_Upload extends Dw_Abstract{
 			$result = array('code'=>Tools_Conf::get('Show_Code.aj.upload.fail'),'msg'=>'file size must less than 1MB');
 			return $result;
 		}
-		if(!in_array($info['file']['type'], self::$allowFileType)){
+		if(!empty($info['file']['type']) && !in_array($info['file']['type'], self::$allowFileType)){
 			$result = array('code'=>Tools_Conf::get('Show_Code.aj.upload.fail'),'msg'=>'file type must be gif or png or jpg');
 			return $result;
 		}
