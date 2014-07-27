@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html lang="en">
+<!-- <html lang="en">
 <head>
     <link rel="stylesheet" type="text/css" href="http://182.92.129.19/css/theme.css">
 	<meta charset="utf-8" />
@@ -86,4 +86,127 @@
 </br>
 <?php endforeach;?>
 </body>
+</html> -->
+
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="http://182.92.129.19/css/theme.css">
+	<meta charset="utf-8" />
+	<title>我的订单</title>
+	<meta name="generator" content="BBEdit 10.5" />
+</head>
+<body>
+ <div id="header">
+	<ul id="header_left">
+		<div id="logo"><li><a href="#">带购</a></li></div>
+		<li><a href="#">手机代购</a></li>
+		<li><a href="#">海淘梯子</a></li>
+		<li><a href="#">社区</a></li>
+	</ul>
+	<ul id="header_right">
+		<li><a href="#">帮助中心</a></li>
+		<li><a href="#">我是买手</a></li>
+		<li><a href="#">我的订单</a></li>
+		<li><a href="#">敏感的胖子</a></li>
+	</ul>
+ </div>
+ <div id="breadcrumb">
+ <p><a href="#">我的带购</a> > <a href="#">我的订单</a></p>
+ </div>
+ 
+ <div class="wizard">
+ <ul>
+    <li>买家提交订单</li>
+ 	<li>买手确认接单</li>
+  	<a href="#"><li id="wizard_current">买家预付费用</li></a>
+ 	<li>买家购买商品</li>
+ 	<li>买家补齐货款</li>
+ 	<li>买家发货</li>
+ 	<li>买家确认收货</li>
+ </ul>
+ </div>
+
+
+  
+  
+<div class="purchase_complete">
+	<p class="purchase_complete_title"><?=$viewer['nick']?> 的订单</p>
+	<ul class="item_content">
+		<?php foreach($myBuyOrders as $myBuyOrder):?>
+		<li>
+			<img src="<?=$myBuyOrder['img']?>" alt="item1" height="135px" width="220px" class="item_content_image"/>
+			<ul class="item_content_details">
+				<li>订单ID：<?=$myBuyOrder['boid'];?></li>
+				<li>订单名称：<?=$myBuyOrder['title'];?></li>
+				<li>订单描述：<?=$myBuyOrder['description'];?></li>
+				<li>商品价格：<?=$myBuyOrder['price'];?></li>
+				<li>商品数量：<?=$myBuyOrder['quantity'];?></li>
+				<li>补充说明：<?=$myBuyOrder['additional'];?></li>
+				<li>创建时间：<?=$myBuyOrder['createtime'];?></li>
+			</ul>
+		</li>
+		<?php endforeach;?>
+	</ul>
+	
+	<p class="purchase_complete_title"><?=$viewer['nick']?> 接下的订单</p>
+	<ul class="item_content">
+		<?php foreach($myTakeOrders as $myTakeOrder):?>
+		<li>
+			<img src="<?=$myTakeOrder['img']?>" alt="item1" height="135px" width="220px" class="item_content_image"/>
+			<ul class="item_content_details">
+				<li>订单ID：<?=$myTakeOrder['boid'];?></li>
+				<li>订单名称：<?=$myTakeOrder['title'];?></li>
+				<li>订单描述：<?=$myTakeOrder['description'];?></li>
+				<li>商品价格：<?=$myTakeOrder['price'];?></li>
+				<li>商品数量：<?=$myTakeOrder['quantity'];?></li>
+				<li>补充说明：<?=$myTakeOrder['additional'];?></li>
+				<li>创建时间：<?=$myTakeOrder['createtime'];?></li>
+			</ul>
+		</li>
+		<?php endforeach;?>
+	</ul>
+</div>
+
+
+<!-- <div class="receipt">
+<p>购物过程中的产生费用明细</p>
+
+   <table id="check_list_table">
+    <tr id="table_header">
+    <th>费用项目</th>
+    <th>预付价格</th>		
+    <th>实际价格</th>
+    <th>费用变动</th>
+  
+    </tr>
+    <tr>
+    <td>iphone5</td>
+    <td class="table_content">¥1000</td>
+    <td class="table_content">$1</td>
+    <td class="table_content">¥1000</td>		
+ 
+    </tr>
+    <tr>
+    <td>关税</td>
+    <td class="table_content">¥1000</td>
+    <td class="table_content">$1</td>
+    <td class="table_content">¥1000</td>		
+ 
+
+    </table>
+    <p class="total_money">需要补齐费用总额： <text class="money_highlight">¥6594.00</text><p>
+    <p><text class="exchange_documents_two"><a href="#">负数代表您将获得退款，退款可在交易完成后提现。</a></text></p>
+   
+
+</div>  -->
+  
+   
+
+
+
+
+
+
+</body>
 </html>
+

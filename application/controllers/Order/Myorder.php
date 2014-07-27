@@ -40,8 +40,8 @@ class Order_MyorderController extends AbstractController{
 		
 		$data['viewer'] = $this->viewer;
 		$data['myBuyOrders'] = $myBuyOrders;
-		$data['myTakeOrders'] = $myTakeOrders;
-		$data['myBidOrders'] = $myBidOrders;
+		$data['myTakeOrders'] = ($myTakeOrders) ? $myTakeOrders : array();
+		$data['myBidOrders'] = ($myBidOrders) ? $myBidOrders : array();
 		$data['bidPrices'] = $bidPrices;
 		$this->renderPage($this->tpl,$data);
 		return true;
