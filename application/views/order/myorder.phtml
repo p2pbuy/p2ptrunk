@@ -111,7 +111,7 @@
 	</ul>
  </div>
  <div id="breadcrumb">
- <p><a href="#">我的带购</a> > <a href="#">我的订单</a></p>
+ <p><a href="#">我的带购</a> > <a href="#">我的订单</a> > <text id="currentpage"><a href="#">20145658</a></text></p>
  </div>
  
  <div class="wizard">
@@ -130,83 +130,80 @@
   
   
 <div class="purchase_complete">
-	<p class="purchase_complete_title"><?=$viewer['nick']?> 的订单</p>
-	<ul class="item_content">
-		<?php foreach($myBuyOrders as $myBuyOrder):?>
-		<li>
-			<img src="<?=$myBuyOrder['img']?>" alt="item1" height="135px" width="220px" class="item_content_image"/>
-			<ul class="item_content_details">
-				<li>订单ID：<?=$myBuyOrder['boid'];?></li>
-				<li>订单名称：<?=$myBuyOrder['title'];?></li>
-				<li>订单描述：<?=$myBuyOrder['description'];?></li>
-				<li>商品价格：<?=$myBuyOrder['price'];?></li>
-				<li>商品数量：<?=$myBuyOrder['quantity'];?></li>
-				<li>补充说明：<?=$myBuyOrder['additional'];?></li>
-				<li>创建时间：<?=$myBuyOrder['createtime'];?></li>
-			</ul>
-		</li>
+	<p id="purchase_complete_title"><?=$viewer['nick']?>的订单</p>
+	<?php foreach($myBuyOrders as $myBuyOrder):?>
+	<ul class="item_content_details">
+	<img src="<?=$myBuyOrder['img'];?>" alt="item1" height="135px" width="220px" class="item_content_image"/>
+			<li>订单ID：<?=$myBuyOrder['boid'];?></li>
+			<li>订单名称：<?=$myBuyOrder['title'];?></li>
+			<li>订单描述：<?=$myBuyOrder['description'];?></li>
+			<li>商品价格：<?=$myBuyOrder['price'];?></li>
+			<li>商品数量：<?=$myBuyOrder['quantity'];?></li>
+			<li>补充说明：<?=$myBuyOrder['additional'];?></li>
+			<li>创建时间：<?=$myBuyOrder['createtime'];?></li>
+    </ul>
+    已经存在的竞价：
+	</br>
+	<?php if(empty($bidPrices[$myBuyOrder['boid']])):?>
+		还没有出价
+	<?php else:?>
+		<?php foreach($bidPrices[$myBuyOrder['boid']] as $bidPrice):?>
+			<form method="post" action="/order/confirmorder">
+			出价：<?=$bidPrice['price']?></br>
+			出价时间：<?=$bidPrice['createtime']?></br>
+			出价人ID：<?=$bidPrice['uid']?></br>
+			<input type="hidden" name="bid" value="<?=$bidPrice['id'];?>"/>
+			<input type="hidden" name="boid" value="<?=$myBuyOrder['boid'];?>"/>
+			<input type="hidden" name="bidprice" value="<?=$bidPrice['price'];?>"/>
+			<input type="hidden" name="biduid" value="<?=$bidPrice['uid']?>"/>
+			<input type="submit" value="确认竞价"/>
+			</form>
+			</br>
+			</br>
 		<?php endforeach;?>
-	</ul>
-	
-	<p class="purchase_complete_title"><?=$viewer['nick']?> 接下的订单</p>
-	<ul class="item_content">
-		<?php foreach($myTakeOrders as $myTakeOrder):?>
-		<li>
-			<img src="<?=$myTakeOrder['img']?>" alt="item1" height="135px" width="220px" class="item_content_image"/>
-			<ul class="item_content_details">
-				<li>订单ID：<?=$myTakeOrder['boid'];?></li>
-				<li>订单名称：<?=$myTakeOrder['title'];?></li>
-				<li>订单描述：<?=$myTakeOrder['description'];?></li>
-				<li>商品价格：<?=$myTakeOrder['price'];?></li>
-				<li>商品数量：<?=$myTakeOrder['quantity'];?></li>
-				<li>补充说明：<?=$myTakeOrder['additional'];?></li>
-				<li>创建时间：<?=$myTakeOrder['createtime'];?></li>
-			</ul>
-		</li>
-		<?php endforeach;?>
-	</ul>
+	<?php endif;?>
+    </br>
+    <?php endforeach;?>
+    
 </div>
 
 
-<!-- <div class="receipt">
-<p>购物过程中的产生费用明细</p>
-
-   <table id="check_list_table">
-    <tr id="table_header">
-    <th>费用项目</th>
-    <th>预付价格</th>		
-    <th>实际价格</th>
-    <th>费用变动</th>
   
-    </tr>
-    <tr>
-    <td>iphone5</td>
-    <td class="table_content">¥1000</td>
-    <td class="table_content">$1</td>
-    <td class="table_content">¥1000</td>		
- 
-    </tr>
-    <tr>
-    <td>关税</td>
-    <td class="table_content">¥1000</td>
-    <td class="table_content">$1</td>
-    <td class="table_content">¥1000</td>		
- 
+<div class="purchase_complete">
+	<p id="purchase_complete_title"><?=$viewer['nick']?>接下的订单</p>
 
-    </table>
-    <p class="total_money">需要补齐费用总额： <text class="money_highlight">¥6594.00</text><p>
-    <p><text class="exchange_documents_two"><a href="#">负数代表您将获得退款，退款可在交易完成后提现。</a></text></p>
-   
+	<?php foreach($myTakeOrders as $myTakeOrder):?>
+	<ul class="item_content_details">
+	<img src="<?=$myTakeOrder['img'];?>" alt="item1" height="135px" width="220px" class="item_content_image"/>
+			<li>订单ID：<?=$myTakeOrder['boid'];?></li>
+			<li>订单名称：<?=$myTakeOrder['title'];?></li>
+			<li>订单描述：<?=$myTakeOrder['description'];?></li>
+			<li>商品价格：<?=$myTakeOrder['price'];?></li>
+			<li>商品数量：<?=$myTakeOrder['quantity'];?></li>
+			<li>补充说明：<?=$myTakeOrder['additional'];?></li>
+			<li>创建时间：<?=$myTakeOrder['createtime'];?></li>
+    </ul>
+    </br>
+    <?php endforeach;?>
+</div>
 
-</div>  -->
-  
-   
+<div class="purchase_complete">
+	<p id="purchase_complete_title"><?=$viewer['nick']?>出过价的订单</p>
 
-
-
-
-
-
+	<?php foreach($myBidOrders as $myBidOrder):?>
+	<ul class="item_content_details">
+	<img src="<?=$myBidOrder['img'];?>" alt="item1" height="135px" width="220px" class="item_content_image"/>
+			<li>订单ID：<?=$myBidOrder['boid'];?></li>
+			<li>订单名称：<?=$myBidOrder['title'];?></li>
+			<li>订单描述：<?=$myBidOrder['description'];?></li>
+			<li>商品价格：<?=$myBidOrder['price'];?></li>
+			<li>商品数量：<?=$myBidOrder['quantity'];?></li>
+			<li>补充说明：<?=$myBidOrder['additional'];?></li>
+			<li>创建时间：<?=$myBidOrder['createtime'];?></li>
+    </ul>
+    </br>
+    <?php endforeach;?>
+</div>
 </body>
 </html>
 
