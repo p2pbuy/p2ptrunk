@@ -21,7 +21,9 @@ class Order_TakeorderController extends AbstractController{
 		$info['boids'] = $boids;
 		$buyOrders = Dr_Order::showBuyOrderByBoidsByApi($info);
 		$data['buyOrder'] = $buyOrders[0];
-		
+		$data['nick'] = $this->viewer['nick'];
+		$data['usertype'] = ($this->viewer['extends']['type'] == 2) ? '我是买手' : '我是买家';
+		$data['islogined'] = (empty($this->viewer)) ? false : true;
 		$this->renderPage($this->tpl,$data);
 		return true;
 	}

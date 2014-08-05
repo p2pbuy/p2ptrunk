@@ -1,93 +1,4 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<!-- <html lang="en">
-<head>
-    <link rel="stylesheet" type="text/css" href="http://182.92.129.19/css/theme.css">
-	<meta charset="utf-8" />
-	<title><?=_('我的订单')?></title>
-	<meta name="generator" content="BBEdit 10.5" />
-</head>
-<body>
-昵称：<?=$viewer['nick']?>
-</br>
-用户类型：<?php if($viewer['extends']['type'] == 2):?>买手<?php else:?>买家<?php endif;?>
-</br>
-</br>
-</br>
-我的订单
-</br>
-</br>
-<?php foreach($myBuyOrders as $myBuyOrder):?>
-订单ID：<?=$myBuyOrder['boid'];?></br>
-订单名称：<?=$myBuyOrder['title'];?></br>
-订单描述：<?=$myBuyOrder['description'];?></br>
-商品价格：<?=$myBuyOrder['price'];?></br>
-商品数量：<?=$myBuyOrder['quantity'];?></br>
-补充说明：<?=$myBuyOrder['additional'];?></br>
-创建时间：<?=$myBuyOrder['createtime'];?></br>
-</br>
-已经存在的竞价：
-</br>
-<?php if(empty($bidPrices[$myBuyOrder['boid']])):?>
-	还没有出价
-<?php else:?>
-	<?php foreach($bidPrices[$myBuyOrder['boid']] as $bidPrice):?>
-		<form method="post" action="/order/confirmorder">
-		出价：<?=$bidPrice['price']?></br>
-		出价时间：<?=$bidPrice['createtime']?></br>
-		出价人ID：<?=$bidPrice['uid']?></br>
-		<input type="hidden" name="bid" value="<?=$bidPrice['id'];?>"/>
-		<input type="hidden" name="boid" value="<?=$myBuyOrder['boid'];?>"/>
-		<input type="hidden" name="bidprice" value="<?=$bidPrice['price'];?>"/>
-		<input type="hidden" name="biduid" value="<?=$bidPrice['uid']?>"/>
-		<input type="submit" value="确认竞价"/>
-		</form>
-		</br>
-		</br>
-	<?php endforeach;?>
-<?php endif;?>
-</br>
-</br>
-</br>
-<?php endforeach;?>
-</br>
-</br>
-</br>
-我接下的订单
-</br>
-</br>
-<?php foreach($myTakeOrders as $myTakeOrder):?>
-订单ID：<?=$myTakeOrder['boid'];?></br>
-订单名称：<?=$myTakeOrder['title'];?></br>
-订单描述：<?=$myTakeOrder['description'];?></br>
-商品价格：<?=$myTakeOrder['price'];?></br>
-商品数量：<?=$myTakeOrder['quantity'];?></br>
-补充说明：<?=$myTakeOrder['additional'];?></br>
-创建时间：<?=$myTakeOrder['createtime'];?></br>
-</br>
-</br>
-</br>
-<?php endforeach;?>
-</br>
-</br>
-</br>
-我出过价的订单
-</br>
-</br>
-<?php foreach($myBidOrders as $myBidOrder):?>
-订单ID：<?=$myBidOrder['boid'];?></br>
-订单名称：<?=$myBidOrder['title'];?></br>
-订单描述：<?=$myBidOrder['description'];?></br>
-商品价格：<?=$myBidOrder['price'];?></br>
-商品数量：<?=$myBidOrder['quantity'];?></br>
-补充说明：<?=$myBidOrder['additional'];?></br>
-创建时间：<?=$myBidOrder['createtime'];?></br>
-</br>
-</br>
-</br>
-<?php endforeach;?>
-</body>
-</html> -->
-
 <html lang="en">
 <head>
     <link rel="stylesheet" type="text/css" href="http://182.92.129.19/css/theme.css">
@@ -96,20 +7,7 @@
 	<meta name="generator" content="BBEdit 10.5" />
 </head>
 <body>
- <div id="header">
-	<ul id="header_left">
-		<div id="logo"><li><a href="#">带购</a></li></div>
-		<li><a href="#">手机代购</a></li>
-		<li><a href="#">海淘梯子</a></li>
-		<li><a href="#">社区</a></li>
-	</ul>
-	<ul id="header_right">
-		<li><a href="#">帮助中心</a></li>
-		<li><a href="#">我是买手</a></li>
-		<li><a href="#">我的订单</a></li>
-		<li><a href="#">敏感的胖子</a></li>
-	</ul>
- </div>
+ <?php include TPL_PATH."/comm/head.phtml"?>
  <div id="breadcrumb">
  <p><a href="#">我的带购</a> > <a href="#">我的订单</a> > <text id="currentpage"><a href="#">20145658</a></text></p>
  </div>

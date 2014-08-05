@@ -43,6 +43,9 @@ class Order_MyorderController extends AbstractController{
 		$data['myTakeOrders'] = ($myTakeOrders) ? $myTakeOrders : array();
 		$data['myBidOrders'] = ($myBidOrders) ? $myBidOrders : array();
 		$data['bidPrices'] = $bidPrices;
+		$data['nick'] = $this->viewer['nick'];
+		$data['usertype'] = ($this->viewer['extends']['type'] == 2) ? '我是买手' : '我是买家';
+		$data['islogined'] = (empty($this->viewer)) ? false : true;
 		$this->renderPage($this->tpl,$data);
 		return true;
 	}

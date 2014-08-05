@@ -7,22 +7,7 @@
 	<meta name="generator" content="BBEdit 10.5" />
 </head>
 <body>
- <div id="header">
-	<ul id="header_left">
-		<div id="logo"><li><a href="#">带购</a></li></div>
-		<li><a href="#">手机代购</a></li>
-		<li><a href="#">海淘梯子</a></li>
-		<li><a href="#">社区</a></li>
-	</ul>
-	<ul id="header_right">
-		<?php if($islogined == true):?><li><a href="/login/logout"><?=_('退出登录')?></a></li><?php endif;?>
-		<li><a href="#">帮助中心</a></li>
-		<li><a href="#"><?=$usertype?></a></li>
-		<li><a href="/order/myorder" target="_blank">我的订单</a></li>
-		<li><a href="#"><?=$nick?></a></li>
-		<?php if($islogined == false):?><li><a href="/login/login"><?=_('登录')?></a></li><?php endif;?>
-	</ul>
- </div>
+ <?php include TPL_PATH."/comm/head.phtml"?>
  <div id="breadcrumb">
  <p><a href="#">首页</a> > <a href="#">目的地</a> > <text id="currentpage"><a href="#">北美</a></text></p>
  </div>

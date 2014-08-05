@@ -25,9 +25,11 @@ class Order_ConfirmorderController extends AbstractController{
 		$data['boid'] = $boid;
 		$data['bidprice'] = $bidPrice;
 		$data['viewer'] = $this->viewer;
-		$data['usertype'] = ($this->viewer['extends']['type'] == 2) ? '我是买手' : '我是买家';
 		$data['bid'] = $bid;
 		$data['biduid'] = $biduid;
+		$data['nick'] = $this->viewer['nick'];
+		$data['usertype'] = ($this->viewer['extends']['type'] == 2) ? '我是买手' : '我是买家';
+		$data['islogined'] = (empty($this->viewer)) ? false : true;
 		$this->renderPage($this->tpl,$data);
 		return true;
 	}
