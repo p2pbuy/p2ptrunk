@@ -35,7 +35,15 @@ class Order_MyorderController extends AbstractController{
 		$myBuyOrderids = substr($myBuyOrderids, 0, -1);
 		
 		$info['boids'] = $myBuyOrderids;
-		$bidPrices = Dr_Bid::getBidPriceByBoidsByApi($info);
+		$bidPricesTmp = Dr_Bid::getBidPriceByBoidsByApi($info);
+		
+		//按照同一uid排重出价
+		foreach($bidPricesTmp as $boid => $bidPriceTmp){
+			foreach($bidPriceTmp as $bidPrice){
+				$bidPriceByUid[$bidPrice['uid']] = $bidPrice;
+			}
+			$bidPrices[$boid] = $bidPriceByUid;
+		}
 		
 		
 		$data['viewer'] = $this->viewer;

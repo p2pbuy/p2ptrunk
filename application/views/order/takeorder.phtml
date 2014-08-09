@@ -28,7 +28,7 @@
 <form onsubmit="return false;">
 <ul class="item_content">
 	<li>
-		<img src="<?=$buyOrder['img']?>" alt="item1" height="135px" width="220px" class="item_content_image">
+		<img src="<?php if($buyOrder['img']):?><?=$buyOrder['img']?><?php else:?>/img/usa.png<?php endif;?>" alt="item1" height="135px" width="220px" class="item_content_image">
 		<ul class="item_content_details">
 			<li>订单名称：<?=$buyOrder['title'];?></li>
 			<li>订单描述：<?=$buyOrder['description'];?></li>
