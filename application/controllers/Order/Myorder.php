@@ -37,12 +37,14 @@ class Order_MyorderController extends AbstractController{
 		$info['boids'] = $myBuyOrderids;
 		$bidPricesTmp = Dr_Bid::getBidPriceByBoidsByApi($info);
 		
-		//按照同一uid排重出价
-		foreach($bidPricesTmp as $boid => $bidPriceTmp){
-			foreach($bidPriceTmp as $bidPrice){
-				$bidPriceByUid[$bidPrice['uid']] = $bidPrice;
+		if($bidPricesTmp){
+			//按照同一uid排重出价
+			foreach($bidPricesTmp as $boid => $bidPriceTmp){
+				foreach($bidPriceTmp as $bidPrice){
+					$bidPriceByUid[$bidPrice['uid']] = $bidPrice;
+				}
+				$bidPrices[$boid] = $bidPriceByUid;
 			}
-			$bidPrices[$boid] = $bidPriceByUid;
 		}
 		
 		

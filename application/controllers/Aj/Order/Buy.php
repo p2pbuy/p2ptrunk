@@ -16,6 +16,7 @@ class Aj_Order_BuyController extends AbstractController{
 		$info['price'] = Comm_Context::post('price');
 		$info['quantity'] = Comm_Context::post('quantity');
 		$info['additional'] = Comm_Context::post('additional');
+		$info['img'] = Comm_Context::post('img');
 		$info['uid'] = $this->uid;
 		
 		if(empty($info['title']) || empty($info['description']) || empty($info['price']) || empty($info['quantity']) || empty($info['uid'])){
