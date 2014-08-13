@@ -44,14 +44,18 @@ class Aj_Third_AmazonController extends AbstractController{
 	
 			$result = $this->invokeGetMatchingProductForId($service, $request);
 			
-			foreach($result['AttributeSets']['ns2:ItemAttributes']['ns2:Feature'] as $feature){
-				$data['feature'] .= $feature;
+			if(!empty($result['AttributeSets']['ns2:ItemAttributes']['ns2:Feature'])){
+				foreach($result['AttributeSets']['ns2:ItemAttributes']['ns2:Feature'] as $feature){
+					$data['feature'] .= $feature;
+				}
 			}
+			
 			$data['title'] = $result['AttributeSets']['ns2:ItemAttributes']['ns2:Title'];
 			$data['price'] = $result['AttributeSets']['ns2:ItemAttributes']['ns2:ListPrice']['ns2:Amount'];
 			$data['currencyCode'] = $result['AttributeSets']['ns2:ItemAttributes']['ns2:ListPrice']['ns2:CurrencyCode'];
 			$data['img'] = $result['AttributeSets']['ns2:ItemAttributes']['ns2:SmallImage']['ns2:URL'];
 			$data['img'] = str_replace('_SL75_', '_SL400_', $data['img']);
+			$data['thirdurl'] = $amazonurl;
 			//$this->renderPage('third/amazonre.phtml',$data);
 			
 			$code = Tools_Conf::get('Show_Code.aj.succ');

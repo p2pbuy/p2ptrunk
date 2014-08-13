@@ -27,7 +27,7 @@
  <p>
  <a href="#"><text class="country_selected">北美热门国家</text></a> | <a href="#">全部国家</a></br>
  看上哪个了？把链接放进去试试看<input node-type="thirdurl" style="width:300px"/></br>
- 支持的网站 http://www.amazon.com/
+ 支持的网站 www.amazon.com
  </p>
  </div>
  
@@ -40,6 +40,9 @@
  	  <li class="first_title"><?=$result['title']?></li>
  	  <li>32位买手正好旅行</li>
  	  <li>827位买手即将出发</li>
+ 	  <?php if($result['thirdurl']):?>
+ 	  <li><a href="<?=$result['thirdurl']?>" target="_blank">点击查看商品来源</a></li>
+ 	  <?php endif;?>
  	  <li class="item_content">
       <?=$result['description']?><br>
       <?=$result['additional']?>

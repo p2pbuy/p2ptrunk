@@ -24,6 +24,7 @@ class Api_Order extends Api_Abstract{
     		'quantity' => $info['quantity'],
     		'additional' => $info['additional'],
     		'img' => $info['img'],
+    		'thirdurl' => $info['thirdurl'],
     		'sign' => $info['sign'],
     		'source' => $info['source'],
         );

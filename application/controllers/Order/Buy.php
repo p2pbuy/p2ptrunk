@@ -17,12 +17,14 @@ class Order_BuyController extends AbstractController{
 		$description = Comm_Context::post('feature');
 		$price = Comm_Context::post('price');
 		$img = Comm_Context::post('img');
+		$thirdUrl = Comm_Context::post('thirdurl');
 		
 		$data = array();
 		$data['title'] = $title;
 		$data['description'] = $description;
 		$data['price'] = $price;
 		$data['img'] = $img;
+		$data['thirdurl'] = $thirdUrl;
 		$data['nick'] = $this->viewer['nick'];
 		$data['usertype'] = ($this->viewer['extends']['type'] == 2) ? '我是买手' : '我是买家';
 		$data['islogined'] = (empty($this->viewer)) ? false : true;
