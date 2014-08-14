@@ -1,6 +1,6 @@
  <?php foreach($results as $result):?>
  <div class="list_1">
- <img src="img/usa.png" alt="item1" height="180px" width="294px"/>
+ <img src="<?php if($result['img']):?><?=$result['img'];?><?php else:?>/img/usa.png<?php endif;?>" alt="item1" height="180px" width="294px"/>
  <div class="item_title">
  	<ul>
  	  <li class="first_title"><?=$result['title']?></li>
