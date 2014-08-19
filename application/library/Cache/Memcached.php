@@ -34,7 +34,6 @@ class Cache_Memcached extends Memcached implements Cache_Interface{
 			$result_code = $this->getResultCode();
 			if ($result_code != Memcached::RES_SUCCESS && $result_code != Memcached::RES_NOTFOUND) {
 				$params = array('act'=>'get','key'=>$key,'MCcode'=>parent::getResultCode(), 'MCmessage' => parent::getResultMessage());
-				Tools_Log::write_resource_error($params);
 				return false;
 			}
 		}
@@ -53,7 +52,6 @@ class Cache_Memcached extends Memcached implements Cache_Interface{
 			$ret = parent::set($key, $value, $expire);
 			if ($ret === false) {
 				$params = array('act'=>'set','key'=>$key,'MCcode'=>parent::getResultCode(), 'MCmessage' => parent::getResultMessage());
-				Tools_Log::write_resource_error($params);
 				return false;
 			}
 		}
@@ -76,7 +74,6 @@ class Cache_Memcached extends Memcached implements Cache_Interface{
 					$result_code = $this->getResultCode();
 					if ($result_code != Memcached::RES_SUCCESS && $result_code != Memcached::RES_NOTFOUND) {
 						$params = array('act'=>'del','key'=>$key,'MCcode'=>parent::getResultCode(), 'MCmessage' => parent::getResultMessage());
-						Tools_Log::write_resource_error($params);
 						return false;
 					}
 				}
@@ -94,7 +91,6 @@ class Cache_Memcached extends Memcached implements Cache_Interface{
 			$result_code = $this->getResultCode();
 			if ($result_code != Memcached::RES_SUCCESS && $result_code != Memcached::RES_NOTFOUND) {
 				$params = array('act'=>'mget','key'=>$keys,'MCcode'=>parent::getResultCode(), 'MCmessage' => parent::getResultMessage());
-				Tools_Log::write_resource_error($params);
 			}
 			$ret = array();
 		}

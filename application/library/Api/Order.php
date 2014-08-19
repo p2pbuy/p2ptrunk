@@ -9,7 +9,7 @@ class Api_Order extends Api_Abstract{
     	return self::$instance;
     }
     public static function getApiUrl($url){
-        return self::API_HOST.'/'.trim($url, '/').'.json';
+        return self::API_HOST.'/'.trim($url, '/');
     }
     
     /**
