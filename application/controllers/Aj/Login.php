@@ -15,8 +15,8 @@ class Aj_LoginController extends AbstractController{
 			//$code = Tools_Conf::get('Show_Code.api.succ');
 			$userCookie = Dr_Login::createCookieByUid($user['uid']);
 			//种cookie
-			Tools_Helper::setCookie(array('name'=>'PUCS','value'=>$userCookie['PUCS'],'expire'=>time()+36000,'path'=>'/','domain'=>Tools_Conf::get('Domain.domain')));
-			Tools_Helper::setCookie(array('name'=>'PUCE','value'=>$userCookie['PUCE'],'expire'=>time()+36000,'path'=>'/','domain'=>Tools_Conf::get('Domain.domain')));
+			Tools_Helper::setCookie(array('name'=>'PUCS','value'=>$userCookie['PUCS'],'expire'=>time()+36000,'path'=>'/','domain'=>'.'.Tools_Conf::get('Domain.domain')));
+			Tools_Helper::setCookie(array('name'=>'PUCE','value'=>$userCookie['PUCE'],'expire'=>time()+36000,'path'=>'/','domain'=>'.'.Tools_Conf::get('Domain.domain')));
 			//$msg = 'login succ';
 			header('Location:/index');
 			return true;
