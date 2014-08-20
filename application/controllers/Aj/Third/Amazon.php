@@ -47,7 +47,6 @@ class Aj_Third_AmazonController extends AbstractController{
 			$request->setIdList($amazonIdList);
 	
 			$result = $this->invoke($service, $request, 'GetMatchingProductForId');
-			var_dump($result,$amazonIdList);exit;
 			$matchingProductForIdResult = $result['GetMatchingProductForIdResponse']['GetMatchingProductForIdResult']['Products']['Product'];
 			unset($result);
 			unset($request);
