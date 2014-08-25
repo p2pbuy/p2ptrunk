@@ -1,7 +1,7 @@
 <?php
 class Dw_User extends Dw_Abstract{
 	//注册用户
-	public static function regByApi($info){
+	public static function regByApi($info = array()){
 		try{
 			//获得acl配置
 			$aclConf = Tools_Conf::get('Api_ACL');
@@ -15,4 +15,5 @@ class Dw_User extends Dw_Abstract{
 		}
 		return $result;
 	}
+	
 }

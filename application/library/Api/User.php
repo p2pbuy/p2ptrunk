@@ -1,6 +1,6 @@
 <?php
 class Api_User extends Api_Abstract{
-	const API_HOST = 'http://127.0.0.1';
+	const API_HOST = 'http://api.p2pbuy.net';
 	public static $instance = null;
     public static function instance(){
     	if(self::$instance == null){
@@ -23,6 +23,8 @@ class Api_User extends Api_Abstract{
     		'sign' => $info['sign'],
     		'source' => $info['source'],
         );
-        return self::instance()->post(self::getApiUrl('api/reg'), $params);
+        $option['timeout'] = 7000;
+        $option['connect_timeout'] = 7000;
+        return self::instance()->post(self::getApiUrl('api/reg'), $params, '', $option);
     }
 }
