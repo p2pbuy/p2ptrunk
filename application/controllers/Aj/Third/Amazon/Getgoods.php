@@ -61,6 +61,7 @@ class Aj_Third_Amazon_GetgoodsController extends AbstractController{
 			}
 			$data['from'] = 'amazon';
 			$data['thirdurl'] = $amazonurl;
+			$data['currentASIN'] = $matchingProductForIdResult['Identifiers']['MarketplaceASIN']['ASIN'];
 			
 			
 			$code = Tools_Conf::get('Show_Code.aj.succ');

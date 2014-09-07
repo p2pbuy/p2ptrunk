@@ -1,110 +1,153 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="http://res.p2pbuy.net/css/theme.css">
+    <link rel="stylesheet" type="text/css" href="http://<?=$domain['res']?>/css/module/combine.css">
+    <link rel="stylesheet" type="text/css" href="http://<?=$domain['res']?>/css/page/home.css">
 	<meta charset="utf-8" />
 	<title>P2PBUY</title>
-	<meta name="generator" content="BBEdit 10.5" />
-	<script src="http://res.p2pbuy.net/js/jquery-1.11.1.min.js"></script>
-	<script src="http://res.p2pbuy.net/js/common.js"></script>
-	<script src="http://res.p2pbuy.net/js/index.js"></script>
+	<meta name="description" content="海淘帮手">
+	<script src="http://<?=$domain['res']?>/js/jquery-1.11.1.min.js"></script>
+	<script src="http://<?=$domain['res']?>/js/common.js"></script>
+	<script src="http://<?=$domain['res']?>/js/index.js"></script>
 </head>
-<body>
- <div id="header">
-	
-	<ul id="header_right">
-		
-		
-		<li><a href="/login/login">登录</a></li>
-    
-    <li><a href="/order/list">我是旅行者</a></li>
-		
-	</ul>
+<body class="P-home">
+    <div class="header">
+        <!--顶部-->
+        <div class="top-bar">
+            <div class="inner">
+                <div class="login-info">
+                    <!--未登录状态-->
+                    <ul class="inline unlogin" style="display:block">
+                        <li><a href="/order/list" target="_blank">我是买手</a></li>
+                        <li><a href="/login/login">登录</a></li>
+                        <li><a href="javascript:void(0);">注册</a></li>
+                    </ul>
+                    <!--/未登录状态-->
+                    <!--已登录状态-->
+                    <ul class="inline logined" style="display:none">
+                        <li class="message"><a href="javascript:void(0);" title="我的消息"><i class="icon-envelope icon-white"><em>&#8226;</em></i><span>消息</span></a></li>
+                        <li>
+                            <span class="divider">/</span>
+                        </li>
+                        <li class="head-pic"><a href="javascript:void(0);" class="img"><i class="icon-user icon-white"></i><span class="name">laonon</span></a></li>
+                    </ul>      
+                    <!--/已登录状态-->
+                </div>
+            </div>
+        </div>
+        <!--/顶部-->
 
-   <div class="logo">
-    <ul>
+        <!--logo-->
+        <h1 class="logo"><a href="javascript:void(0);" title="P2PBUY">P2PBUY</a></h1>
+        <!--/logo-->
 
-    <li><img src="http://res.p2pbuy.net/img/logo.png" height="72"></li>
-    <li class="logo_text">P2P Buy</li>
+        <!--搜索-->
+        <div class="search-box" id="search_tool">
+            <div><input type="text" class="search-input" placeholder="直接粘贴海外商品网址" node-type="thirdurl"><a href="javascript:void(0);" class="btn btn-primary" title="一键海淘"  action-type="create_order">一键海淘</a></div>
+            <a href="javascript:void(0);" class="nolink">找不到链接？传张图片也能买！</a>
+        </div>
+        <!--/搜索-->
 
-   </div>
- 
+        <!--购买流程-->
+        <div class="buy-info">
+            <div class="buy-step">
+                <ul class="inline">
+                    <li><div class="step step-one"></div><p class="info">提交海外商品网址</p></li>
+                    <li><div class="step step-two"></div><p class="info">确认订单</p></li>
+                    <li><div class="step step-three"></div><p class="info">支付费用</p></li>
+                    <li><div class="step step-four"></div><p class="info">海外商家发货</p></li>
+                    <li><div class="step step-five"></div><p class="info">技术国际物流</p></li>
+                    <li><div class="step step-six"></div><p class="info">交易完成</p></li>
+                </ul>
+            </div>
+        </div>
+        <!--/购买流程-->
+    </div>
 
-  <div class="search_tool" id="search_tool">
-    <input node-type="thirdurl" type="text" class="search_input_area" placeholder="直接粘贴海外商品链接">
-    <input action-type="create_order" type="button" value="一键海淘" class="search_btn">
-    <input action-type="create_order_test" type="button" value="一键海淘test" class="search_btn">
-  </div>
+    <div class="main-content">
 
-  <div class="index_page_BG">
-  </div>
-  <div class="index_page_list">
-    <ul>
-      <li>
-       <figure>
-       <img src="http://res.p2pbuy.net/img/index_icon_1.png"  width="80px" height="80px"/>
-       <figcaption>提交商品网站</figcaption>
-       </figure>
-      </li>
+        <div class="goods-show">
+            <h3 class="title"><span>发现喜爱的商品</span><em>跟随旅行者一起逛遍全球</em></h3>
+            <div class="content">
+                <ul class="inline list-media clearfix">
+                    <li class="item">
+                        <div class="pic"><a href="javascript:void(0);"><img data-src="" alt="图片" src="http://<?=$domain['res']?>/img/_temp/u44.jpg" width="500" height="334"></a></div>
+                        <div class="caption"><a href="#">巴黎折扣村</a></div>
+                    </li>
+                    <li class="item">
+                        <div class="pic"><a href="javascript:void(0);"><img data-src="" alt="图片" src="http://<?=$domain['res']?>/img/_temp/u54.jpg" width="500" height="334"></a></div>
+                        <div class="caption"><a href="#">迪拜土豪之都</a></div>
+                    </li>
+                    <li class="item">
+                        <div class="pic"><a href="javascript:void(0);"><img data-src="" alt="图片" src="http://<?=$domain['res']?>/img/_temp/u64.png" width="500" height="334"></a></div>
+                        <div class="caption"><a href="#">美国西海岸购物天堂</a></div>
+                    </li>
+                    <li class="item">
+                        <div class="pic"><a href="javascript:void(0);"><img data-src="" alt="图片" src="http://<?=$domain['res']?>/img/_temp/u72.png" width="500" height="334"></a></div>
+                        <div class="caption"><a href="#">足不出户购尽天下商品</a></div>
+                    </li>
+                    <li class="item">
+                        <div class="pic"><a href="javascript:void(0);"><img data-src="" alt="图片" src="http://<?=$domain['res']?>/img/_temp/u54.jpg" width="500" height="334"></a></div>
+                        <div class="caption"><a href="#">迪拜土豪之都</a></div>
+                    </li>
+                    <li class="item">
+                        <div class="pic"><a href="javascript:void(0);"><img data-src="" alt="图片" src="http://<?=$domain['res']?>/img/_temp/u44.jpg" width="500" height="334"></a></div>
+                        <div class="caption"><a href="#">巴黎折扣村</a></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
 
-      <li>
-       <figure>
-       <img src="http://res.p2pbuy.net/img/index_icon_2.png"  width="80px" height="80px"/>
-       <figcaption>确认购物订单</figcaption>
-       </figure>
-      </li>
+    </div>
 
-      <li>
-       <figure>
-       <img src="http://res.p2pbuy.net/img/index_icon_3.png"  width="80px" height="80px"/>
-       <figcaption>支付物品费用</figcaption>
-       </figure>
-      </li>
+    <?php include TPL_PATH."/comm/foot.phtml"?>
 
-      <li>
-       <figure>
-       <img src="http://res.p2pbuy.net/img/index_icon_4.png"  width="80px" height="80px"/>
-       <figcaption>海外商品发货</figcaption>
-       </figure>
-      </li>
-
-      <li>
-       <figure>
-       <img src="http://res.p2pbuy.net/img/index_icon_5.png"  width="80px" height="80px"/>
-       <figcaption>极速国际物流</figcaption>
-       </figure>
-      </li>
-
-      <li>
-       <figure>
-       <img src="http://res.p2pbuy.net/img/index_icon_6.png"  width="80px" height="80px"/>
-       <figcaption>交易最终完成</figcaption>
-       </figure>
-      </li>
-    </ul>
-    
-  </div>
-
-  </div>
-
-  <div class="homepage_content">
-  <p class="homepage_content_big_title">发现喜爱的商品</p>
-  <p class="homepage_content_small_title">跟随旅行者一起逛遍全球</p>
-
-  </div>
-
-
-  <div class="homepage_content_images_list">
-
-  <ul>
-    <li><img src="http://res.p2pbuy.net/img/omepage_content_images_list_0.jpg"  width="500px"/></li>
-    <li><img src="http://res.p2pbuy.net/img/omepage_content_images_list_1.jpg"  width="500px"/></li>
-    <li><img src="http://res.p2pbuy.net/img/omepage_content_images_list_2.jpg"  width="500px"/></li>
-    <li><img src="http://res.p2pbuy.net/img/omepage_content_images_list_3.jpg"  width="500px"/></li>
-
-  </ul>
-
-  </div>
-
+	<!--登陆弹层-->
+	<div class="modal layer-login " style="display:none">
+	    <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	        <h4>登录睿助理</h4>
+	    </div>
+	    <div class="modal-body row-fluid">
+	        <div class="span5">
+	            <h5>没有账号？请立即申请</h5>
+	            <a href="javascript:void(0);" class="btn">立即注册</a>
+	        </div>
+	        <div class="span7">
+	            <form class="form-horizontal">
+	                <div class="control-group">
+	                    <label class="control-label" for="inputEmail">账号</label>
+	                    <div class="controls input-prepend">
+	                        <span class="add-on"><i class="icon-user"></i>
+	                        </span>
+	                        <input class="input-medium" id="prependedInput" type="text" placeholder="邮箱/手机号">
+	                    </div>
+	                </div>
+	                <div class="control-group">
+	                    <label class="control-label" for="inputEmail">密码</label>
+	                    <div class="controls input-prepend">
+	                        <span class="add-on"><i class="icon-lock"></i>
+	                        </span>
+	                        <input class="input-medium" id="prependedInput" type="text" placeholder="输入您的密码">
+	                    </div>
+	                </div>
+	                <div class="control-group">
+	                    <label class="control-label" for="inputEmail"> </label>
+	                    <div class="controls box-btn">
+	                        <button type="submit" class="btn">登录</button>
+	                    </div>
+	                </div>
+	            </form>
+	        </div>
+	    </div>
+	    <div class="modal-footer">
+	        <a href="javascript:void(0);">忘了密码？</a>
+	        <span class="divider">|</span>
+	        <a href="javascript:void(0);">注册新账号</a>
+	        <span class="divider">|</span>
+	        <a href="javascript:void(0);">意见反馈</a>
+	    </div>
+	</div>
+	<!--登陆弹层-->
 </body>
 </html>

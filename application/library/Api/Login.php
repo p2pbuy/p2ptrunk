@@ -1,6 +1,6 @@
 <?php
 class Api_Login extends Api_Abstract{
-	const API_HOST = 'http://127.0.0.1';
+	const API_HOST = 'http://api.p2pbuy.net';
 	public static $instance = null;
     public static function instance(){
     	if(self::$instance == null){

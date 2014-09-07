@@ -9,7 +9,7 @@ class Tools_Redirect{
 	 * 跳转到登录入口
 	 */
 	public static function login_login(){
-		$url = 'http://'.Tools_Conf::get('Domain.domain').'/login/login';
+		$url = 'http://'.Tools_Conf::get('Domain.domain.host').'/login/login';
 		self::response($url);
 		return true;
 	}
@@ -18,7 +18,7 @@ class Tools_Redirect{
 	 * 跳转到首页
 	 */
 	public static function index(){
-		$url = 'http://'.Tools_Conf::get('Domain.domain');
+		$url = 'http://'.Tools_Conf::get('Domain.domain.host');
 		self::response($url);
 		return true;
 	}

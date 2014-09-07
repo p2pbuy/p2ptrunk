@@ -16,6 +16,7 @@ class Order_CreateController extends AbstractController{
 		$from = Comm_Context::post('from');
 		$parentASIN = Comm_Context::post('parentASIN');
 		$thirdUrl = Comm_Context::post('thirdurl');
+		$currentASIN = Comm_Context::post('currentASIN');
 		
 		if(empty($parentASIN)){
 			return false;
@@ -24,6 +25,7 @@ class Order_CreateController extends AbstractController{
 		$AmazonHandle = new Third_Amazon_Amazonhandle();
 		$matchingProductForIdResult = $AmazonHandle->GetMatchingProductForId(array('idType'=>'ASIN','id'=>array($parentASIN)));
 		$goods = $matchingProductForIdResult['GetMatchingProductForIdResponse']['GetMatchingProductForIdResult']['Products']['Product'];
+		var_dump($goods);
 		
 		$data = array();
 

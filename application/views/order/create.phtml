@@ -1,11 +1,160 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="en">
+<head>
+<meta charset="utf-8">
+<title><?=_('创建订单')?></title>
+<meta name="description" content="P2PBUY">
+<link href="http://<?=$domain['res']?>/css/module/combine.css" rel="stylesheet">
+<link href="http://<?=$domain['res']?>/css/page/goods-detail.css" rel="stylesheet">
+</head>
 
-<body>
-title:<?=$goods['AttributeSets']['ns2:ItemAttributes']['ns2:Title']?></br>
-relation:</br>
-<?php foreach($relationGoods['ns2:VariationChild'] as $relationGood):?>
-<?php var_dump($relationGood);?>
-<?php endforeach;?>
+<body class="P-goods-detail">
+
+    <div class="header">
+        <div class="top-bar">
+            <div class="inner">
+                <div class="login-info">
+                    <!--未登录状态-->
+                    <ul class="inline unlogin" style="display:none">
+                        <li><a href="#">登录</a></li>
+                        <li><a href="">注册</a></li>
+                    </ul>
+                    <!--/未登录状态-->
+                    <!--已登录状态-->
+                    <ul class="inline logined" style="display:">
+                        <li class="message"><a href="" title="我是买手"><span>我是买手</span></a></li>
+                        <li class="user"><a href="" ><span class="">香稻老农</span></a></li>
+                        <li class="opt"><a href="" ><span class="">退出</span></a></li>
+                    </ul>      
+                    <!--/已登录状态-->
+                </div>
+            </div>
+        </div>
+
+        <dl class="head-wrap clearfix">
+            <dt class="logo logo-small"><a href="" title="P2PBUY">P2PBUY</a></dt>
+            <dd class="search-box">
+                <div><input type="text" class="search-input" placeholder="直接粘贴海外商品网址"><a href="" class="btn btn-primary" title="一键海淘">一键海淘</a></div>
+                <a href="" class="nolink">找不到链接？传张图片也能买！</a>
+            </dd>
+        </dl>
+    </div>
+
+    <div class="main-content">
+        <!--购买进度-->
+        <div class="step-trilogy">
+            <div class="inner">
+                <a href="#" class="step cur"><span>1.提交商品网址</span></a>
+                <a href="#" class="step"><span>2.确认订单</span></a>
+                <a href="#" class="step"><span>3.支付费用</span></a>
+                <a href="#" class="step"><span>4.交易完成</span></a>
+            </div>
+            <dl class="url-info clearfix">
+                <dt class="tit">您提交的网址为：</dt>
+                <dd class="detail"><?=$thirdurl?></dd>
+            </dl>
+        </div>
+        <!--/购买进度-->
+        
+        <div class="box-gallery">
+            <h3 class="title"><?=$goods['AttributeSets']['ns2:ItemAttributes']['ns2:Brand']?></h3>
+            <div class="description"><?=$goods['AttributeSets']['ns2:ItemAttributes']['ns2:Title']?></div>
+            <div class="maincontent row-fluid">
+                <div class="pic-box span4">
+                    <div class="img-big">
+                        <img src="<?=str_replace('75', '300', $goods['AttributeSets']['ns2:ItemAttributes']['ns2:SmallImage']['ns2:URL'])?>" alt="" width="300" width="300">
+                    </div>
+                    <!-- 
+                    <div class="img-small">
+                        <ul class="unstyled pic-list">
+                            <li class="active"><a href=""><img src="http://<?=$domain['res']?>/img/_temp/u64.png" alt=""></a></li>
+                            <li><a href=""><img src="<?=$goodsimg?>" alt=""></a></li>
+                            <li><a href=""><img src="<?=$goodsimg?>" alt=""></a></li>
+                            <li><a href=""><img src="<?=$goodsimg?>" alt=""></a></li>
+                            <li><a href=""><img src="<?=$goodsimg?>" alt=""></a></li>
+                        </ul>
+                    </div>
+                     -->
+                </div>
+                <div class="info-box span8">
+                    <div class="con-item">
+                        <div class="price"><em>价格：</em><strong class="numA">￥<?=$goods['AttributeSets']['ns2:ItemAttributes']['ns2:ListPrice']['ns2:Amount'] * Tools_Conf::get('Money.exchangeRate.US2CN')?></strong><span class="numB">（$<?=$goods['AttributeSets']['ns2:ItemAttributes']['ns2:ListPrice']['ns2:Amount']?>）</span><span class="text-cb">含商家运费，当前汇率：1美元=6.17元</span></div>
+                        <div class="freight"><em>预计运费：</em><span class="numB">￥60</span></div>
+                        <div class="tax"><em>关税：</em><span class="numB delete">￥290</span><span class="text-cd">享受关税补贴政策</span></div>
+                    </div>
+                    <div class="con-item">
+                        <div class="size-box">
+                            <a href="javascript:void(0);" class="size choosed"><?=$goods['AttributeSets']['ns2:ItemAttributes']['ns2:Color']?>|<?=$goods['AttributeSets']['ns2:ItemAttributes']['ns2:Size']?></a>
+                            <?php foreach($relationGoods['ns2:VariationChild'] as $relationGood):?>
+                            	<a href="javascript:void(0);" class="size"><?=$relationGood['ns2:Color']?>|<?=$relationGood['ns2:Size']?></a>
+							<?php endforeach;?>
+                        </div>
+                    </div>
+                    <div class="con-item">
+                        <div class="choose-info">
+                            <div class="name"><em>已选择：</em><span class="text-cd">"<?=$goods['AttributeSets']['ns2:ItemAttributes']['ns2:Color']?>|<?=$goods['AttributeSets']['ns2:ItemAttributes']['ns2:Size']?>"</span></div>
+                            <div class="count">
+                                <em>数量：</em>
+                                <span class="amount-wrap">
+                                    <span class="amount-opt">
+                                        <span class="amount-decrease">-</span>
+                                        <input type="text" class="amount-input" value="1" maxlength="8" title="请输入购买量">
+                                        <span class="amount-increase">+</span>
+                                    </span>
+                                    <span class="amount-unit">件</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="con-item">
+                        <dl class="other-info clearfix">
+                            <dt class="tit">优惠码：</dt>
+                            <dd class="cont"><textarea rows="2" placeholder="如果您选择的商品有优惠码可以使用，请在此输入优惠码，否则将不会按照优惠价格进行结算"></textarea></dd>
+                        </dl>
+                    </div>
+                    <div class="con-item">
+                        <dl class="other-info clearfix">
+                            <dt class="tit">备注：</dt>
+                            <dd class="cont"><textarea rows="2" placeholder="如果有特殊要求请您在此填写"></textarea></dd>
+                        </dl>
+                    </div>
+                    <p class="detail-info" style="display:none">文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述</p>
+                    <div class="btn-box">
+                        <a href="" class="btn btn-warning">立即购买</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-bar">
+            <a href="" class="cur">商品介绍</a>
+            <a href="">商品评价</a>
+            <a href="">购买须知</a>
+        </div>
+        <div class="tab-content">
+            <div class="box-show">
+                <div class="content">
+                	<?php foreach($goods['AttributeSets']['ns2:ItemAttributes']['ns2:Feature'] as $feature):?>
+                	<p><?=$feature?></p>
+                	<?php endforeach;?>
+                </div>
+
+            </div>
+
+            <div class="box-show" style="display:none">
+                <div class="content">
+                    文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述
+                </div>
+            </div>
+
+            <div class="box-show" style="display:none">
+                <div class="content">
+                    文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述文字描述
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <?php include TPL_PATH."/comm/foot.phtml"?>
+    
 </body>
 </html>
