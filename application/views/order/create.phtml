@@ -6,6 +6,9 @@
 <meta name="description" content="P2PBUY">
 <link href="http://<?=$domain['res']?>/css/module/combine.css" rel="stylesheet">
 <link href="http://<?=$domain['res']?>/css/page/goods-detail.css" rel="stylesheet">
+<script src="http://<?=$domain['res']?>/js/jquery-1.11.1.min.js"></script>
+<script src="http://<?=$domain['res']?>/js/common.js"></script>
+<script src="http://<?=$domain['res']?>/js/order/create.js"></script>
 </head>
 
 <body class="P-goods-detail">
@@ -58,11 +61,11 @@
         
         <div class="box-gallery">
             <h3 class="title"><?=$goods['AttributeSets']['ns2:ItemAttributes']['ns2:Brand']?></h3>
-            <div class="description"><?=$goods['AttributeSets']['ns2:ItemAttributes']['ns2:Title']?></div>
+            <div class="description" node-type="goodsTitle"><?=$goods['AttributeSets']['ns2:ItemAttributes']['ns2:Title']?></div>
             <div class="maincontent row-fluid">
                 <div class="pic-box span4">
                     <div class="img-big">
-                        <img src="<?=str_replace('75', '300', $goods['AttributeSets']['ns2:ItemAttributes']['ns2:SmallImage']['ns2:URL'])?>" alt="" width="300" width="300">
+                        <img node-type="goodsImg" src="<?=str_replace('75', '300', $goods['AttributeSets']['ns2:ItemAttributes']['ns2:SmallImage']['ns2:URL'])?>" alt="" width="300" width="300">
                     </div>
                     <!-- 
                     <div class="img-small">
@@ -83,10 +86,15 @@
                         <div class="tax"><em>关税：</em><span class="numB delete">￥290</span><span class="text-cd">享受关税补贴政策</span></div>
                     </div>
                     <div class="con-item">
-                        <div class="size-box">
-                            <a href="javascript:void(0);" class="size choosed"><?=$goods['AttributeSets']['ns2:ItemAttributes']['ns2:Color']?>|<?=$goods['AttributeSets']['ns2:ItemAttributes']['ns2:Size']?></a>
-                            <?php foreach($relationGoods['ns2:VariationChild'] as $relationGood):?>
-                            	<a href="javascript:void(0);" class="size"><?=$relationGood['ns2:Color']?>|<?=$relationGood['ns2:Size']?></a>
+                        <div class="size-box" id="size-box">
+                            <a href="javascript:void(0);" class="size choosed" node-type="parentSize"><?=$goods['AttributeSets']['ns2:ItemAttributes']['ns2:Color']?>|<?=$goods['AttributeSets']['ns2:ItemAttributes']['ns2:Size']?></a>
+                            <?php foreach($relationGoodsArr as $key => $relationGoods):?>
+                            	<div node-type="goodsInfoParts" <?php if($key != 0):?>style="display:none"<?php endif;?>>
+								<?php foreach($relationGoods as $relationGoodsInfo):?>
+	                            	<a href="javascript:void(0);" class="size" action-data="ASIN=<?=$relationGoodsInfo['Identifiers']['MarketplaceASIN']['ASIN']?>" action-type="amazonGetgoodsinfo"><?=$relationGoodsInfo['ns2:Color']?>|<?=$relationGoodsInfo['ns2:Size']?></a>
+								<?php endforeach;?>
+									<a href="javascript:void(0);" action-type="getMore">查看更多</a>
+								</div>
 							<?php endforeach;?>
                         </div>
                     </div>

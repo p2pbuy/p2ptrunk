@@ -25,7 +25,6 @@ class Order_CreateController extends AbstractController{
 		$AmazonHandle = new Third_Amazon_Amazonhandle();
 		$matchingProductForIdResult = $AmazonHandle->GetMatchingProductForId(array('idType'=>'ASIN','id'=>array($parentASIN)));
 		$goods = $matchingProductForIdResult['GetMatchingProductForIdResponse']['GetMatchingProductForIdResult']['Products']['Product'];
-		var_dump($goods);
 		
 		$data = array();
 
@@ -33,8 +32,21 @@ class Order_CreateController extends AbstractController{
 		$data['nick'] = $this->viewer['nick'];
 		$data['usertype'] = ($this->viewer['extends']['type'] == 2) ? '我是买手' : '我是买家';
 		$data['islogined'] = (empty($this->viewer)) ? false : true;
-		$data['relationGoods'] = $goods['Relationships'];
+		//$data['relationGoods'] = $goods['Relationships'];
 		$data['goods'] = $goods;
+		
+		$i = 0;
+		$j = 0;
+		foreach($goods['Relationships']['ns2:VariationChild'] as $relationGoods){
+			$i++;
+			if($i > 10){
+				$j++;
+				$i = 0;
+			}
+			$relationGoodsArr[$j][] = $relationGoods;
+		}
+		$data['relationGoodsArr'] = $relationGoodsArr;
+		
 		$this->renderPage($this->tpl,$data);
 		return true;
 	}
