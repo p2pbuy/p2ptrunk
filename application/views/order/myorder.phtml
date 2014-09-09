@@ -103,6 +103,16 @@
 			<li>商品数量：<?=$myBidOrder['quantity'];?></li>
 			<li>补充说明：<?=$myBidOrder['additional'];?></li>
 			<li>创建时间：<?=$myBidOrder['createtime'];?></li>
+			<?php 
+		    $info['boids'] = $myBidOrder['boid'];
+		    $takeOrderBidPrice = Dr_Bid::getBidPriceByBoidsByApi($info);
+		    ?>
+		    
+		    <?php foreach($takeOrderBidPrice[$myBidOrder['boid']] as $bidPriceInfo):?>
+		    	<?php if($bidPriceInfo['uid'] == $viewer['uid']):?>
+		    		<li>我出的价格：<?=$bidPriceInfo['price'];?></li>
+		    	<?php endif;?>
+		    <?php endforeach;?>
     </ul>
     </br>
     <?php endforeach;?>
