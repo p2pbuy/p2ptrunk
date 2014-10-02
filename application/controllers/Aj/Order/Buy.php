@@ -13,14 +13,14 @@ class Aj_Order_BuyController extends AbstractController{
 		}*/
 		$info['title'] = Comm_Context::post('title');
 		$info['description'] = Comm_Context::post('description');
-		$info['price'] = Comm_Context::post('price');
+		$info['price'] = Comm_Context::post('price') ? Comm_Context::post('price') : 0;
 		$info['quantity'] = Comm_Context::post('quantity');
 		$info['additional'] = Comm_Context::post('additional');
 		$info['img'] = Comm_Context::post('img');
 		$info['thirdurl'] = Comm_Context::post('thirdurl');
 		$info['uid'] = $this->uid;
 		
-		if(empty($info['title']) || empty($info['description']) || empty($info['price']) || empty($info['quantity']) || empty($info['uid'])){
+		if(empty($info['title']) || empty($info['description']) || empty($info['quantity']) || empty($info['uid'])){
 			$result['code'] = Tools_Conf::get('Show_Code.aj.fail');
 			$data = '0';
 		}else{

@@ -34,9 +34,9 @@ class Api_Upload extends Api_Abstract{
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $fileStr);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		$ret = curl_exec($ch);
-		$info = curl_getinfo($ch);
-		$errorMsg = curl_error ( $ch );
-		$errorNumber = curl_errno ( $ch );
+		//$info = curl_getinfo($ch);
+		//$errorMsg = curl_error ( $ch );
+		//$errorNumber = curl_errno ( $ch );
 		curl_close ( $ch );
 
 		//清除临时文件
