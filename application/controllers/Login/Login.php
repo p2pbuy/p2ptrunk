@@ -1,7 +1,7 @@
 <?php
 /**
  * 未登录首页
- * @author liang5
+ * @author liang
  * 2014-5-22
  */
 class Login_LoginController extends AbstractController{

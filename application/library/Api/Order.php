@@ -109,4 +109,26 @@ class Api_Order extends Api_Abstract{
     	
     	return self::instance()->post(self::getApiUrl('api/order/updatebuyorderbyboid'), $params);
     }
+    
+    /**
+     * 设置收获地址
+     */
+    public static function setAddress($info){
+    	foreach($info as $key => $value){
+    		$params[$key] = $value;
+    	}
+    	
+    	return self::instance()->post(self::getApiUrl('api/order/setaddress'), $params);
+    }
+    
+    /**
+     * 根据uid获得收获地址
+     */
+    public static function getAddressByUid($info){
+    	foreach($info as $key => $value){
+    		$params[$key] = $value;
+    	}
+    	
+    	return self::instance()->post(self::getApiUrl('api/order/getaddressbyuid'), $params);
+    }
 }

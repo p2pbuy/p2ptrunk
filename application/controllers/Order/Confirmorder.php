@@ -21,6 +21,12 @@ class Order_ConfirmorderController extends AbstractController{
 			return false;
 		}
 		
+		//获得当前用户的收获地址
+		$addressInfos = Dr_Order::getAddressByUidByApi(array('uid'=>$this->viewer['uid']));
+		
+		//获得当前订单的详细内容
+		$curBuyOrderInfo = Dr_Order::showBuyOrderByBoidsByApi(array('boids'=>$boid));
+		var_dump($curBuyOrderInfo,$bidPrice);
 		
 		$data['boid'] = $boid;
 		$data['bidprice'] = $bidPrice;
@@ -30,6 +36,8 @@ class Order_ConfirmorderController extends AbstractController{
 		$data['nick'] = $this->viewer['nick'];
 		$data['usertype'] = ($this->viewer['extends']['type'] == 2) ? '我是买手' : '我是买家';
 		$data['islogined'] = (empty($this->viewer)) ? false : true;
+		$data['curBuyOrderInfo'] = $curBuyOrderInfo[0];
+		$data['addressInfos'] = $addressInfos;
 		$this->renderPage($this->tpl,$data);
 		return true;
 	}

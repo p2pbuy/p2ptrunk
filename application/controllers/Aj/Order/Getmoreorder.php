@@ -1,7 +1,7 @@
 <?php
 /**
  * 获得更多orderlist
- * @author liang5
+ * @author liang
  * @version 2014-6-24
  */
 class Aj_Order_GetmoreorderController extends AbstractController{

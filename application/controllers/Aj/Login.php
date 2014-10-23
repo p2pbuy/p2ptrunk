@@ -1,7 +1,7 @@
 <?php
 /**
  * 登录提交页面
- * @author liang5
+ * @author liang
  * @version 2014-5-22
  */
 class Aj_LoginController extends AbstractController{

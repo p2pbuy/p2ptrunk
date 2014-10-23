@@ -1,7 +1,7 @@
 <?php
 /**
  * 使用amazon接口的handle
- * @author liang5
+ * @author liang
  * @version 2014-8-21
  */
 require_once(LIB_PATH.'/Third/Amazon/MarketplaceWebServiceProducts/Client.php');

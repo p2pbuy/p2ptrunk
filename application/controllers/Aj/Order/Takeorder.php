@@ -1,7 +1,7 @@
 <?php
 /**
  * 走私者接单处理页面
- * @author liang5
+ * @author liang
  * @version 2014-5-25
  */
 class Aj_Order_TakeorderController extends AbstractController{

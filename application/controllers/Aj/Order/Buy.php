@@ -1,7 +1,7 @@
 <?php
 /**
  * 买家订单处理页面
- * @author liang5
+ * @author liang
  * @version 2014-5-25
  */
 class Aj_Order_BuyController extends AbstractController{
@@ -43,6 +43,7 @@ class Aj_Order_BuyController extends AbstractController{
 			
 			$result['code'] = Tools_Conf::get('Show_Code.aj.succ');
 			$data = ($result['data']) ? $result['data'] : '0';
+			$data = json_encode($data);
 		}
 		
 		echo "<script>window.". $_POST['cbkname'] ."={'code':{$result['code']},'data':{$data}}</script>";

@@ -1,7 +1,7 @@
 <?php
 /**
  * 退出登录
- * @author liang5
+ * @author liang
  * 2014-5-25
  */
 class Login_LogoutController extends AbstractController{

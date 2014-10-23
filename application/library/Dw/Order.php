@@ -46,4 +46,18 @@ class Dw_Order extends Dw_Abstract{
 		}
 		return $result;
 	}
+	
+	//通过接口设置收获地址
+	public static function setAddressByApi($info){
+		try{
+			$aclConf = Tools_Conf::get('Api_ACL');
+			$info['source'] = 'web';
+			$info['sign'] = md5($aclConf[$info['source']]['name'].$info['uid'].$aclConf[$info['source']]['secret_key']);
+			$re = Api_Order::setAddress($info);
+			$result = json_decode($re,true);
+		}catch(Exception $e){
+			return false;
+		}
+		return $result;
+	}
 }

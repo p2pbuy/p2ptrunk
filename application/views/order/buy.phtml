@@ -22,6 +22,7 @@
                     <!--/未登录状态-->
                     <!--已登录状态-->
                     <ul class="inline logined" style="display:">
+                    	<li><a href="/order/myorder" target="_blank">我的订单</a></li>
                         <li class="message"><a href="" title="我是买手"><span>我是买手</span></a></li>
                         <li class="user"><a href="" ><span class="">香稻老农</span></a></li>
                         <li class="opt"><a href="" ><span class="">退出</span></a></li>
@@ -49,14 +50,18 @@
                 <a href="#" class="step"><span>3.支付费用</span></a>
                 <a href="#" class="step"><span>4.交易完成</span></a>
             </div>
+            <?php if($thirdurl):?>
             <dl class="url-info clearfix">
                 <dt class="tit">您提交的网址为：</dt>
                 <dd class="detail"><a href="<?=$thirdurl?>" target="_blank"><?=$thirdurl?></a></dd>
             </dl>
+            <?php endif;?>
         </div>
         <!--/购买进度-->
         
+        <?php if($thirdurl):?>
         <iframe src="/order/getiframe?thirdurl=<?=urldecode($thirdurl)?>" frameborder="0" width="1000" height="1000"></iframe>
+        <?php endif;?>
         <div class="info-box iframe-info">
         	<form onsubmit="return false;" id="createOrder">
             <div class="con-item">
@@ -139,7 +144,7 @@
                     <div><a href="">网站介绍</a></div>
                     <div><a href="">加入我们</a></div>
                     <div><a href="">商务合作</a></div>
-                </dd>
+                </dd>1
             </dl>
             <div class="line"><a href="" class="other"><img src="../../img/_temp/u114.jpg" alt=""></a></div>
             <div class="line"><a href="" class="other"><img src="../../img/_temp/u116.jpg" alt=""></a></div>
@@ -154,85 +159,3 @@
 
 </body>
 </html>
-
-
-<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html lang="en">
-<head>
-    <link rel="stylesheet" type="text/css" href="http://res.p2pbuy.net/css/theme.css">
-	<meta charset="utf-8" />
-	<title><?=_('确认订单')?></title>
-	<meta name="generator" content="BBEdit 10.5" />
-</head>
-<body>
- <?php include TPL_PATH."/comm/head.phtml"?>
- <div id="breadcrumb">
- <p><a href="#">我的带购</a> > <a href="#">我的订单</a> > <text id="currentpage"><a href="#">创建订单</a></text></p>
- </div>
- 
- <div class="wizard">
- <ul>
- 	<a href="#"><li id="wizard_current">买家提交订单</li></a>
- 	<li>买手确认接单</li>
- 	<li>买家付款</li>
- 	<li>买家购买商品</li>
- 	<li>买家补齐货款</li>
- 	<li>买家发货</li>
- 	<li>买家确认收货</li>
- </ul>
- </div>
-
- <div id="ordering_form">
- <p>填写带购订单</p>
-
- <form onsubmit="return false;" id="createOrder">
-	订单标题<br> <input type="text" name="title" node-type="title" class="form_title" value="<?=$title?>"><br>
-	商品描述<br><textarea name="description" node-type="description" rows="4" cols="50"><?=$description?></textarea><br><br>
-	商品价格<br> <input type="text" name="price" node-type="price" class="form_title" value="<?=$price?>">美元<br>
-	商品数量<br> <input type="text" name="quantity" node-type="quantity" class="form_title" value="1"><br>
-	补充说明<br><textarea name="additional" rows="4" cols="50"></textarea><br><br>
-	<?php if(!empty($img)):?>
-	<input name="img" value="<?=$img?>" type="hidden">
-	图片<img src="<?=$img?>" />
-	<?php else:?>
-	<input type="file" name="file" value="上传附件">请使用jpg，gif，png图片，大小请不要超过1MB<br>
-	<?php endif;?>
-	<input type="hidden" name="thirdurl" value="<?=$thirdurl?>"/>
-	<p class="sub_description">基于<text class="buyer"><a href="#">白夜</a></text>的<text class="buyer_trip"><a href="">硅谷科技之旅旅</a></text>行行程购买</p>
-	<table>
-    <tr id="table_header">
-    <th>费用项目</th>
-    <th>预付标准</th>		
-  
-    </tr>
-    <tr>
-    <td>商品总价</td>
-    <td class="table_content">全款</td>		
- 
-    </tr>
-    <tr>
-    <td>关税</td>
-    <td class="table_content">按照相关规定支付，过关后支付</td>		
- 
-    </tr>
-    <tr>
-    <td>买手佣金</td>
-    <td class="table_content">％5， 预付</td>		
-
-    </tr>
-    <tr>
-    <td>国内快递</td>
-    <td class="table_content">买手包邮</td>		
-
-    </tr>
-    </table>
-    <input type="checkbox" name="check" value="" class="checkbox_all"><text class="form_checkbox">同时发布到买手任务区， 允许其他买手抢单，费率默认为以上费率。</text><br>
-	<input type="button" value="下一步" class="submit" action-type="createBuyOrder">
- </form> 
- </div>
-<script src="http://res.p2pbuy.net/js/jquery-1.11.1.min.js"></script>
-<script src="http://res.p2pbuy.net/js/common.js"></script>
-<script src="http://res.p2pbuy.net/js/order/buy.js"></script>
-</body>
-</html>
- -->

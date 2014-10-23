@@ -35,7 +35,7 @@
 			<li>订单ID：<?=$myBuyOrder['boid'];?></li>
 			<li>订单名称：<?=$myBuyOrder['title'];?></li>
 			<li>订单描述：<?=$myBuyOrder['description'];?></li>
-			<li>商品价格：<?=$myBuyOrder['price'];?></li>
+			<li>商品价格：<?php if($myBuyOrder['price'] != '0.00'):?><?=$myBuyOrder['price']?><?php else:?><?php echo '还没有出价';?><?php endif;?></li>
 			<li>商品数量：<?=$myBuyOrder['quantity'];?></li>
 			<li>补充说明：<?=$myBuyOrder['additional'];?></li>
 			<li>创建时间：<?=$myBuyOrder['createtime'];?></li>
