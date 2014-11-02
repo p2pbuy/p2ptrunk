@@ -10,36 +10,7 @@
 
 <body class="P-goods-detail">
 
-    <div class="header">
-        <div class="top-bar">
-            <div class="inner">
-                <div class="login-info">
-                    <!--未登录状态-->
-                    <ul class="inline unlogin" style="display:none">
-                        <li><a href="#">登录</a></li>
-                        <li><a href="">注册</a></li>
-                    </ul>
-                    <!--/未登录状态-->
-                    <!--已登录状态-->
-                    <ul class="inline logined" style="display:">
-                    	<li><a href="/order/myorder" target="_blank">我的订单</a></li>
-                        <li class="message"><a href="" title="我是买手"><span>我是买手</span></a></li>
-                        <li class="user"><a href="" ><span class="">香稻老农</span></a></li>
-                        <li class="opt"><a href="" ><span class="">退出</span></a></li>
-                    </ul>      
-                    <!--/已登录状态-->
-                </div>
-            </div>
-        </div>
-
-        <dl class="head-wrap clearfix">
-            <dt class="logo logo-small"><a href="" title="P2PBUY">P2PBUY</a></dt>
-            <dd class="search-box">
-                <div><input type="text" class="search-input" placeholder="直接粘贴海外商品网址"><a href="" class="btn btn-primary" title="一键海淘">一键海淘</a></div>
-                <a href="" class="nolink">找不到链接？传张图片也能买！</a>
-            </dd>
-        </dl>
-    </div>
+	<?php include TPL_PATH."/comm/header.phtml"?>
 
     <div class="main-content" id="ordering_form">
         <!--购买进度-->
@@ -112,46 +83,7 @@
         
     </div>
 
-    <div class="footer">
-        <div class="link-about clearfix">
-            <div class="line">
-                <div class="logo logo-small"><a href="#" title="P2PBUY">P2PBUY</a></div>
-            </div>
-            <dl class="line">
-                <dt class="tit">新手指南</dt>
-                <dd class="list">
-                    <div><a href="">购买流程</a></div>
-                    <div><a href="">支付方式</a></div>
-                    <div><a href="">配送方式</a></div>
-                </dd>
-            </dl>
-            <dl class="line">
-                <dt class="tit">购物保障</dt>
-                <dd class="list">
-                    <div><a href="">正品保证</a></div>
-                    <div><a href="">海外直购</a></div>
-                    <div><a href="">物流说明</a></div>
-                </dd>
-                <dd class="list second">
-                    <div><a href="">通关关税</a></div>
-                    <div><a href="">常见问题</a></div>
-                    <div><a href="">联系客服</a></div>
-                </dd>
-            </dl>
-            <dl class="line">
-                <dt class="tit">关于我们</dt>
-                <dd class="list">
-                    <div><a href="">网站介绍</a></div>
-                    <div><a href="">加入我们</a></div>
-                    <div><a href="">商务合作</a></div>
-                </dd>
-            </dl>
-            <div class="line"><a href="" class="other"><img src="http://www.p2pbuy.net/img/_temp/u114.jpg" alt=""></a></div>
-            <div class="line"><a href="" class="other"><img src="http://www.p2pbuy.net/img/_temp/u116.jpg" alt=""></a></div>
-        </div>
-        <p>Copyright © 2014 P2PBUY.INC.  All Rights Reserved  使用本网站即表示接受用户协议</p>
-        <p>P2PBUY 版权所有 京ICP备20080101</p>
-    </div>
+	<?php include TPL_PATH."/comm/footer.phtml"?>
     
 <script src="http://res.p2pbuy.net/js/jquery-1.11.1.min.js"></script>
 <script src="http://res.p2pbuy.net/js/common.js"></script>

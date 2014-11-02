@@ -27,6 +27,7 @@ class Order_PaymentController extends AbstractController{
 		$curBuyOrderInfo = Dr_Order::showBuyOrderByBoidsByApi(array('boids'=>$boid));
 		
 		$data['curBuyOrderInfo'] = $curBuyOrderInfo[0];
+		$data['nick'] = $this->viewer['nick'];
 		
 		$this->renderPage($this->tpl,$data);
 		return true;
