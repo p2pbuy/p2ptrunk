@@ -26,7 +26,7 @@ class Order_ConfirmorderController extends AbstractController{
 		
 		//获得当前订单的详细内容
 		$curBuyOrderInfo = Dr_Order::showBuyOrderByBoidsByApi(array('boids'=>$boid));
-		var_dump($curBuyOrderInfo,$bidPrice);
+		//var_dump($curBuyOrderInfo,$bidPrice);
 		
 		$data['boid'] = $boid;
 		$data['bidprice'] = $bidPrice;

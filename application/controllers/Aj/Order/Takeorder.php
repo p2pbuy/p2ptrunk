@@ -12,6 +12,7 @@ class Aj_Order_TakeorderController extends AbstractController{
 		$info['bidprice'] = Comm_Context::post('bidprice');
 		$info['bid'] = Comm_Context::post('bid');
 		$info['buid'] = $this->uid;
+		$info['addressid'] = Comm_Context::post('addressid');
 		//检查订单是否是当前买家的订单
 		$data['uid'] = $info['buid'];
 		$buyOrders = Dr_Order::showBuyOrderByUidByApi($data);
@@ -25,11 +26,16 @@ class Aj_Order_TakeorderController extends AbstractController{
 		}else{
 			$data['boid'] = $info['boid'];
 			$data['uid'] = $info['biduid'];
+			//买手认领订单
 			$reTakeOrder = Dw_Order::smugglerTakeOrderByApi($data);
 			unset($data);
 			
 			$data['boid'] = $info['boid'];
 			$data['lock'] = 1;
+			$data['addressid'] = $info['addressid'];
+			$data['dealprice'] = $info['bidprice'];
+			$data['status'] = 20;
+			//锁定订单
 			$reUpdOrder =Dw_Order::updateBuyOrderByBoidByApi($data);
 			unset($data);
 

@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>提交订单</title>
+<title>支付费用</title>
 <meta name="description" content="P2PBUY">
 <link href="http://res.p2pbuy.net/css/module/combine.css" rel="stylesheet">
-<link href="http://res.p2pbuy.net/css/page/order-submit.css" rel="stylesheet">
+<link href="http://res.p2pbuy.net/css/page/order-pay.css" rel="stylesheet">
 </head>
 
-<body class="P-order-submit">
+<body class="P-order-pay">
 
     <div class="header">
         <div class="top-bar">
@@ -45,90 +45,25 @@
         <div class="step-trilogy">
             <div class="inner">
                 <a href="#" class="step"><span>1.提交商品网址</span></a>
-                <a href="#" class="step cur"><span>2.确认订单</span></a>
-                <a href="#" class="step"><span>3.支付费用</span></a>
+                <a href="#" class="step"><span>2.确认订单</span></a>
+                <a href="#" class="step cur"><span>3.支付费用</span></a>
                 <a href="#" class="step"><span>4.交易完成</span></a>
             </div>
         </div>
         <!--/购买进度-->
         <div class="order-info">
-            <div class="item delivery-address">
-                <h3 class="title">选择收货地址</h3>
-                <div class="address-box" id="address-box">
-                    <ul class="inline clearfix">
-                    	<?php foreach($addressInfos as $addressInfo):?>
-                    	<?php $i++;?>
-                    	<li class="buyer-info <?php if($i == 1):?>choosed<?php endif;?>" action-type="chooseAddress" node-type="chooseAddress">
-                            <div class="name"><span class="n1"><?=$addressInfo['country']?> <?=$addressInfo['province']?> <?=$addressInfo['city']?></span><span class="n2">（<?=$addressInfo['name']?> 收）</span></div>
-                            <div class="other"><span class="address"><?=$addressInfo['address']?></span><span class="phone"><?=$addressInfo['mobile']?></span></div>
-                            <div class="markup"></div>
-                            <input type="hidden" node-type="addressId" value="<?=$addressInfo['id']?>">
-                        </li>
-                    	<?php endforeach;?>
-                    </ul>
+            <div class="item pay-type">
+                <div class="alert">
+                    <p class="S-txt5 W-fb">运费和关税均为估值，需要收到商品后按照实际重量计算，我们会在收到商品后第一时间通知您支付运费及关税，以便货物能够尽快送达。</p>
                 </div>
-                <div class="add-address" id="add-address">
-                    <div class="tit"><a href="javascript:void(0);" action-type="showNewAddr">使用新地址</a></div>
-                    <form onsubmit="return false;" class="form-horizontal add-new" node-type="ShowNewAddr" style="display:none">
-                        <div class="control-group receipt-name">
-                            <label class="control-label" for="inputName">收货人:</label>
-                            <div class="controls">
-                                <input type="text" id="inputName" placeholder="收货人姓名" node-type="name">
-                            </div>
-                        </div>
-                        <div class="control-group receipt-address">
-                            <label class="control-label" for="inputAddress">所在地区:</label>
-                            <div class="controls">
-                                <select class="pc" node-type="country">
-                                	<option value="">选择国家</option>
-                                    <option value="中国">中国</option>
-                                </select>
-                                <select class="pp" node-type="province">
-                                    <option value="">选择省份</option>
-									<option value="北京">北京</option>
-                                </select>
-                                <!-- <select class="ca">
-                                    <option>选择地区</option>
-                                    <option>美国</option>
-                                    <option>日本</option>
-                                </select> -->
-                                <select class="cc" node-type="city">
-                                    <option value="">选择县市</option>
-									<option value="东城区">东城区</option>
-									<option value="西城区">西城区</option>
-									<option value="宣武区">宣武区</option>
-									<option value="崇文区">崇文区</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="control-group receipt-detail">
-                            <label class="control-label" for="inputDetail">详细地址:</label>
-                            <div class="controls">
-                                <textarea rows="2" node-type="addrDrtail"></textarea>
-                            </div>
-                        </div>
-                        <div class="control-group receipt-phone">
-                            <label class="control-label" for="inputPhone">手机号码:</label>
-                            <div class="controls">
-                                <input type="text" id="inputPhone" placeholder="收货人电话" node-type="mobile">
-                            </div>
-                        </div>
-                        <!-- <div class="control-group receipt-email">
-                            <label class="control-label" for="inputEmail">电子邮箱:</label>
-                            <div class="controls">
-                                <input type="text" id="inputEmail" placeholder="收货人邮箱">
-                            </div>
-                        </div> -->
-                        <div class="control-group receipt-submit">
-                            <div class="controls">
-                                <button class="btn btn-primary" action-type="setAddress">确认添加</button>
-                            </div>
-                        </div>
-                    </form>
+                <div class="pay-amount"><span class="tit">您目前需要支付的费用为：订单商品价格</span><span class="W-f18 S-txt5 W-fb">￥<?=$curBuyOrderInfo['dealprice']?></span></div>
+                <div class="btn-box">
+                    <a href="" class="btn btn-primary">使用支付宝支付</a>
+                    <a href="" class="btn btn-primary">使用微信支付</a>
                 </div>
             </div>
             <div class="item goods-price">
-                <h3 class="title">确认订单信息</h3>
+                <h3 class="title">订单详情</h3>
                 <div class="info-form">
                     <div class="head-info">
                         <ul class="thead inline clearfix">
@@ -142,14 +77,14 @@
                     <div class="content-info">
                         <div class="goods-table">
                             <ul class="item-main inline clearfix">
-                                <!-- <li class="td td-chk"><input class="" id="112323" type="checkbox" name="items" value=""></li> -->
+                                <li class="td td-chk"><input class="" id="112323" type="checkbox" name="items" value=""></li>
                                 <li class="td td-pic"><a href=""><img src="<?=$curBuyOrderInfo['img']?>" alt=""></a></li>
                                 <li class="td td-intro">
                                     <p class="name"><?=$curBuyOrderInfo['title']?></p>
                                     <!-- <div class="size"><em>型号</em> <span>“Small ,Bonsai Green”</span></div> -->
                                 </li>
                                 <li class="td td-price">
-                                    <div class="num"><?=$bidprice?></div>
+                                    <div class="num"><?=$curBuyOrderInfo['dealprice']?></div>
                                 </li>
                                 <li class="td td-amount">
                                     <div class="num"><?=$curBuyOrderInfo['quantity']?></div>
@@ -158,11 +93,10 @@
                                     <div lass="num">无优惠</div>
                                 </li>
                                 <li class="td td-total">
-                                    <div class="num"><?=$bidprice?></div>
+                                    <div class="num"><?=$curBuyOrderInfo['dealprice']?></div>
                                 </li>
                             </ul>
-                            <!-- 
-                            <ul class="item-sub inline clearfix">
+                            <!-- <ul class="item-sub inline clearfix">
                                 <li class="td td-chk">---</li>
                                 <li class="td td-pic">---</li>
                                 <li class="td td-intro">
@@ -205,14 +139,14 @@
                         <div class="goods-total clearfix">
                             <div class="W-fl S-txt2"><em class="tit">补充说明</em><span class="cont"><?=$curBuyOrderInfo['description']?></span></div>
                             <div class="W-fr">
-                                <em class="S-txt2">合计（不含运费及关税）：</em><span class="total-price S-txt5">￥<?=$bidprice?></span>
+                                <em class="S-txt2">合计（不含运费及关税）：</em><span class="total-price S-txt5">￥<?=$curBuyOrderInfo['dealprice']?></span>
                             </div>
                         </div>
                     </div>
 
                 </div>
             </div>
-            <!-- <div class="item goods-cost">
+            <div class="item goods-cost" style="display:none">
                 <h3 class="title">运费及关税信息</h3>
                 <div class="info-form">
                     <div class="head-info">
@@ -253,14 +187,8 @@
                     </div>
                 </div>
             </div>
-             -->
-            <div class="item goods-settlement">
-                <a href="javascript:void(0);" class="btn btn-primary" id="payment" action-data="boid=<?=$boid?>&biduid=<?=$biduid?>&bidprice=<?=$bidprice?>&bid=<?=$bid?>&addressid=<?=$addressInfos[0]['id']?>">提交订单</a>
-                
-            </div>
         </div>
         
-       
     </div>
 
     <div class="footer">
@@ -297,15 +225,13 @@
                     <div><a href="">商务合作</a></div>
                 </dd>
             </dl>
-            <div class="line"><a href="" class="other"><img src="http://res.p2pbuy.net/img/_temp/u114.jpg" alt=""></a></div>
-            <div class="line"><a href="" class="other"><img src="http://res.p2pbuy.net/img/_temp/u116.jpg" alt=""></a></div>
+            <div class="line"><a href="" class="other"><img src="http://www.p2pbuy.net/img/_temp/u114.jpg" alt=""></a></div>
+            <div class="line"><a href="" class="other"><img src="http://www.p2pbuy.net/img/_temp/u116.jpg" alt=""></a></div>
         </div>
         <p>Copyright © 2014 P2PBUY.INC.  All Rights Reserved  使用本网站即表示接受用户协议</p>
         <p>P2PBUY 版权所有 京ICP备20080101</p>
     </div>
-<script src="http://res.p2pbuy.net/js/jquery-1.11.1.min.js"></script>
-<script src="http://res.p2pbuy.net/js/common.js"></script>
-<script src="http://res.p2pbuy.net/js/order/confirmorder.js?version=<?php echo time()?>"></script>
+    
 </body>
 
 </html>
