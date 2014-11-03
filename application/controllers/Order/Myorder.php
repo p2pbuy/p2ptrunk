@@ -47,11 +47,18 @@ class Order_MyorderController extends AbstractController{
 			}
 		}
 		
+		//如果是管理员，展示所有订单
+		if($this->viewer['uid'] == Tools_Conf::get('Manager.uid')){
+			$allMyOrders = Dr_order::showBuyOrderByApi();
+			$data['isShowAllBuyOrder'] = true;
+		}
+		
 		
 		$data['viewer'] = $this->viewer;
 		$data['myBuyOrders'] = $myBuyOrders;
 		$data['myTakeOrders'] = ($myTakeOrders) ? $myTakeOrders : array();
 		$data['myBidOrders'] = ($myBidOrders) ? $myBidOrders : array();
+		$data['allBuyOrders'] = ($allMyOrders) ? $allMyOrders : array();
 		$data['bidPrices'] = $bidPrices;
 		$data['nick'] = $this->viewer['nick'];
 		$data['usertype'] = ($this->viewer['extends']['type'] == 2) ? '我是买手' : '我是买家';

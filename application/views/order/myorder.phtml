@@ -117,6 +117,35 @@
     </br>
     <?php endforeach;?>
 </div>
+
+<?php if($isShowAllBuyOrder):?>
+<div class="purchase_complete" id="allorder">
+	<p id="purchase_complete_title">所有的订单
+	</br>
+	</br>
+	输入订单号搜索订单<input type="text" action-type="searchOrder"></p>
+
+	<div id="allOrderInfos">
+	<?php foreach($allBuyOrders as $allBuyOrder):?>
+	<ul class="item_content_details" id="allOrderInfo">
+	<img src="<?php if($allBuyOrder['img']):?><?=$allBuyOrder['img'];?><?php else:?>/img/usa.png<?php endif;?>" alt="item1" height="135px" width="220px" class="item_content_image"/>
+			<li>我也买不了，展示给别人吧<input type="checkbox" action-type="isshow" <?php if($allBuyOrder['isshow']):?>checked="checked"<?php endif;?>></li>
+			<li action-data="boid=<?=$allBuyOrder['boid'];?>">订单ID：<?=$allBuyOrder['boid'];?></li>
+			<li>订单名称：<?=$allBuyOrder['title'];?></li>
+			<li>订单描述：<?=$allBuyOrder['description'];?></li>
+			<li>商品价格：<?=$allBuyOrder['price'];?></li>
+			<li>商品数量：<?=$allBuyOrder['quantity'];?></li>
+			<li>补充说明：<?=$allBuyOrder['additional'];?></li>
+			<li>创建时间：<?=$allBuyOrder['createtime'];?></li>
+    </ul>
+    </br>
+    <?php endforeach;?>
+    </div>
+</div>
+<?php endif;?>
+<script src="http://res.p2pbuy.net/js/jquery-1.11.1.min.js"></script>
+<script src="http://res.p2pbuy.net/js/common.js"></script>
+<script src="http://res.p2pbuy.net/js/order/myorder.js?version=<?php echo time()?>"></script>
 </body>
 </html>
 
