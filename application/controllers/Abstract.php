@@ -58,6 +58,7 @@ abstract class AbstractController extends Yaf_Controller_Abstract{
      */
     public function renderPage($tpl = '', $data = array()) {
     	$data['domain'] = Tools_Conf::get('Domain.domain');
+    	$data['viewer'] = $this->viewer;
 		$view = new Yaf_View_Simple(TPL_PATH);
         echo $view->render ( $tpl, $data );
     }

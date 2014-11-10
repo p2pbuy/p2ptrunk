@@ -12,57 +12,49 @@
 </head>
 <body class="P-home">
     <div class="header">
+    	<div class="mask"></div>
+    	<div class="cover">
         <!--顶部-->
-        <div class="top-bar">
-            <div class="inner">
-                <div class="login-info">
-                    <!--未登录状态-->
-                    <ul class="inline unlogin" style="display:block">
-                    	<li><a href="/order/myorder" target="_blank">我的订单</a></li>
-                        <li><a href="/order/list" target="_blank">我是买手</a></li>
-                        <li><a href="/login/login">登录</a></li>
-                        <li><a href="javascript:void(0);">注册</a></li>
-                    </ul>
-                    <!--/未登录状态-->
-                    <!--已登录状态-->
-                    <ul class="inline logined" style="display:none">
-                        <li class="message"><a href="javascript:void(0);" title="我的消息"><i class="icon-envelope icon-white"><em>&#8226;</em></i><span>消息</span></a></li>
-                        <li>
-                            <span class="divider">/</span>
-                        </li>
-                        <li class="head-pic"><a href="javascript:void(0);" class="img"><i class="icon-user icon-white"></i><span class="name">laonon</span></a></li>
-                    </ul>      
-                    <!--/已登录状态-->
+            <div class="top-bar">
+                <div class="inner">
+                    <div class="login-info">
+                    	<?php if($viewer['uid']):?>
+                        <!--已登录状态-->
+                        <ul class="inline logined">
+                            <!-- <li class="message"><a href="" title="我的消息"><i class="icon-envelope icon-white"><em>&#8226;</em></i><span>消息</span></a></li> -->
+                            <li class="message"><a href="/order/myorder" title="我的订单"><span>我的订单</span></a></li>
+                            <li class="head-pic"><a href="javascript:void(0);" class="img"><i class="icon-user icon-white"></i><span class="name"><?=$viewer['nick']?></span></a></li>
+                        </ul>      
+                        <!--已登录状态-->
+                        <?php else:?>
+                        <!--未登录状态-->
+                        <ul class="inline unlogin clearfix" style="display:block">
+                            <li><a href="/login/login">登录</a></li>
+                            <li><a href="javascript:void(0);">注册</a></li>
+                            <li><a href="/order/myorder" class="cur">我是买手</a></li>
+                        </ul>
+                        <!--未登录状态-->
+                        <?php endif;?>
+                    </div>
                 </div>
             </div>
-        </div>
-        <!--/顶部-->
+            <!--/顶部-->
 
         <!--logo-->
         <h1 class="logo"><a href="javascript:void(0);" title="P2PBUY">P2PBUY</a></h1>
         <!--/logo-->
 
+		<div class="slogan">
+            <div class="title">最懂你的海外买手</div>
+            <div class="subtitle">中国最大的专业海外买手平台</div>
+        </div>
+
         <!--搜索-->
         <div class="search-box" id="search_tool">
-            <div><input type="text" class="search-input" placeholder="直接粘贴海外商品网址" node-type="thirdurl"><a href="javascript:void(0);" class="btn btn-primary" title="一键海淘"  action-type="create_order">一键海淘</a></div>
-            <a href="javascript:void(0);" class="nolink">找不到链接？传张图片也能买！</a> <a href="/order/list" target="_blank" class="nolink">看看大家都买了什么</a>
+        	<div class="search-wrapper"><input type="text" class="search-input" placeholder="您可以直接粘贴海外商品网址或者点击右边上传商品图片" node-type="thirdurl"><a href="javascript:void(0);" class="nolink"><input type="file" class="file"></a><a href="javascript:void(0);" class="submit" title="搜索" action-type="create_order">搜索</a></div>
         </div>
         <!--/搜索-->
-
-        <!--购买流程-->
-        <div class="buy-info">
-            <div class="buy-step">
-                <ul class="inline">
-                    <li><div class="step step-one"></div><p class="info">提交海外商品网址</p></li>
-                    <li><div class="step step-two"></div><p class="info">确认订单</p></li>
-                    <li><div class="step step-three"></div><p class="info">支付费用</p></li>
-                    <li><div class="step step-four"></div><p class="info">海外商家发货</p></li>
-                    <li><div class="step step-five"></div><p class="info">技术国际物流</p></li>
-                    <li><div class="step step-six"></div><p class="info">交易完成</p></li>
-                </ul>
-            </div>
-        </div>
-        <!--/购买流程-->
+		</div>
     </div>
 
     <div class="main-content">

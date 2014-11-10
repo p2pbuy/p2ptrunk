@@ -1,15 +1,64 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title><?=_('登录')?></title>
+<meta charset="utf-8">
+<title>登录</title>
+<meta name="description" content="P2PBUY">
+<link href="http://<?=$domain['res']?>/css/module/combine.css" rel="stylesheet">
+<link href="http://<?=$domain['res']?>/css/page/register.css" rel="stylesheet">
 </head>
-<body>
-<form action="/aj/login" method="post">
-邮箱：<input name="email" type="text" /></br>
-密码：<input name="passwd" type="password" /></br>
-<input type="submit" value="login now" />
-</form>
-</body>
+<body class="P-register">
+   <div class="header">
+        <div class="top-bar">
+            <div class="inner">
+                <div class="login-info">
+                </div>
+            </div>
+        </div>
 
+    </div>
+
+        <div class="main-content" id="login">
+        	<h3 class="title">欢迎加入P2PBUY</h3>
+			<div class="row-fluid">
+				<div class="span7">
+					<form onsubmit="return false;" class="form-horizontal">
+					  <div class="control-group usename">
+					    <label class="control-label" for="inputEmail">账号</label>
+					    <div class="controls">
+					      <input type="text" id="inputEmail" placeholder="邮箱/手机" node-type="username">
+                          <!-- <span class="label label-warning">警告文案提示</span> -->
+					    </div>
+					  </div>
+					  <div class="control-group password">
+					    <label class="control-label" for="inputPassword">密码</label>
+					    <div class="controls">
+					      <input type="password" id="inputPassword" placeholder="" node-type="passwd">
+                          <span class="label label-error" node-type="passwdErr" style="display:none">账号或者密码错误</span>
+					    </div>
+					  </div>
+					  <div class="control-group submit">
+					    <div class="controls">
+					      <!-- <label class="checkbox">
+					        <input type="checkbox"><span class="txt">记住我 <a href="" class="forget">忘记密码？</a></span>
+					      </label> -->
+					      <button type="submit" class="btn btn-primary" action-type="login">登录</button>
+					    </div>
+					  </div>
+					</form>
+				</div>
+				<div class="span5">
+					<h4>没有账号？请立即注册</h4>
+					<a href="" class="btn">注册</a>
+				</div>
+			</div>
+		        	
+        </div>
+
+    <?php include TPL_PATH."/comm/footer.phtml"?>
+    
+<script src="http://<?=$domain['res']?>/js/jquery-1.11.1.min.js"></script>
+<script src="http://<?=$domain['res']?>/js/common.js"></script>
+<script src="http://<?=$domain['res']?>/js/login/login.js"></script>
+</body>
 </html>
