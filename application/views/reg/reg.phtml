@@ -1,4 +1,95 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>注册</title>
+<meta name="description" content="P2PBUY">
+<link href="http://<?=$domain['res']?>/css/module/combine.css" rel="stylesheet">
+<link href="http://<?=$domain['res']?>/css/page/register.css" rel="stylesheet">
+</head>
+<body class="P-register">
+   <div class="header">
+        <div class="top-bar">
+            <div class="inner">
+                <div class="login-info">
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="main-content">
+    	<h3 class="title">欢迎加入P2PBUY</h3>
+		<div class="row-fluid" id="reg">
+			<div class="span7">
+				<form onsubmit="return false;" class="form-horizontal">
+				  <div class="control-group">
+				    <label class="control-label cellphone" for="inputEmail">邮箱/手机</label>
+				    <div class="controls">
+				      <input type="text" id="inputEmail" placeholder="邮箱/手机" node-type="username">
+                      <!-- <span class="label">默认文案提示</span> -->
+				    </div>
+				  </div>
+				  <!-- <div class="control-group confirmcode">
+				    <label class="control-label" for="inputPassword">验证码</label>
+				    <div class="controls">
+				      <input type="text" id="inputPassword" placeholder="" class="input-small">
+                      <a href="" class="btn">获取验证码</a>
+                      <span class="label label-warning">警告文案提示</span>
+				    </div>
+				  </div>
+				   -->
+                  <div class="control-group password">
+                    <label class="control-label" for="inputPassword">设置密码</label>
+                    <div class="controls">
+                      <input type="password" id="inputPassword" placeholder="输入你的密码" node-type="passwd">
+                      <!-- <span class="label label-error">错误文案提示</span> -->
+                    </div>
+                  </div>
+                  <div class="control-group password">
+                    <label class="control-label" for="inputEmail">设置昵称</label>
+                    <div class="controls">
+                      <input type="text" id="inputEmail" placeholder="输入你的昵称" node-type="nick">
+                      <!-- <span class="label label-error">错误文案提示</span> -->
+                    </div>
+                  </div>
+                  <!-- <div class="control-group repassword">
+                    <label class="control-label" for="inputPassword">确认密码</label>
+                    <div class="controls">
+                      <input type="password" id="inputPassword" placeholder="输入你的密码">
+                      <span class="label label-success">正确文案提示</span>
+                    </div>
+                  </div>
+                   -->
+				  <div class="control-group submit">
+				    <div class="controls">
+				      <label class="checkbox">
+				        <!-- <input type="checkbox"><span class="txt">我已认真阅读并同意p2pbuy的《<a href="">用户协议</a>》</span> -->
+				      </label>
+				      <button type="submit" class="btn btn-primary" action-type="reg">注册</button>
+				    </div>
+				  </div>
+				</form>
+			</div>
+			<div class="span5">
+				<h4>已有账号？请直接登录</h4>
+				<a href="/login/login" class="btn">登录</a>
+			</div>
+		</div>        	
+    </div>
+
+    <?php include TPL_PATH."/comm/foot.phtml"?>
+    
+<script src="http://<?=$domain['res']?>/js/jquery-1.11.1.min.js"></script>
+<script src="http://<?=$domain['res']?>/js/common.js"></script>
+<script src="http://<?=$domain['res']?>/js/reg/reg.js"></script>
+</body>
+</html>
+
+
+
+<!-- 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -14,3 +105,4 @@
 </body>
 
 </html>
+ -->
