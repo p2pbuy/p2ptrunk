@@ -1,19 +1,23 @@
         <div class="top-bar">
             <div class="inner">
                 <div class="login-info">
-                    <!--未登录状态-->
-                    <ul class="inline unlogin" style="display:none">
-                        <li><a href="#">登录</a></li>
-                        <li><a href="">注册</a></li>
-                    </ul>
-                    <!--/未登录状态-->
-                    <!--已登录状态-->
+                	<?php if($viewer['uid']):?>
+                	<!--已登录状态-->
                     <ul class="inline logined" style="display:">
-                        <li class="message"><a href="" title="我是买手"><span>我是买手</span></a></li>
-                        <li class="user"><a href="" ><span class="">香稻老农</span></a></li>
-                        <li class="opt"><a href="" ><span class="">退出</span></a></li>
+                        <li class="message"><a href="/order/myorder" title="我的订单"><span>我的订单</span></a></li>
+                        <li class="message"><a href="/order/list" title="我要帮人买"><span>我要帮人买</span></a></li>
+                        <li class="user"><a href="javascript:void(0);" ><span class=""><?=$viewer['nick']?></span></a></li>
+                        <li class="opt"><a href="/login/logout" ><span class="">退出</span></a></li>
                     </ul>      
                     <!--/已登录状态-->
+                    <?php else:?>
+                    <!--未登录状态-->
+                    <ul class="inline unlogin" style="display:none">
+                        <li><a href="/login/login">登录</a></li>
+                        <li><a href="/reg/reg">注册</a></li>
+                    </ul>
+                    <!--/未登录状态-->
+                    <?php endif;?>
                 </div>
             </div>
         </div>

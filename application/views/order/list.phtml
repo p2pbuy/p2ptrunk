@@ -89,6 +89,9 @@
                     </ul>
                 </div>
             </div>
+            <ul class="pager" id="pager">
+            向下拉，还有更多
+            </ul>
             <!-- <ul class="pager">
                 <li><a href="#">上一页</a>
                 </li>
@@ -118,83 +121,3 @@
 </body>
 
 </html>
-
-
-
-
-
-
-
-<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html lang="en">
-<head>
-    <link rel="stylesheet" type="text/css" href="http://res.p2pbuy.net/css/theme.css">
-	<meta charset="utf-8" />
-	<title><?=_('代购')?></title>
-	<meta name="generator" content="BBEdit 10.5" />
-</head>
-<body>
- <?php include TPL_PATH."/comm/head.phtml"?>
- <div id="breadcrumb">
- <p><a href="#">首页</a> > <a href="#">目的地</a> > <text id="currentpage"><a href="#">北美</a></text></p>
- </div>
- <div id="big_title_en">
- <p>North America</p>
- </div>
- <div id="sub_title_cn">
- <p>北美</p>
- </div>
- <div id="homepage_post">
- 	<ul>
- 	    <li><a href="javascript:void(0);" action-type="create_order" target="_blank">发布北美代购需求</a></li>
- 		<li>172位买手正在旅行</br>98827位买手即将出发</li>
- 	</ul>
- </div>
- <div id="country_cate">
- <p>
- <a href="#"><text class="country_selected">北美热门国家</text></a> | <a href="#">全部国家</a></br>
- 看上哪个了？把链接放进去试试看<input node-type="thirdurl" style="width:300px"/></br>
- 支持的网站 www.amazon.com
- </p>
- </div>
- 
- <div id="orderLists">
- <?php foreach($results as $result):?>
- <div class="list_1">
- <img src="<?php if($result['img']):?><?=$result['img'];?><?php else:?>/img/usa.png<?php endif;?>" alt="item1" height="180px" width="294px"/>
- <div class="item_title">
- 	<ul>
- 	  <li class="first_title"><?=$result['title']?></li>
- 	  <li>32位买手正好旅行</li>
- 	  <li>827位买手即将出发</li>
- 	  <?php if($result['thirdurl']):?>
- 	  <li><a href="<?=$result['thirdurl']?>" target="_blank">点击查看商品来源</a></li>
- 	  <?php endif;?>
- 	  <li class="item_content">
-      <?=$result['description']?><br>
-      <?=$result['additional']?>
-      </li></br></br></br></br></br></br></br>
-      <li class="hot_destination_title">热门旅行地:</li>
-      <li><a href="#">旧约</a></li>
-      <li><a href="#">芝加哥</a></li>
-      <li><a href="#">旧金山</a></li></br></br></br>
-      <div class="buyer_trip">
-      <li class="hot_destination_title">买手行程:</li>
-      <li><a href="#">白夜</a></li>
-      <li><a href="#">硅谷淘金之旅</a></li>
-      <li><a href="#">科技产品一网打尽</a></li>
-      <li><a href="#"><?=$result['person']['nick']?></a></li>
-      </div></br>
-      <li><a href="/order/takeorder?boids=<?=$result['boid']?>" target="_blank">我要接单</a></li>
-    </ul>
- </div>
- </div>
- <?php endforeach;?>
- </div>
- <div id="scrollflag"></div>
-<script src="http://res.p2pbuy.net/js/jquery-1.11.1.min.js"></script>
-<script src="http://res.p2pbuy.net/js/common.js"></script>
-<script src="http://res.p2pbuy.net/js/order/list.js"></script>
-</body>
-</html>
- -->

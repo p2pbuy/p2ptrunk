@@ -16,7 +16,8 @@ class Aj_Order_SetaddressController extends AbstractController{
 		$info['uid'] = $this->viewer['uid'];
 		
 		if(empty($info['name']) || empty($info['country']) || empty($info['province']) || empty($info['city']) || empty($info['addrdetail']) || empty($info['mobile'])){
-			$code = Tools_Conf::get('Show_Code.aj.fail');
+			$this->renderAjax(Tools_Conf::get('Show_Code.aj.fail'));
+			return true;
 		}
 		
 		$result = Dw_Order::setAddressByApi($info);

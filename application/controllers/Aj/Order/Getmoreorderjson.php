@@ -1,12 +1,11 @@
 <?php
 /**
- * 获得更多orderlist
+ * 获得更多orderlist json格式
  * @author liang
- * @version 2014-6-24
+ * @version 2014-11-12
  */
-class Aj_Order_GetmoreorderController extends AbstractController{
+class Aj_Order_GetmoreorderjsonController extends AbstractController{
 	public $authorize = self::MAYBELOGIN;
-	public $tpl = 'aj/order/getmoreorder.phtml';
 	public function hookAction(){
 		$info['page'] = Comm_Context::post('page','int');
 		$info['count'] = Comm_Context::post('count','int');
@@ -22,22 +21,13 @@ class Aj_Order_GetmoreorderController extends AbstractController{
 			$msg = 'fail';
 			$html = false;
 		}else{
-			foreach($buyOrderInfos as $buyOrderInfo){
-				if($buyOrderInfo['lock'] == 1 || $buyOrderInfo['isshow'] == 0){
-					continue;
-				}
-				$person = Dr_User::show($buyOrderInfo['uid']);
-				$buyOrderInfo['person'] = $person;
-				$results[] = $buyOrderInfo;
-			}
 			
-			$data['results'] = $results;
+			$data = $buyOrderInfos;
 			$code = Tools_Conf::get('Show_Code.api.succ');
 			$msg = 'succ';
-			$html = $this->renderHtml($this->tpl,$data);;
 		}
 		
-		$this->renderAjax($code,$msg,array('html'=>$html));
+		$this->renderAjax($code,$msg,$data);
 		return true;
 	}
 }
