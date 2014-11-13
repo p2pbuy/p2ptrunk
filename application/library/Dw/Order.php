@@ -60,4 +60,17 @@ class Dw_Order extends Dw_Abstract{
 		}
 		return $result;
 	}
+	
+	//通过接口删除订单
+	public static function delBuyOrderByBoidByApi($info){
+		try{
+			$aclConf = Tools_Conf::get('Api_ACL');
+			$info['source'] = 'web';
+			$info['sign'] = md5($aclConf[$info['source']]['name'].$info['boid'].$info['uid'].$aclConf[$info['source']]['secret_key']);
+			Api_Order::delBuyOrderByBoid($info);
+		}catch(Exception $e){
+			return false;
+		}
+		return true;
+	}
 }

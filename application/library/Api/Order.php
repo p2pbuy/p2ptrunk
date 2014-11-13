@@ -131,4 +131,15 @@ class Api_Order extends Api_Abstract{
     	
     	return self::instance()->post(self::getApiUrl('api/order/getaddressbyuid'), $params);
     }
+    
+    /**
+     * 根据boid删除订单
+     */
+    public static function delBuyOrderByBoid($info){
+    	foreach($info as $key => $value){
+    		$params[$key] = $value;
+    	}
+    	
+    	return self::instance()->post(self::getApiUrl('api/order/delbuyorderbyboid'), $params);
+    }
 }
