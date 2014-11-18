@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>支付成功</title>
+<meta name="description" content="P2PBUY">
+<link href="http://<?=$domain['res']?>/css/module/combine.css" rel="stylesheet">
+<link href="http://<?=$domain['res']?>/css/page/order-pay.css" rel="stylesheet">
+</head>
+
+<body class="P-order-pay">
+
+    <div class="header">
+        <?php include TPL_PATH."/comm/header.phtml"?>
+
+        <dl class="head-wrap clearfix">
+            <dt class="logo logo-small"><a href="" title="P2PBUY">P2PBUY</a></dt>
+            <dd class="search-box">
+                <div class="search-wrapper"><input type="text" class="search-input" placeholder="您可以直接粘贴海外商品网址"><a href="" class="nolink"><input type="file" class="file"></a><a href="" class="submit" title="搜索">搜索</a></div>
+            </dd>
+        </dl>
+    </div>
+
+    <div class="main-content">
+        <!--购买进度-->
+        <div class="step-trilogy">
+            <div class="inner">
+                <a href="#" class="step"><span>1.提交商品网址</span></a>
+                <a href="#" class="step"><span>2.确认订单</span></a>
+                <a href="#" class="step"><span>3.支付费用</span></a>
+                <a href="#" class="step cur"><span>4.交易完成</span></a>
+            </div>
+        </div>
+        <!--/购买进度-->
+        <div class="order-info">
+            <div class="item pay-status">
+                <div class="tips"><i class="icon-succB"></i><span class="">支付成功！我们将尽快为您安排够买发货</span></div>
+                <p class="S-txt2">运费和关税均为估值，需要收到商品后按照实际重量计算。</p>
+                <p class="S-txt2">我们会在收到商品后第一时间通知您支付运费及关税，以便货物能够尽快送达</p>
+                <p class="S-txt5">请注意保持邮件及手机畅通</p>
+                <p class="S-txt5">您可以在<a href="/order/myorder">“我的订单”</a>中查询和跟踪订单信息</p>
+            </div>
+            <div class="item goods-logistics">
+                <h3 class="title">商品订单跟踪信息<span class="order-num">订单号：<?=$boid?></span></h3>
+                <!-- <div class="logistics-detail">
+                    <div class="step4">
+                        <ul class="lists">
+                            <li class="li cur">
+                                <div class="info S-txt1">快递员汪旻昊正在配送</div>
+                                <div class="time"><em class="date">2014-04-08</em><em class="hour">10:32</em></div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="step3">
+                        <ul class="lists">
+                            <li class="li">
+                                <div class="info S-txt1">北京市海淀区中关村公司已发出</div>
+                                <div class="time"><em class="date">2014-04-08</em><em class="hour">10:32</em></div>
+                            </li>
+                            <li class="li">
+                                <div class="info S-txt1">北京市海淀区中关村公司已收入</div>
+                                <div class="time"><em class="date">2014-04-08</em><em class="hour">08:32</em></div>
+                            </li>
+                            <li class="li">
+                                <div class="info S-txt1">北京转运中心公司已收入</div>
+                                <div class="time"><em class="date">2014-04-08</em><em class="hour">08:32</em></div>
+                            </li>
+                        </ul>
+                        <div class="express-info">
+                            <div class="comp">阶段由顺丰快递负责</div>
+                        </div>
+                    </div>
+                    <div class="step2">  
+                        <ul class="lists">
+                            <li class="li">
+                                <div class="info S-txt1">快件到达北京转运中心公司</div>
+                                <div class="time"><em class="date">2014-04-08</em><em class="hour">08:32</em></div>
+                            </li>
+                            <li class="li">
+                                <div class="info S-txt1">快件离开长春中转已发往北京</div>
+                                <div class="time"><em class="date">2014-04-08</em><em class="hour">08:32</em></div>
+                            </li>
+                            <li class="li">
+                                <div class="info S-txt1">快件到达延吉上一站是吉林</div>
+                                <div class="time"><em class="date">2014-04-08</em><em class="hour">08:32</em></div>
+                            </li>
+                        </ul>
+                        <div class="express-info">
+                            <div class="comp">阶段由顺丰快递负责</div>
+                        </div>
+                    </div> 
+                    <div class="step1"> 
+                        <ul class="lists step1">
+                            <li class="li">
+                                <div class="info S-txt1">快件到达北京转运中心公司</div>
+                                <div class="time"><em class="date">2014-04-08</em><em class="hour">08:32</em></div>
+                            </li>
+                            <li class="li">
+                                <div class="info S-txt1">快件离开长春中转已发往北京</div>
+                                <div class="time"><em class="date">2014-04-08</em><em class="hour">08:32</em></div>
+                            </li>
+                            <li class="li">
+                                <div class="info S-txt1">快件到达延吉上一站是吉林</div>
+                                <div class="time"><em class="date">2014-04-08</em><em class="hour">08:32</em></div>
+                            </li>
+                        </ul>
+                        <div class="express-info">
+                            <div class="comp">阶段由顺丰快递负责</div>
+                        </div>
+                    </div>
+                </div>
+                -->
+            </div>
+            
+        </div>
+        
+    </div>
+
+    <?php include TPL_PATH."/comm/footer.phtml"?>
+    
+</body>
+
+</html>

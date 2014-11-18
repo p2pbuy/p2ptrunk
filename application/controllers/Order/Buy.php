@@ -6,7 +6,8 @@
  */
 class Order_BuyController extends AbstractController{
 	public $tpl = 'order/buy.phtml';
-	public $authorize = self::MUSTLOGIN;
+	//public $authorize = self::MUSTLOGIN;
+	public $authorize = self::NOTLOGIN;
 	public function hookAction(){
 		/*if($this->viewer['extends']['type'] != 1){
 			echo 'You must be a buyer';

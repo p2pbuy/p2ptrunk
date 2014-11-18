@@ -34,7 +34,7 @@ class Aj_Order_CancelorderController extends AbstractController{
 		$data['boid'] = $info['boid'];
 		$data['status'] = 0;
 		
-		//更新订单isshow属性
+		//取消订单
 		Dw_Order::updateBuyOrderByBoidByApi($data);
 		
 		$this->renderAjax(Tools_Conf::get('Show_Code.aj.succ'));

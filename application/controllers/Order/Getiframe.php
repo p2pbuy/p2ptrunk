@@ -10,8 +10,13 @@ class Order_GetiframeController extends AbstractController{
 		$thirdUrl = Comm_Context::get('thirdurl');
 		
 		if(!empty($thirdUrl)){
-			$content = file_get_contents($thirdUrl);
+			$ch = curl_init($thirdUrl);
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+			$content = curl_exec($ch) ;
+			curl_close($ch);
 		}
+		
+		$content = preg_replace("/<script[^>]*?>.*?<\/script>/smi", "", $content);
 		
 		echo $content;
 		return true;

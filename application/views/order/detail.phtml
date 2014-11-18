@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>买手订单</title>
+<meta name="description" content="P2PBUY">
+<link href="http://<?=$domain['res']?>/css/module/combine.css" rel="stylesheet">
+<link href="http://<?=$domain['res']?>/css/page/seller-order.css" rel="stylesheet">
+</head>
+
+<body class="P-seller-order">
+    <div class="header">
+        <?php include TPL_PATH."/comm/header.phtml"?>
+
+        <dl class="head-wrap clearfix">
+            <dt class="logo logo-small"><a href="" title="P2PBUY">P2PBUY</a></dt>
+            <dd class="search-box">
+                <div class="search-wrapper"><input type="text" class="search-input" placeholder="输入订单号"><a href="" class="submit" title="搜索">搜索</a></div>
+            </dd>
+        </dl>
+    </div>
+
+    <div class="main-content">
+        <div class="guide"><strong class="position">当前位置:</strong><span class="cur">我的订单</span></div>
+        <!-- 某人的订单 -->
+        <div class="myorder" id="myorder">
+            <div class="tabtype">
+                <ul class="inline"><?=$viewer['nick']?>的订单</ul>
+            </div>
+            <div class="tabcontent">
+                <div class="service-list order-all">
+                    <ul class="th inline">
+                        <li class="a">订单信息</li>
+                        <li class="b">我的价格</li>
+                        <li class="c">别人的出价</li>
+                        <li class="d">操作</li>
+                    </ul>
+                    <ul class="tbody unstyled" id="detailbox">
+                    	<?php foreach($bidPrices as $bidPrice):?>
+                        <li>
+                            <div class="order-num">订单号：
+                                <span class="number"><?=$orderInfo['boid']?></span>
+                                <span class="time"><?=$orderInfo['createtime']?></span>
+                            </div>
+                            <ul class="inline">
+                                <li class="a clearfix">
+                                    <div class="pic">
+                                        <img src="<?php if($orderInfo['img']):?><?=$orderInfo['img'];?><?php else:?>/img/usa.png<?php endif;?>" alt="">
+                                    </div>
+                                    <div class="detail">
+                                        <div class="name"><em>订单名：</em><span><?=$orderInfo['title'];?></span></div>
+                                        <div class="num"><em>订单描述：</em><span><?=$orderInfo['description'];?></span></div>
+                                        <div class="num"><em>数量：</em><span><?=$orderInfo['quantity'];?></span></div>
+                                        <div class="num"><em>备注：</em><span><?=$orderInfo['additional'];?></span></div>
+                                    </div>
+                                </li>
+                                <li class="b">￥<?=$orderInfo['price']?></li>
+                                <li class="c">
+                                    <small>
+                                    	<?php if($orderInfo['lock'] == 1):?>
+                                    	<span>订单已付款</span>
+                                    	<?php else:?>
+                                    	<span><?=$bidPrice['price']?></span>
+                                    	<?php endif;?>
+                                    </small>
+                                </li>
+                                <li class="d">
+                                    <small>
+                                    	<?php if($orderInfo['lock'] != 1):?>
+                                    	<a href="javascript:void(0);" class="btn btn-primary" action-type="confirmorder" action-data="boid=<?=$bidPrice['boid']?>&bidprice=<?=$bidPrice['price']?>&bid=<?=$bidPrice['id']?>&biduid=<?=$bidPrice['uid']?>">确定并付款</a>
+                                    	<?php endif;?>
+                                    </small>
+                                </li>
+                            </ul>
+                        </li>
+                        <?php endforeach;?>
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <?php include TPL_PATH."/comm/footer.phtml"?>
+<script src="http://res.p2pbuy.net/js/jquery-1.11.1.min.js"></script>
+<script src="http://res.p2pbuy.net/js/common.js"></script>
+<script src="http://res.p2pbuy.net/js/order/detail.js"></script>
+</body>
+
+</html>

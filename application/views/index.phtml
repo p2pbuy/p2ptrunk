@@ -53,9 +53,21 @@
 
         <!--搜索-->
         <div class="search-box" id="search_tool">
-        	<div class="search-wrapper"><input type="text" class="search-input" placeholder="您可以直接粘贴海外商品网址或者点击右边上传商品图片" node-type="thirdurl"><!-- <a href="javascript:void(0);" class="nolink"><input type="file" class="file"></a> --><a href="javascript:void(0);" class="submit" title="搜索" action-type="create_order">搜索</a></div>
+        	<div class="search-wrapper"><input type="text" class="search-input" placeholder="您可以直接粘贴海外商品网址或者直接下单" node-type="thirdurl"><!-- <a href="javascript:void(0);" class="nolink"><input type="file" class="file"></a> --><a href="javascript:void(0);" class="submit" title="搜索" action-type="create_order">搜索</a></div>
         </div>
         <!--/搜索-->
+        <!-- 商品展示 -->
+        <div class="commodity-show">
+            <ul class="inline commodity-list">
+                <li><a href="/order/buy?thirdurl=<?=urlencode('http://www.amazon.com/Transcend-JetDrive-Expansion-13-Inch-TS128GJDL330/dp/B00MTHLURE/ref=sr_1_1?ie=UTF8&qid=1415782525&sr=8-1&keywords=jetdrive+lite+330')?>" title="商品标题"><img src="http://ecx.images-amazon.com/images/I/51KS7PCiWKL._SL1000_.jpg" alt="商品标题"></a></li>
+                <li><a href="/order/buy?thirdurl=<?=urlencode('http://www.amazon.com/90-day-Service-Frustration-Packaging-Mobi-16-FF/dp/B00CS4WPHC/ref=sr_1_5?ie=UTF8&qid=1415782635&sr=8-5&keywords=eye-fi')?>" title="商品标题"><img src="http://ecx.images-amazon.com/images/I/51k5IwT1o8L.jpg" alt="商品标题"></a></li>
+                <li><a href="/order/buy?thirdurl=<?=urlencode('http://www.amazon.com/Hubsan-SpyHawk-Controller-recording-auto-pilot/dp/B00AAICPG4/ref=sr_1_3?ie=UTF8&qid=1415782698&sr=8-3&keywords=plane+rc+camera')?>" title="商品标题"><img src="http://ecx.images-amazon.com/images/I/61C3ZaNPpDL._SL1000_.jpg" alt="商品标题"></a></li>
+                <li><a href="/order/buy?thirdurl=<?=urlencode('http://store.apple.com/us/product/H9988ZM/A/michael-michael-kors-15-jet-set-travel-tote-for-macbook-pro?fnode=f42bd31f49860dd1e3fcea6989f1b4a65556836f1c3641a9e4b9e7fcd2c65ccefa2596fb2d3e06fd696a2be153d78f318e5d8954e0b416c927af0123ac3fecec53227e8f098f63ac3071b82e92bf6677009b6269b7196a913a5fb80d90a37cfe3dd5e7cfd3655f38809e22b5abb84229')?>" title="商品标题"><img src="http://store.storeimages.cdn-apple.com/4185/as-images.apple.com/is/image/AppleInc/aos/published/images/H/99/H9988/H9988?wid=800&hei=800&fmt=jpeg&qlt=95&op_sharpen=0&resMode=bicub&op_usm=0.5,0.5,0,0&iccEmbed=0&layer=comp&.v=1400794277486" alt="商品标题"></a></li>
+                <li><a href="/order/buy?thirdurl=<?=urlencode('http://store.apple.com/us/product/ME177LL/A/airport-time-capsule-2tb?fnode=df33a3769ca3397f6d44ba70469121b0559163f82c14920ffc59f39513d2d9401fefb50469026b1b7232436bf9c8af5a5d7f357c6f144a1b44a45b0d6322409a3174e5cf9a057f8311c91525895406bcf173c3d893b7e28d110487b5e5c23a84edbe088289e1ca59bdd67a48c9dd2f64')?>" title="商品标题"><img src="http://store.storeimages.cdn-apple.com/4185/as-images.apple.com/is/image/AppleInc/aos/published/images/M/E1/ME177/ME177?wid=800&hei=800&fmt=jpeg&qlt=80&op_sharpen=0&resMode=bicub&op_usm=0.5,0.5,0,0&iccEmbed=0&layer=comp&.v=1400974235303" alt="商品标题"></a></li>
+                <li><a href="/order/buy?thirdurl=<?=urlencode('http://store.apple.com/us/product/HFV22VC/A/philips-hue-tap-switch?fnode=e0bee6f08dd5c6cc27043cef17a8d6e85e720caece3a18e6a5480ecc99365eab0b2d51d0b91579a6406c365885307c60107b1587bb742044ad4baedf1663609d6ea863b83bfcaa00c87e8638a72b34949693c26c09270ac04a20f72bee4abe8dd3a3eaa2574068a167b9b285fad004f8')?>" title="商品标题"><img src="http://store.storeimages.cdn-apple.com/4185/as-images.apple.com/is/image/AppleInc/aos/published/images/H/FV/HFV22/HFV22?wid=800&hei=800&fmt=jpeg&qlt=95&op_sharpen=0&resMode=bicub&op_usm=0.5,0.5,0,0&iccEmbed=0&layer=comp&.v=1403780850548" alt="商品标题"></a></li>
+            </ul>
+        </div>
+        <!-- 商品展示 -->
 		</div>
     </div>
 

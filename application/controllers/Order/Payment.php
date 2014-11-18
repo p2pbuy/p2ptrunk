@@ -28,6 +28,7 @@ class Order_PaymentController extends AbstractController{
 		
 		$data['curBuyOrderInfo'] = $curBuyOrderInfo[0];
 		$data['nick'] = $this->viewer['nick'];
+		$data['alipayUrl'] = '/third/alipay/cdpbu/alipayapi?boid='.$boid.'&title='.$curBuyOrderInfo[0]['title'].'&price='.$curBuyOrderInfo[0]['dealprice'];
 		
 		$this->renderPage($this->tpl,$data);
 		return true;

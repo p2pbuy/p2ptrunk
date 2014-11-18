@@ -37,7 +37,7 @@ class Order_ConfirmorderController extends AbstractController{
 		$data['usertype'] = ($this->viewer['extends']['type'] == 2) ? '我是买手' : '我是买家';
 		$data['islogined'] = (empty($this->viewer)) ? false : true;
 		$data['curBuyOrderInfo'] = $curBuyOrderInfo[0];
-		$data['addressInfos'] = $addressInfos;
+		$data['addressInfos'] = (empty($addressInfos)) ? array() : $addressInfos;
 		$this->renderPage($this->tpl,$data);
 		return true;
 	}

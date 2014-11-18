@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <title>买手订单</title>
 <meta name="description" content="P2PBUY">
-<link href="../../css/module/combine.css" rel="stylesheet">
-<link href="../../css/page/seller-order.css" rel="stylesheet">
+<link href="http://<?=$domain['res']?>/css/module/combine.css" rel="stylesheet">
+<link href="http://<?=$domain['res']?>/css/page/seller-order.css" rel="stylesheet">
 </head>
 
 <body class="P-seller-order">
@@ -55,17 +55,21 @@
                                         <div class="num"><em>备注：</em><span><?=$myBuyOrder['additional'];?></span></div>
                                     </div>
                                 </li>
-                                <li class="b"><?php if($myBuyOrder['price'] != '0.00'):?>￥<?=$myBuyOrder['price']?><?php else:?><?php echo '还没有出价';?><?php endif;?></li>
+                                <li class="b">￥<?=$myBuyOrder['price']?></li>
                                 <li class="c">
                                     <small>
                                     	<?php if($myBuyOrder['lock'] == 1):?>
                                     	<span>订单已付款</span>
+                                    	<?php else:?>
+                                    	<span>竞价中</span>
+                                    	<a href="/order/detail?boid=<?=$myBuyOrder['boid']?>">查看详情</a>
                                     	<?php endif;?>
                                     </small>
                                 </li>
                                 <li class="d">
                                     <small>
                                     	<?php if($myBuyOrder['lock'] != 1):?>
+                                    	<a href="/order/detail?boid=<?=$myBuyOrder['boid']?>" class="btn btn-primary">查看详情</a>
                                     	<a href="javascript:void(0);" class="btn" action-type="cancelorder" action-data="boid=<?=$myBuyOrder['boid']?>">取消</a>
                                     	<?php endif;?>
                                     </small>
@@ -177,6 +181,11 @@
                                 </li>
                                 <li class="c">
                                     <small>
+                                    	<?php if($myBidOrder['lock'] == 1):?>
+                                    	<span>订单已付款</span>
+                                    	<?php else:?>
+                                    	<span>竞价中</span>
+                                    	<?php endif;?>
                                     </small>
                                 </li>
                                 <li class="d">
@@ -230,6 +239,11 @@
                                 <li class="b">￥<?=$allBuyOrder['price']?></li>
                                 <li class="c">
                                     <small>
+                                    	<?php if($allBuyOrder['lock'] == 1):?>
+                                    	<span>订单已付款</span>
+                                    	<?php else:?>
+                                    	<span>竞价中</span>
+                                    	<?php endif;?>
                                     </small>
                                 </li>
                                 <li class="d">
