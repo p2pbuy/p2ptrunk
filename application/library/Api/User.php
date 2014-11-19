@@ -15,7 +15,7 @@ class Api_User extends Api_Abstract{
     /**
      * 注册用户信息
      */
-    public static function reg($info){
+    public static function reg($info = array()){
     	$params = array(
             'email' => $info['email'],
             'nick' => $info['nick'],
@@ -26,5 +26,30 @@ class Api_User extends Api_Abstract{
         $option['timeout'] = 7000;
         $option['connect_timeout'] = 7000;
         return self::instance()->post(self::getApiUrl('api/reg'), $params, '', $option);
+    }
+    
+    /**
+     * 根据uids获取用户信息
+     */
+    public static function showUserInfoByUids($info = array()){
+    	$params = array(
+    		'uids' => $info['uids'],
+    		'sign' => $info['sign'],
+    		'source' => $info['source'],
+    	);
+    	return self::instance()->get(self::getApiUrl('api/user/showuserinfobyuids'), $params);
+    }
+    
+    /**
+     * 获得用户信息
+     */
+    public static function getUserInfos($info = array()){
+    	$params = array(
+    		'count' => $info['count'],
+    		'page' => $info['page'],
+    		'sign' => $info['sign'],
+    		'source' => $info['source'],
+    	);
+    	return self::instance()->get(self::getApiUrl('api/user/showuser'), $params);
     }
 }

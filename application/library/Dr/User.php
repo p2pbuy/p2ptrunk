@@ -7,24 +7,24 @@ class Dr_User extends Dr_Abstract{
 			return false;
 		}
 		try{
-			$cache = new Cache_User();
-			$userInfo = $cache->getUserInfo($uid);
-			$userInfo = false;
-			if($userInfo == false){
-				$db = new Db_User();
-				$re = $db->getUserByUid($uid);
-				$userInfo = $re[0];
-				$re = $db->getUserInfoByUid($uid); 
-				$userInfo['extends'] = $re[0];
-				if($re != false){
-					$cache->setUserInfo($uid,$userInfo);
-				}
+			//获得acl配置
+			$aclConf = Tools_Conf::get('Api_ACL');
+			
+			$info['uids'] = $uid;
+			$info['source'] = 'web';
+			$info['sign'] = md5($aclConf[$info['source']]['name'].$info['uids'].$aclConf[$info['source']]['secret_key']);
+			$re = Api_User::showUserInfoByUids($info);
+			$result = json_decode($re,true);
+			if($result['code'] == 100000){
+				$data = $result['data'];
+			}else{
+				return false;
 			}
 		}catch(Exception $e){
 			return false;
 		}
 		
-		return $userInfo;
+		return $data;
 	}
 	
 	//根据cookie获得uid
@@ -34,5 +34,27 @@ class Dr_User extends Dr_Abstract{
 		}
 		$PUCE = explode(',', $_COOKIE['PUCE']);
 		return $PUCE[0];
+	}
+	
+	//获得用户基本信息
+	public static function getUserInfos($info = array()){
+		try{
+			//获得acl配置
+			$aclConf = Tools_Conf::get('Api_ACL');
+			
+			$info['source'] = 'web';
+			$info['sign'] = md5($aclConf[$info['source']]['name'].$aclConf[$info['source']]['secret_key']);
+			$re = Api_User::getUserInfos($info);
+			$result = json_decode($re,true);
+			if($result['code'] == 100000){
+				$data = $result['data'];
+			}else{
+				return false;
+			}
+		}catch(Exception $e){
+			return false;
+		}
+		
+		return $data;
 	}
 }

@@ -1,8 +1,8 @@
 <?php
 /**
- * controll抽象类
+ * 后台管理controll抽象类
  */
-abstract class AbstractController extends Yaf_Controller_Abstract{
+abstract class Managep2p_AbstractController extends Yaf_Controller_Abstract{
 	// 登录状态
     const MUSTLOGIN = 0;
     // 未登录状态
@@ -42,9 +42,14 @@ abstract class AbstractController extends Yaf_Controller_Abstract{
         }
         
         $this->uid = Dr_User::getUidByCookie();
-        $viewer = Dr_User::show($this->uid);
-        $this->viewer = $viewer[$this->uid];
+        $userInfo = Dr_User::show($this->uid);
+        $this->viewer = $userInfo[$this->uid];
 
+        if($this->uid != Tools_Conf::get('Manager.uid')){
+        	header('Location:/login/logout');
+        	return false;
+        }
+        
         return true;
 	}
 	

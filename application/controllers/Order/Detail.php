@@ -14,8 +14,16 @@ class Order_DetailController extends AbstractController{
 		}*/
 		
 		$boid = Comm_Context::get('boid');
+		$uid = $this->viewer['uid'];
 		
 		if(empty($boid)){
+			return false;
+		}
+		
+		//查看是否是当前人的订单
+		$buyOrders = Dr_Order::showBuyOrderByUidByApi(array('uid'=>$uid));
+		$boids = array_keys($buyOrders);
+		if(!in_array($boid, $boids)){
 			return false;
 		}
 		

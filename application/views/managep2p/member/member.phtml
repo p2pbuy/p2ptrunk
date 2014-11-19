@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>会员管理</title>
+<meta name="description" content="P2PBUY">
+<link href="http://<?=$domain['res']?>/css/module/combine.css" rel="stylesheet">
+<link href="http://<?=$domain['res']?>/css/page/seller-order.css" rel="stylesheet">
+</head>
+
+<body class="P-seller-order">
+    <div class="header">
+        <?php include TPL_PATH."/comm/header.phtml"?>
+    </div>
+
+    <div class="main-content">
+        <div class="guide"><strong class="position">当前位置:</strong><span class="cur">会员管理</span></div>
+        
+        <!-- 所有的订单 buyer专用 -->
+        <div class="myorder" id="alluserinfo">
+            <div class="tabtype">
+                <ul class="inline">所有的会员</ul>
+				</br>
+            </div>
+            <div class="tabcontent">
+                <div class="service-list order-all">
+                    <ul class="th inline">
+                        <li class="a">会员信息</li>
+                        <li class="b">支付宝账号</li>
+                        <li class="c">备份</li>
+                        <li class="d">操作</li>
+                    </ul>
+                    <ul class="tbody unstyled" id="allUserInfos">
+                    	<?php foreach($users as $user):?>
+                        <li id="userInfoBox">
+                            <ul class="inline">
+                                <li class="a clearfix">
+                                    <div class="detail">
+                                        <div class="name"><em>uid：</em><span><?=$user['uid']?></span></div>
+                                        <div class="num"><em>nick：</em><span><?=$user['nick']?></span></div>
+                                    </div>
+                                </li>
+                                <li class="b"><input node-type="alipayusername" type="text" value="<?=$user['extends']['alipayusername']?>" /></li>
+                                <li class="c">
+                                    <small>
+                                    	
+                                    </small>
+                                </li>
+                                <li class="d">
+                                    <small>
+                                    	<a href="javascript:void(0);" class="btn btn-primary" action-type="setuserinfo" action-data="uid=<?=$user['uid']?>">确认</a>
+                                    </small>
+                                </li>
+                            </ul>
+                        </li>
+                        <?php endforeach;?>
+                    </ul>
+                </div>
+                <a href="javascript:void(0);" action-type="getmoreuserinfo">查看更多会员</a>
+            </div>
+        </div>
+        
+    </div>
+
+    <?php include TPL_PATH."/comm/footer.phtml"?>
+<script src="http://res.p2pbuy.net/js/jquery-1.11.1.min.js"></script>
+<script src="http://res.p2pbuy.net/js/common.js"></script>
+<script src="http://res.p2pbuy.net/js/user/member.js"></script>
+</body>
+
+</html>

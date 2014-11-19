@@ -5,7 +5,7 @@
  * @version 2014-5-25
  */
 class Aj_Order_BuyController extends AbstractController{
-	public $authorize = self::MUSTLOGIN;
+	public $authorize = self::MAYBELOGIN;
 	public function hookAction(){
 		/*if($this->viewer['extends']['type'] != 1){
 			$this->renderAjax(Tools_Conf::get('Show_Code.api.fail'),'You must be a buyer');
@@ -20,7 +20,15 @@ class Aj_Order_BuyController extends AbstractController{
 		$info['thirdurl'] = Comm_Context::post('thirdurl');
 		$info['uid'] = $this->uid;
 		
-		if(empty($info['title']) || empty($info['description']) || empty($info['quantity']) || empty($info['uid'])){
+		if(empty($info['uid'])){
+			$result['code'] = Tools_Conf::get('Show_Code.aj.unlogin.fail');
+			$data = '0';
+			
+			echo "<script>window.". $_POST['cbkname'] ."={'code':{$result['code']},'data':{$data}}</script>";
+			return true;
+		}
+		
+		if(empty($info['title']) || empty($info['description']) || empty($info['quantity'])){
 			$result['code'] = Tools_Conf::get('Show_Code.aj.fail');
 			$data = '0';
 		}else{
@@ -41,7 +49,7 @@ class Aj_Order_BuyController extends AbstractController{
 			}
 			$result = Dw_Order::createBuyOrderByApi($info);
 			
-			$result['code'] = Tools_Conf::get('Show_Code.aj.succ');
+			$result['code'] = $result['code'];
 			$data = ($result['data']) ? $result['data'] : '0';
 			$data = json_encode($data);
 		}
