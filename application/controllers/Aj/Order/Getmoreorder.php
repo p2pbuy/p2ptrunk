@@ -27,7 +27,7 @@ class Aj_Order_GetmoreorderController extends AbstractController{
 					continue;
 				}
 				$person = Dr_User::show($buyOrderInfo['uid']);
-				$buyOrderInfo['person'] = $person;
+				$buyOrderInfo['person'] = $person[$buyOrderInfo['uid']];
 				$results[] = $buyOrderInfo;
 			}
 			

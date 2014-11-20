@@ -21,6 +21,7 @@
             <div class="tabtype">
                 <ul class="inline">所有的会员</ul>
 				</br>
+				<ul class="inline">输入邮箱搜索会员<input type="text" action-type="searchUser"/></ul>
             </div>
             <div class="tabcontent">
                 <div class="service-list order-all">
@@ -31,8 +32,8 @@
                         <li class="d">操作</li>
                     </ul>
                     <ul class="tbody unstyled" id="allUserInfos">
-                    	<?php foreach($users as $user):?>
-                        <li id="userInfoBox">
+                    	
+                        <!-- <li id="userInfoBox">
                             <ul class="inline">
                                 <li class="a clearfix">
                                     <div class="detail">
@@ -52,11 +53,11 @@
                                     </small>
                                 </li>
                             </ul>
-                        </li>
-                        <?php endforeach;?>
+                        </li> -->
+
                     </ul>
                 </div>
-                <a href="javascript:void(0);" action-type="getmoreuserinfo">查看更多会员</a>
+                
             </div>
         </div>
         

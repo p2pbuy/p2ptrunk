@@ -52,4 +52,27 @@ class Api_User extends Api_Abstract{
     	);
     	return self::instance()->get(self::getApiUrl('api/user/showuser'), $params);
     }
+    
+    /**
+     * 更新userinfo
+     */
+    public static function updUserInfoByUid($info = array()){
+    	foreach($info as $key => $value){
+    		$params[$key] = $value;
+    	}
+    	
+    	return self::instance()->post(self::getApiUrl('api/user/updateuserinfobyuid'), $params);
+    }
+    
+    /**
+     * 根据email获得userinfo
+     */
+    public static function getUserInfoByEmail($info = array()){
+    	$params = array(
+    		'email' => $info['email'],
+    		'sign' => $info['sign'],
+    		'source' => $info['source'],
+    	);
+    	return self::instance()->get(self::getApiUrl('api/user/showuserinfobyemail'), $params);
+    }
 }

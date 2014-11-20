@@ -57,4 +57,26 @@ class Dr_User extends Dr_Abstract{
 		
 		return $data;
 	}
+	
+	//根据email获得用户信息
+	public static function getUserInfoByEamilByApi($info = array()){
+		try{
+			//获得acl配置
+			$aclConf = Tools_Conf::get('Api_ACL');
+			
+			$info['source'] = 'web';
+			$info['sign'] = md5($aclConf[$info['source']]['name'].$info['email'].$aclConf[$info['source']]['secret_key']);
+			$re = Api_User::getUserInfoByEmail($info);
+			$result = json_decode($re,true);
+			if($result['code'] == 100000){
+				$data = $result['data'];
+			}else{
+				return false;
+			}
+		}catch(Exception $e){
+			return false;
+		}
+		
+		return $data;
+	}
 }
