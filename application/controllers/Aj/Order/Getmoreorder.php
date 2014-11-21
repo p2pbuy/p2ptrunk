@@ -10,6 +10,7 @@ class Aj_Order_GetmoreorderController extends AbstractController{
 	public function hookAction(){
 		$info['page'] = Comm_Context::post('page','int');
 		$info['count'] = Comm_Context::post('count','int');
+		$info['isshow'] = 1;
 		
 		if(empty($info['page']) || empty($info['count'])){
 			return false;
@@ -23,7 +24,7 @@ class Aj_Order_GetmoreorderController extends AbstractController{
 			$html = false;
 		}else{
 			foreach($buyOrderInfos as $buyOrderInfo){
-				if($buyOrderInfo['lock'] == 1 || $buyOrderInfo['isshow'] == 0){
+				if($buyOrderInfo['lock'] == 1){
 					continue;
 				}
 				$person = Dr_User::show($buyOrderInfo['uid']);

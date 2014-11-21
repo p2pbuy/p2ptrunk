@@ -3,10 +3,10 @@ class Order_ListController extends AbstractController{
 	public $tpl = 'order/list.phtml';
 	public $authorize = self::MAYBELOGIN;
 	public function hookAction(){
-		$buyOrderInfos = Dr_Order::showBuyOrderByApi();
+		$buyOrderInfos = Dr_Order::showBuyOrderByApi(array('isshow'=>1));
 		
 		foreach($buyOrderInfos as $buyOrderInfo){
-			if($buyOrderInfo['lock'] == 1 || $buyOrderInfo['isshow'] == 0){
+			if($buyOrderInfo['lock'] == 1){
 				continue;
 			}
 			$person = Dr_User::show($buyOrderInfo['uid']);
