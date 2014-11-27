@@ -56,6 +56,7 @@ class Api_Order extends Api_Abstract{
     		'sign' => $info['sign'],
     		'source' => $info['source'],
     		'isshow' => $info['isshow'],
+    		'lock' => $info['lock'],
     	);
     	
     	return self::instance()->get(self::getApiUrl('api/order/showbuyorder'), $params);

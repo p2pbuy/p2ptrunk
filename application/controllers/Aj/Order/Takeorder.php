@@ -31,7 +31,7 @@ class Aj_Order_TakeorderController extends AbstractController{
 			unset($data);
 			
 			$data['boid'] = $info['boid'];
-			$data['lock'] = 1;
+			$data['lock'] = 2;
 			$data['addressid'] = $info['addressid'];
 			$data['dealprice'] = $info['bidprice'];
 			$data['status'] = 20;

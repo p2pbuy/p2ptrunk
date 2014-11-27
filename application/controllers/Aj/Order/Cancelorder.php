@@ -25,7 +25,7 @@ class Aj_Order_CancelorderController extends AbstractController{
 		}
 		
 		//检查订单是否被锁定
-		if($buyOrderInfos[0]['lock'] == 1){
+		if($buyOrderInfos[0]['lock'] == 2){
 			$this->renderAjax(Tools_Conf::get('Show_Code.aj.fail'),'订单已经付款并锁定，不能取消');
 			return true;
 		}

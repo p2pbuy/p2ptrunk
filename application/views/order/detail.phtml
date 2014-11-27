@@ -57,7 +57,7 @@
                                 <li class="b">￥<?=$orderInfo['price']?></li>
                                 <li class="c">
                                     <small>
-                                    	<?php if($orderInfo['lock'] == 1):?>
+                                    	<?php if($orderInfo['lock'] == 2):?>
                                     	<span>订单已付款</span>
                                     	<?php else:?>
                                     	<span>还未出价</span>
@@ -90,7 +90,7 @@
                                 <li class="b">￥<?=$orderInfo['price']?></li>
                                 <li class="c">
                                     <small>
-                                    	<?php if($orderInfo['lock'] == 1):?>
+                                    	<?php if($orderInfo['lock'] == 2):?>
                                     	<span>订单已付款</span>
                                     	<?php else:?>
                                     	<span><?=$bidPrice['price']?></span>
@@ -99,7 +99,7 @@
                                 </li>
                                 <li class="d">
                                     <small>
-                                    	<?php if($orderInfo['lock'] != 1):?>
+                                    	<?php if($orderInfo['lock'] != 2):?>
                                     	<a href="javascript:void(0);" class="btn btn-primary" action-type="confirmorder" action-data="boid=<?=$bidPrice['boid']?>&bidprice=<?=$bidPrice['price']?>&bid=<?=$bidPrice['id']?>&biduid=<?=$bidPrice['uid']?>">确定并付款</a>
                                     	<?php endif;?>
                                     </small>

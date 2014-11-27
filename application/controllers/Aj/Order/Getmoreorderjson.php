@@ -9,6 +9,9 @@ class Aj_Order_GetmoreorderjsonController extends AbstractController{
 	public function hookAction(){
 		$info['page'] = Comm_Context::post('page','int');
 		$info['count'] = Comm_Context::post('count','int');
+		$info['isshow'] = (Comm_Context::post('isshow','int')) ? 1 : 0;
+		$info['lock'] = Comm_Context::post('lock','int');
+		$info['lock'] = ($info['lock'] == 2) ? 2 : 1;
 		
 		if(empty($info['page']) || empty($info['count'])){
 			return false;

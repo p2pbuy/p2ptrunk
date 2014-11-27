@@ -6,6 +6,7 @@
 <meta name="description" content="P2PBUY">
 <link href="http://res.p2pbuy.net/css/module/combine.css" rel="stylesheet">
 <link href="http://res.p2pbuy.net/css/page/goods-detail.css" rel="stylesheet">
+<link href="http://res.p2pbuy.net/css/module/layer-login.css" rel="stylesheet">
 </head>
 
 <body class="P-goods-detail">
@@ -44,7 +45,7 @@
         <?php endif;?>
         <div class="info-box iframe-info">
         	<form onsubmit="return false;" id="createOrder">
-            <div class="con-item">
+            <!-- <div class="con-item">
             	<dl class="other-info clearfix">
                 	<dt class="tit">订单标题：</dt>
                 	<dd class="cont"><input name="title" node-type="title" type="text" class="amount-input" maxlength="8" title="请输入购买量"></dd>
@@ -56,6 +57,7 @@
                     <dd class="cont"><textarea name="description" node-type="description" rows="2" placeholder="商品描述"></textarea></dd>
                 </dl>
             </div>
+             -->
             <div class="con-item">
                 <dl class="other-info clearfix">
                     <dt class="tit">数量</dt>
@@ -74,15 +76,16 @@
             <div class="con-item">
                 <dl class="other-info clearfix">
                     <dt class="tit">备注：</dt>
-                    <dd class="cont"><textarea name="additional" rows="2" placeholder="如果有特殊要求请您在此填写"></textarea></dd>
+                    <dd class="cont"><textarea name="additional" rows="2" placeholder="如果有特殊要求请在此填写（如颜色、尺码等），十分重要，请务必正确填写。"></textarea></dd>
                 </dl>
             </div>
-            <div class="con-item">
+            <!-- <div class="con-item">
             	<dl class="other-info clearfix">
             		<dt class="tit">图片：</dt>
             		<dd class="cont"><input type="file" name="file" value="上传附件">请使用jpg，gif，png图片，大小请不要超过1MB<br></dd>
             	</dl>
             </div>
+             -->
 			<input type="hidden" name="thirdurl" value="<?=$thirdurl?>"/>
             <div class="btn-box">
                 <a href="javascript:void(0);" class="btn btn-warning" action-type="createBuyOrder">立即购买</a>
@@ -92,6 +95,95 @@
         
     </div>
 
+	<!-- 登录层 -->
+	<div class="modal layer-login " id="layer_login" style="display:none">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true" action-type="closeLayer">&times;</button>
+            <h4>登录P2PBUY</h4>
+        </div>
+        <div class="modal-body row-fluid">
+            <div class="span5">
+                <h5>没有账号？请立即申请</h5>
+                <a href="javascript:void(0);" class="btn" action-type="showRegLayer">立即注册</a>
+            </div>
+            <div class="span7">
+                <form class="form-horizontal" onsubmit="return false;">
+                    <div class="control-group">
+                        <label class="control-label" for="inputEmail">账号</label>
+                        <div class="controls input-prepend">
+                            <span class="add-on"><i class="icon-user"></i>
+                            </span>
+                            <input class="input-medium" id="prependedInput" type="text" placeholder="邮箱/手机号" node-type="username">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="inputEmail">密码</label>
+                        <div class="controls input-prepend">
+                            <span class="add-on"><i class="icon-lock"></i>
+                            </span>
+                            <input class="input-medium" id="prependedInput" type="password" placeholder="输入您的密码" node-type="passwd">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="inputEmail">&nbsp;</label>
+                        <div class="controls box-btn">
+                            <button type="submit" class="btn" action-type="login">登录</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- 登录层 -->
+    
+    <!-- 注册层 -->
+    <div class="modal layer-login " id="layer_reg" style="display:none">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true" action-type="closeLayer">&times;</button>
+            <h4>注册P2PBUY</h4>
+        </div>
+        <div class="modal-body row-fluid">
+            <div class="span5">
+                <h5>已经有账号？请立即登录</h5>
+                <a href="javascript:void(0);" class="btn" action-type="showLoginLayer">立即登录</a>
+            </div>
+            <div class="span7">
+                <form class="form-horizontal" onsubmit="return false;">
+                    <div class="control-group">
+                        <label class="control-label" for="inputEmail">账号</label>
+                        <div class="controls input-prepend">
+                            <span class="add-on"><i class="icon-user"></i>
+                            </span>
+                            <input class="input-medium" id="prependedInput" type="text" placeholder="邮箱/手机号" node-type="username_reg">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="inputEmail">密码</label>
+                        <div class="controls input-prepend">
+                            <span class="add-on"><i class="icon-lock"></i>
+                            </span>
+                            <input class="input-medium" id="prependedInput" type="password" placeholder="输入您的密码" node-type="passwd_reg">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="inputEmail">昵称</label>
+                        <div class="controls input-prepend">
+                            <span class="add-on"><i class="icon-user"></i>
+                            </span>
+                            <input class="input-medium" id="prependedInput" type="text" placeholder="昵称" node-type="nick">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="inputEmail">&nbsp;</label>
+                        <div class="controls box-btn">
+                            <button type="submit" class="btn" action-type="reg">注册</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- 注册层 -->
 	<?php include TPL_PATH."/comm/footer.phtml"?>
     
 <script src="http://res.p2pbuy.net/js/jquery-1.11.1.min.js"></script>

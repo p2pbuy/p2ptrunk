@@ -28,7 +28,7 @@ class Aj_Order_BuyController extends AbstractController{
 			return true;
 		}
 		
-		if(empty($info['title']) || empty($info['description']) || empty($info['quantity'])){
+		if(empty($info['quantity'])){
 			$result['code'] = Tools_Conf::get('Show_Code.aj.fail');
 			$data = '0';
 		}else{
@@ -54,6 +54,21 @@ class Aj_Order_BuyController extends AbstractController{
 			$data = json_encode($data);
 		}
 		
+		//发送邮件
+		$mail = new Tools_Mail();
+		$mail->IsSMTP();
+		//开启调试模式
+		//$mail->SMTPDebug = true;
+		//$mail->Timeout = 10;
+		$mail->SMTPAuth = true;
+		$mail->From = 'service@p2pbuy.net';
+		$mail->FromName = 'service';
+		$mail->IsHTML(true);
+		$mail->Body = '订单号：'.$result['data']['boid'].'</br>'.'商品URL：'.$info['thirdurl'];
+		$mail->ClearAddresses();
+		$mail->AddAddress('leoncui57@hotmail.com');
+		$mail->Subject = $this->viewer['nick'].'下单了';
+		$mail->Send();
 		echo "<script>window.". $_POST['cbkname'] ."={'code':{$result['code']},'data':{$data}}</script>";
 		return true;
 	}

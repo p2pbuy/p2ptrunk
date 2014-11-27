@@ -6,7 +6,7 @@ class Order_ListController extends AbstractController{
 		$buyOrderInfos = Dr_Order::showBuyOrderByApi(array('isshow'=>1));
 		
 		foreach($buyOrderInfos as $buyOrderInfo){
-			if($buyOrderInfo['lock'] == 1){
+			if($buyOrderInfo['lock'] == 2){
 				continue;
 			}
 			$person = Dr_User::show($buyOrderInfo['uid']);

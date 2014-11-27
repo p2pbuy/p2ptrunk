@@ -52,7 +52,7 @@ class Third_Alipay_Cdpbu_AlipayapiController extends AbstractController{
         $out_trade_no = $boid;
         //商户网站订单系统中唯一订单号，必填        //订单名称
         //$subject = $_POST['WIDsubject'];
-        $subject = 'P2PBUY';
+        $subject = '人民海淘';
         //必填        //付款金额
         //$total_fee = $_POST['WIDtotal_fee'];
         $total_fee = $price;
