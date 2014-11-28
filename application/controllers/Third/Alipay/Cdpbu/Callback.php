@@ -24,6 +24,22 @@ class Third_Alipay_Cdpbu_CallbackController extends AbstractController{
 		Dw_Order::updateBuyOrderByBoidByApi($data);
 		unset($data);
 		
+		//发送邮件
+		$mail = new Tools_Mail();
+		$mail->IsSMTP();
+		//开启调试模式
+		//$mail->SMTPDebug = true;
+		//$mail->Timeout = 10;
+		$mail->SMTPAuth = true;
+		$mail->From = 'service@p2pbuy.net';
+		$mail->FromName = 'service';
+		$mail->IsHTML(true);
+		$mail->Body = '订单号：'.$data['boid'].'</br>';
+		$mail->ClearAddresses();
+		$mail->AddAddress('leoncui57@hotmail.com');
+		$mail->Subject = $this->viewer['nick'].'付款了';
+		$mail->Send();
+		
 		//跳转到成功页面
 		header('Location:/order/complete?boid='.$params['out_trade_no']);
 		
