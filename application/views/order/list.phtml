@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>我要帮人买</title>
+<title>人民海淘-我要帮人买</title>
 <meta name="description" content="P2PBUY">
 <link href="http://<?=$domain['res']?>/css/module/combine.css" rel="stylesheet">
 <link href="http://<?=$domain['res']?>/css/page/seller-order.css" rel="stylesheet">
@@ -63,7 +63,7 @@
                                         <img src="<?php if($result['img']):?><?=$result['img'];?><?php else:?>/img/usa.png<?php endif;?>" alt="">
                                     </div>
                                     <div class="detail">
-                                        <div class="name"><em>订单名：</em><span><?=$result['title']?></span></div>
+                                        <div class="name"><em>订单详情：</em><span><a href="/order/show?boid=<?=$result['boid']?>" target="_blank"><?=$result['boid']?></a></span></div>
                                         <div class="num"><em>商品URL：</em><span><a href="<?=$result['thirdurl']?>" target="_blank"><?=$result['thirdurl']?></a></span></div>
                                         <div class="num"><em>数量：</em><span><?=$result['quantity']?></span></div>
                                         <div class="num"><em>备注：</em><span><?=$result['additional']?></span></div>

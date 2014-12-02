@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>人民海淘-确认竞价</title>
+<title>人民海淘-展示订单</title>
 <meta name="description" content="P2PBUY">
 <link href="http://<?=$domain['res']?>/css/module/combine.css" rel="stylesheet">
 <link href="http://<?=$domain['res']?>/css/page/seller-order.css" rel="stylesheet">
@@ -21,7 +21,7 @@
     </div>
 
     <div class="main-content">
-        <div class="guide"><strong class="position">当前位置:</strong><span class="cur">确认竞价</span></div>
+        <div class="guide"><strong class="position">当前位置:</strong><span class="cur">展示订单</span></div>
         <!-- 某人的订单 -->
         <div class="myorder" id="myorder">
             <div class="tabtype">
@@ -48,8 +48,8 @@
                                         <img src="<?php if($orderInfo['img']):?><?=$orderInfo['img'];?><?php else:?>/img/usa.png<?php endif;?>" alt="">
                                     </div>
                                     <div class="detail">
-                                        <div class="name"><em>订单名：</em><span><?=$orderInfo['title'];?></span></div>
-                                        <div class="num"><em>订单描述：</em><span><?=$orderInfo['description'];?></span></div>
+                                        <div class="name"><em>买家昵称：</em><span><?=$orderInfo['nick'];?></span></div>
+                                        <div class="num"><em>商品URL：</em><span><a href="<?=$orderInfo['thirdurl']?>" target="_blank"><?=$orderInfo['thirdurl'];?></a></span></div>
                                         <div class="num"><em>数量：</em><span><?=$orderInfo['quantity'];?></span></div>
                                         <div class="num"><em>备注：</em><span><?=$orderInfo['additional'];?></span></div>
                                     </div>
@@ -81,8 +81,8 @@
                                         <img src="<?php if($orderInfo['img']):?><?=$orderInfo['img'];?><?php else:?>/img/usa.png<?php endif;?>" alt="">
                                     </div>
                                     <div class="detail">
-                                        <div class="name"><em>订单名：</em><span><?=$orderInfo['title'];?></span></div>
-                                        <div class="num"><em>订单描述：</em><span><?=$orderInfo['description'];?></span></div>
+                                        <div class="name"><em>买家昵称：</em><span><?=$orderInfo['nick'];?></span></div>
+                                        <div class="num"><em>商品URL：</em><span><a href="<?=$orderInfo['thirdurl']?>" target="_blank"><?=$orderInfo['thirdurl'];?></a></span></div>
                                         <div class="num"><em>数量：</em><span><?=$orderInfo['quantity'];?></span></div>
                                         <div class="num"><em>备注：</em><span><?=$orderInfo['additional'];?></span></div>
                                     </div>
@@ -99,9 +99,6 @@
                                 </li>
                                 <li class="d">
                                     <small>
-                                    	<?php if($orderInfo['lock'] != 2):?>
-                                    	<a href="javascript:void(0);" class="btn btn-primary" action-type="confirmorder" action-data="boid=<?=$bidPrice['boid']?>&bidprice=<?=$bidPrice['price']?>&bid=<?=$bidPrice['id']?>&biduid=<?=$bidPrice['uid']?>">确定并付款</a>
-                                    	<?php endif;?>
                                     </small>
                                 </li>
                             </ul>
@@ -116,9 +113,6 @@
     </div>
 
     <?php include TPL_PATH."/comm/footer.phtml"?>
-<script src="http://res.p2pbuy.net/js/jquery-1.11.1.min.js"></script>
-<script src="http://res.p2pbuy.net/js/common.js"></script>
-<script src="http://res.p2pbuy.net/js/order/detail.js"></script>
 </body>
 
 </html>

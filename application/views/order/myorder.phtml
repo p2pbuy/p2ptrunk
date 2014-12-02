@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>买手订单</title>
+<title>人民海淘-买手订单</title>
 <meta name="description" content="P2PBUY">
 <link href="http://<?=$domain['res']?>/css/module/combine.css" rel="stylesheet">
 <link href="http://<?=$domain['res']?>/css/page/seller-order.css" rel="stylesheet">
@@ -49,7 +49,7 @@
                                         <img src="<?php if($myBuyOrder['img']):?><?=$myBuyOrder['img'];?><?php else:?>/img/usa.png<?php endif;?>" alt="">
                                     </div>
                                     <div class="detail">
-                                        <div class="name"><em>订单名：</em><span><?=$myBuyOrder['title'];?></span></div>
+                                        <div class="name"><em>订单详情：</em><span><a href="/order/show?boid=<?=$myBuyOrder['boid']?>" target="_blank"><?=$myBuyOrder['boid'];?></a></span></div>
                                         <div class="num"><em>商品URL：</em><span><a href="<?=$myBuyOrder['thirdurl']?>" target="_blank"><?=$myBuyOrder['thirdurl'];?></a></span></div>
                                         <div class="num"><em>数量：</em><span><?=$myBuyOrder['quantity'];?></span></div>
                                         <div class="num"><em>备注：</em><span><?=$myBuyOrder['additional'];?></span></div>
@@ -113,7 +113,7 @@
                                         <img src="<?php if($myTakeOrder['img']):?><?=$myTakeOrder['img'];?><?php else:?>/img/usa.png<?php endif;?>" alt="">
                                     </div>
                                     <div class="detail">
-                                        <div class="name"><em>订单名：</em><span><?=$myTakeOrder['title']?></span></div>
+                                        <div class="name"><em>订单详情：</em><span><a href="/order/show?boid=<?=$myTakeOrder['boid']?>" target="_blank"><?=$myTakeOrder['boid']?></a></span></div>
                                         <div class="num"><em>商品URL：</em><span><a href="<?=$myTakeOrder['thirdurl']?>" target="_blank"><?=$myTakeOrder['thirdurl']?></a></span></div>
                                         <div class="num"><em>数量：</em><span><?=$myTakeOrder['quantity']?></span></div>
                                         <div class="num"><em>备注：</em><span><?=$myTakeOrder['additional']?></span></div>
@@ -164,7 +164,7 @@
                                         <img src="<?php if($myBidOrder['img']):?><?=$myBidOrder['img'];?><?php else:?>/img/usa.png<?php endif;?>" alt="">
                                     </div>
                                     <div class="detail">
-                                        <div class="name"><em>订单名：</em><span><?=$myBidOrder['title']?></span></div>
+                                        <div class="name"><em>订单详情：</em><span><a href="/order/show?boid=<?=$myBidOrder['boid']?>" target="_blank"><?=$myBidOrder['boid']?></a></span></div>
                                         <div class="num"><em>商品URL：</em><span><a href="<?=$myBidOrder['thirdurl']?>" target="_blank"><?=$myBidOrder['thirdurl']?></a></span></div>
                                         <div class="num"><em>数量：</em><span><?=$myBidOrder['quantity']?></span></div>
                                         <div class="num"><em>备注：</em><span><?=$myBidOrder['additional']?></span></div>
@@ -233,7 +233,7 @@
                                         <img src="<?php if($allBuyOrder['img']):?><?=$allBuyOrder['img'];?><?php else:?>/img/usa.png<?php endif;?>" alt="">
                                     </div>
                                     <div class="detail">
-                                        <div class="name"><em>订单名：</em><span><?=$allBuyOrder['title']?></span></div>
+                                        <div class="name"><em>订单详情：</em><span><a href="/order/show?boid=<?=$allBuyOrder['boid']?>" target="_blank"><?=$allBuyOrder['boid']?></a></span></div>
                                         <div class="num"><em>商品URL：</em><span><a href="<?=$allBuyOrder['thirdurl']?>" target="_blank"><?=$allBuyOrder['thirdurl']?></a></span></div>
                                         <div class="num"><em>数量：</em><span><?=$allBuyOrder['quantity']?></span></div>
                                         <div class="num"><em>备注：</em><span><?=$allBuyOrder['additional']?></span></div>
