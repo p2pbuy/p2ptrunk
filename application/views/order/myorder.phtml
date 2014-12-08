@@ -88,7 +88,7 @@
         </div>
         
         <!-- 接下的订单 -->
-        <div class="myorder">
+        <div class="myorder" id="tokenorder">
             <div class="tabtype">
                 <ul class="inline"><?=$viewer['nick']?>接下的订单</ul>
             </div>
@@ -117,6 +117,7 @@
                                         <div class="num"><em>商品URL：</em><span><a href="<?=$myTakeOrder['thirdurl']?>" target="_blank"><?=$myTakeOrder['thirdurl']?></a></span></div>
                                         <div class="num"><em>数量：</em><span><?=$myTakeOrder['quantity']?></span></div>
                                         <div class="num"><em>备注：</em><span><?=$myTakeOrder['additional']?></span></div>
+                                    	<div class="num"><em>发货地址：</em><span action-type="showAddr" action-data="id=<?=$myTakeOrder['addressid']?>">查看</span></div>
                                     </div>
                                 </li>
                                 <li class="b">￥<?=$myTakeOrder['dealprice']?></li>

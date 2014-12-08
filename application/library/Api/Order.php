@@ -144,4 +144,15 @@ class Api_Order extends Api_Abstract{
     	
     	return self::instance()->post(self::getApiUrl('api/order/delbuyorderbyboid'), $params);
     }
+    
+	/**
+     * 根据ids获得收获地址
+     */
+    public static function getAddressByIds($info){
+    	foreach($info as $key => $value){
+    		$params[$key] = $value;
+    	}
+    	
+    	return self::instance()->post(self::getApiUrl('api/order/getaddressbyids'), $params);
+    }
 }
