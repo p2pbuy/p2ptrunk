@@ -22,10 +22,23 @@
 
     <div class="main-content">
         <div class="guide"><strong class="position">当前位置:</strong><span class="cur">我的订单</span></div>
+        <?php if(empty($showType) || $showType == 'myorder'):?>
         <!-- 某人的订单 -->
         <div class="myorder" id="myorder">
             <div class="tabtype">
-                <ul class="inline"><?=$viewer['nick']?>的订单</ul>
+                <ul class="inline">
+                <?=$viewer['nick']?>的订单
+                <li>
+					<select onchange="location.href=this.value">
+					<option value="/order/myorder">我的订单</option>
+					<option value="/order/myorder?showtype=tokenorder" <?php if($showType=='tokenorder'):?>selected<?php endif;?>>接下的订单</option>
+					<option value="/order/myorder?showtype=bidorder" <?php if($showType=='bidorder'):?>selected<?php endif;?>>出过价的订单</option>
+					<?php if($isShowAllBuyOrder):?>
+					<option value="/order/myorder?showtype=allorder" <?php if($showType=='allorder'):?>selected<?php endif;?>>所有订单</option>
+					<?php endif;?>
+					</select>
+				</li>
+				</ul>
             </div>
             <div class="tabcontent">
                 <div class="service-list order-all">
@@ -86,11 +99,25 @@
                 
             </div>
         </div>
+        <?php endif;?>
         
+        <?php if($showType == 'tokenorder'):?>
         <!-- 接下的订单 -->
         <div class="myorder" id="tokenorder">
             <div class="tabtype">
-                <ul class="inline"><?=$viewer['nick']?>接下的订单</ul>
+                <ul class="inline">
+                <?=$viewer['nick']?>接下的订单
+                <li>
+					<select onchange="location.href=this.value">
+					<option value="/order/myorder">我的订单</option>
+					<option value="/order/myorder?showtype=tokenorder" <?php if($showType=='tokenorder'):?>selected<?php endif;?>>接下的订单</option>
+					<option value="/order/myorder?showtype=bidorder" <?php if($showType=='bidorder'):?>selected<?php endif;?>>出过价的订单</option>
+					<?php if($isShowAllBuyOrder):?>
+					<option value="/order/myorder?showtype=allorder" <?php if($showType=='allorder'):?>selected<?php endif;?>>所有订单</option>
+					<?php endif;?>
+					</select>
+				</li>
+                </ul>
             </div>
             <div class="tabcontent">
                 <div class="service-list order-all">
@@ -138,11 +165,25 @@
                 
             </div>
         </div>
+        <?php endif;?>
         
+        <?php if($showType == 'bidorder'):?>
         <!-- 出过价的订单 -->
         <div class="myorder">
             <div class="tabtype">
-                <ul class="inline"><?=$viewer['nick']?>出过价的订单</ul>
+                <ul class="inline">
+                <?=$viewer['nick']?>出过价的订单
+                <li>
+					<select onchange="location.href=this.value">
+					<option value="/order/myorder">我的订单</option>
+					<option value="/order/myorder?showtype=tokenorder" <?php if($showType=='tokenorder'):?>selected<?php endif;?>>接下的订单</option>
+					<option value="/order/myorder?showtype=bidorder" <?php if($showType=='bidorder'):?>selected<?php endif;?>>出过价的订单</option>
+					<?php if($isShowAllBuyOrder):?>
+					<option value="/order/myorder?showtype=allorder" <?php if($showType=='allorder'):?>selected<?php endif;?>>所有订单</option>
+					<?php endif;?>
+					</select>
+				</li>
+                </ul>
             </div>
             <div class="tabcontent">
                 <div class="service-list order-all">
@@ -204,12 +245,25 @@
                 
             </div>
         </div>
+        <?php endif;?>
         
         <!-- 所有的订单 buyer专用 -->
-        <?php if($isShowAllBuyOrder):?>
+        <?php if($isShowAllBuyOrder && $showType == 'allorder'):?>
         <div class="myorder" id="allorder">
             <div class="tabtype">
-                <ul class="inline">所有的订单</ul>
+                <ul class="inline">
+                所有的订单
+                <li>
+					<select onchange="location.href=this.value">
+					<option value="/order/myorder">我的订单</option>
+					<option value="/order/myorder?showtype=tokenorder" <?php if($showType=='tokenorder'):?>selected<?php endif;?>>接下的订单</option>
+					<option value="/order/myorder?showtype=bidorder" <?php if($showType=='bidorder'):?>selected<?php endif;?>>出过价的订单</option>
+					<?php if($isShowAllBuyOrder):?>
+					<option value="/order/myorder?showtype=allorder" <?php if($showType=='allorder'):?>selected<?php endif;?>>所有订单</option>
+					<?php endif;?>
+					</select>
+				</li>
+                </ul>
 				</br>
                 <ul class="inline">输入订单号搜索订单<input type="text" action-type="searchOrder"/></ul>
             </div>

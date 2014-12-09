@@ -41,7 +41,7 @@
         <!--/购买进度-->
         
         <?php if($thirdurl):?>
-        <iframe src="/order/getiframe?thirdurl=<?=urldecode($thirdurl)?>" frameborder="0" width="1000" height="1000"></iframe>
+        <iframe src="/order/getiframe?thirdurl=<?=urlencode($thirdurl)?>" frameborder="0" width="1000" height="1000"></iframe>
         <?php endif;?>
         <div class="info-box iframe-info">
         	<form onsubmit="return false;" id="createOrder">
