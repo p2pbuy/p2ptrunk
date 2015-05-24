@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>人民海淘-订单竞价</title>
+<title>人民海淘-分配订单</title>
 <meta name="description" content="P2PBUY">
 <link href="http://<?=$domain['res']?>/css/module/combine.css" rel="stylesheet">
 <link href="http://<?=$domain['res']?>/css/page/bid-order.css" rel="stylesheet">
@@ -21,8 +21,9 @@
     </div>
 
     <div class="main-content">
-        <div class="guide"><strong class="position">当前位置:</strong><span class="cur">竞价</span></div>
-        <div class="myorder" id="bidbuyorder">
+        <div class="guide"><strong class="position">当前位置:</strong><span class="cur">分配</span></div>
+        <?php if($isManager):?>
+        <div class="myorder" id="assignbuyorder">
             <div class="tabtype">
                 <ul class="inline">
                 </ul>
@@ -32,7 +33,7 @@
                     <ul class="th inline">
                         <li class="a">订单信息</li>
                         <li class="b">价格</li>
-                        <li class="c">状态</li>
+                        <li class="c">分配人邮箱</li>
                         <li class="d">操作</li>
                     </ul>
                     <ul class="tbody unstyled">
@@ -55,11 +56,11 @@
                                 </li>
                                 <li class="b">￥<?=$buyOrder['price']?></li>
                                 <li class="c">
-                                    <input type="text" class="input-small" placeholder="输入您的竞价"  node-type="bidprice">
+                                    <input type="text" class="input-small" placeholder="分配人的邮箱"  node-type="assignEmail">
                                 </li>
                                 <li class="d">
                                     <small>
-                                        <a href="javascript:void(0);" class="btn btn-primary" action-type="bidBuyOrder" action-data="boid=<?=$buyOrder['boid']?>">竞价</a>
+                                        <a href="javascript:void(0);" class="btn btn-primary" action-type="assignOrder" action-data="boid=<?=$buyOrder['boid']?>">分配</a>
                                     </small>
                                 </li>
                             </ul>
@@ -68,12 +69,17 @@
                 </div>
             </div>
         </div>
+        <?php else:?>
+        <div class="myorder">
+        只有管理员才可以访问
+        </div>
+        <?php endif;?>
     </div>
 
     <?php include TPL_PATH."/comm/footer.phtml"?>
 <script src="http://res.p2pbuy.net/js/jquery-1.11.1.min.js"></script>
 <script src="http://res.p2pbuy.net/js/common.js"></script>
-<script src="http://res.p2pbuy.net/js/order/takeorder.js"></script>   
+<script src="http://res.p2pbuy.net/js/order/assignorder.js"></script>   
 </body>
 
 </html>

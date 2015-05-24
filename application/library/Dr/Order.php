@@ -124,4 +124,27 @@ class Dr_Order extends Dr_Abstract{
 		}
 		return $data;
 	}
+	
+	/**
+	 * 根据boid获得物流信息
+	 */
+	public static function getLogisticsInfoByBoidByApi($info = array()){
+		try{
+			//获得acl配置
+			$aclConf = Tools_Conf::get('Api_ACL');
+			
+			$info['source'] = 'web';
+			$info['sign'] = md5($aclConf[$info['source']]['name'].$info['boid'].$aclConf[$info['source']]['secret_key']);
+			$re = Api_Order::getLogisticsInfoByBoid($info);
+			$result = json_decode($re,true);
+			if($result['code'] == 100000){
+				$data = $result['data'];
+			}else{
+				return false;
+			}
+		}catch(Exception $e){
+			return false;
+		}
+		return $data;
+	}
 }

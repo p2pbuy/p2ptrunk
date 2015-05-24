@@ -73,4 +73,30 @@ class Dw_Order extends Dw_Abstract{
 		}
 		return true;
 	}
+	
+	//通过接口添加物流信息
+	public static function addLogisticsInfoByApi($info){
+		try{
+			$aclConf = Tools_Conf::get('Api_ACL');
+			$info['source'] = 'web';
+			$info['sign'] = md5($aclConf[$info['source']]['name'].$info['boid'].$aclConf[$info['source']]['secret_key']);
+			Api_Order::addLogisticsInfo($info);
+		}catch(Exception $e){
+			return false;
+		}
+		return true;
+	}
+	
+	//通过接口删除物流信息
+	public static function delLogisticsInfoByIdByApi($info){
+		try{
+			$aclConf = Tools_Conf::get('Api_ACL');
+			$info['source'] = 'web';
+			$info['sign'] = md5($aclConf[$info['source']]['name'].$info['id'].$info['boid'].$aclConf[$info['source']]['secret_key']);
+			Api_Order::delLogisticsInfoById($info);
+		}catch(Exception $e){
+			return false;
+		}
+		return true;
+	}
 }

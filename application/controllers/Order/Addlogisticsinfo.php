@@ -1,11 +1,11 @@
 <?php
 /**
- * 订单支付成功页
+ * 添加物流信息页
  * @author liang
- * @version 2014-11-18
+ * @version 2014-12-16
  */
-class Order_CompleteController extends AbstractController{
-	public $tpl = 'order/complete.phtml';
+class Order_AddlogisticsinfoController extends AbstractController{
+	public $tpl = 'order/addlogisticsinfo.phtml';
 	public $authorize = self::MUSTLOGIN;
 	public function hookAction(){
 		/*if($this->viewer['extends']['type'] != 1){

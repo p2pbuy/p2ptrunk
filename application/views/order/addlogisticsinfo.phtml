@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>人民海淘-添加物流信息</title>
+<meta name="description" content="P2PBUY">
+<link href="http://<?=$domain['res']?>/css/module/combine.css" rel="stylesheet">
+<link href="http://<?=$domain['res']?>/css/page/seller-order.css" rel="stylesheet">
+</head>
+
+<body class="P-seller-order">
+    <div class="header">
+        <?php include TPL_PATH."/comm/header.phtml"?>
+
+        <dl class="head-wrap clearfix">
+            <dt class="logo logo-small"><a href="" title="P2PBUY">P2PBUY</a></dt>
+            <dd class="search-box">
+                <div class="search-wrapper"><input type="text" class="search-input" placeholder="输入订单号"><a href="" class="submit" title="搜索">搜索</a></div>
+            </dd>
+        </dl>
+    </div>
+
+    <div class="main-content">
+        <div class="guide"><strong class="position">当前位置:</strong><span class="cur">添加物流信息</span></div>
+        <div class="myorder">
+            <div class="tabtype">
+                
+
+            </div>
+            <div class="tabcontent" id="logisticsinfo">
+                <div class="service-list order-all">
+                    <ul class="th inline">
+                        <li class="a">物流信息信息</li>
+                        <li class="b">时间</li>
+                        <li class="c">处理人</li>
+                        <li class="d">操作</li>
+                    </ul>
+                    <ul class="tbody unstyled" id="orderLists">
+                    	<li>
+                            <ul class="inline">
+                                <li class="a clearfix">
+                                    <input type="text" node-type="info" />
+                                </li>
+                                <li class="b">
+									<input type="text" node-type="createtime" value="<?=date('Y-m-d H:i:s')?>" />
+								</li>
+                                <li class="c">
+                                    <input type="text" node-type="operator" value="<?=$nick?>" />
+                                </li>
+                                <li class="d">
+                                    <small>
+                                    	<a href="javascript:void(0);" class="btn btn-primary" action-type="addlogisticsinfo" action-data="boid=<?=$boid?>">添加</a>
+                                        <!-- <a href="" class="btn">取消</a> -->
+                                    </small>
+                                </li>
+                            </ul>
+                        </li>
+                    	<?php foreach($logisticsInfos as $logisticsInfo):?>
+                    	<li>
+                            <ul class="inline">
+                                <li class="a clearfix">
+                                    <small>
+                                    	<span><?=$logisticsInfo['info']?></span>
+                                    </small>
+                                </li>
+                                <li class="b">
+                                	<small>
+                                    	<span><?=$logisticsInfo['createtime']?></span>
+                                    </small>
+                                </li>
+                                <li class="c">
+                                    <small>
+                                        <span><?=$logisticsInfo['operator']?></span>
+                                    </small>
+                                </li>
+                                <li class="d">
+                                    <small>
+                                    	<a href="javascript:void(0);" class="btn btn-primary" target="_blank" action-type="dellogisticsinfo" action-data="boid=<?=$boid?>&id=<?=$logisticsInfo['id']?>">删除</a>
+                                    </small>
+                                </li>
+                            </ul>
+                        </li>
+                    	<?php endforeach;?>
+                    </ul>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+
+    <?php include TPL_PATH."/comm/footer.phtml"?>
+    
+<script src="http://res.p2pbuy.net/js/jquery-1.11.1.min.js"></script>
+<script src="http://res.p2pbuy.net/js/common.js"></script>
+<script src="http://res.p2pbuy.net/js/order/addlogisticsinfo.js"></script>
+</body>
+
+</html>

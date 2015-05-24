@@ -155,4 +155,37 @@ class Api_Order extends Api_Abstract{
     	
     	return self::instance()->post(self::getApiUrl('api/order/getaddressbyids'), $params);
     }
+    
+    /**
+     * 添加物流信息
+     */
+    public static function addLogisticsInfo($info){
+    	foreach($info as $key => $value){
+    		$params[$key] = $value;
+    	}
+    	
+    	return self::instance()->post(self::getApiUrl('api/order/addlogisticsinfo'), $params);
+    }
+    
+    /**
+     * 根据boid获取物流信息
+     */
+    public static function getLogisticsInfoByBoid($info){
+    	foreach($info as $key => $value){
+    		$params[$key] = $value;
+    	}
+    	
+    	return self::instance()->post(self::getApiUrl('api/order/getlogisticsinfobyboid'), $params);
+    }
+    
+    /**
+     * 根据id删除物流信息
+     */
+    public static function delLogisticsInfoById($info){
+    	foreach($info as $key => $value){
+    		$params[$key] = $value;
+    	}
+    	
+    	return self::instance()->post(self::getApiUrl('api/order/dellogisticsinfobyid'), $params);
+    }
 }

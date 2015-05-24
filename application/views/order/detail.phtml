@@ -39,7 +39,7 @@
                     	<?php if(empty($bidPrices)):?>
                     	<li>
                             <div class="order-num">订单号：
-                                <span class="number"><?=$orderInfo['boid']?></span>
+                                <span class="number"><?=Tools_Helper::shorterBoid($orderInfo['boid'])?></span>
                                 <span class="time"><?=$orderInfo['createtime']?></span>
                             </div>
                             <ul class="inline">
@@ -72,7 +72,7 @@
                     	<?php foreach($bidPrices as $bidPrice):?>
                         <li>
                             <div class="order-num">订单号：
-                                <span class="number"><?=$orderInfo['boid']?></span>
+                                <span class="number"><?=Tools_Helper::shorterBoid($orderInfo['boid'])?></span>
                                 <span class="time"><?=$orderInfo['createtime']?></span>
                             </div>
                             <ul class="inline">
