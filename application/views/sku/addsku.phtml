@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>人民海淘-买手订单</title>
+<meta name="description" content="P2PBUY">
+<link href="http://<?=$domain['res']?>/css/module/combine.css" rel="stylesheet">
+<link href="http://<?=$domain['res']?>/css/page/seller-order.css" rel="stylesheet">
+</head>
+
+<body class="P-seller-order">
+    <div class="header">
+        <?php include TPL_PATH."/comm/header.phtml"?>
+
+    </div>
+
+    <div class="main-content">
+        <div class="guide"><strong class="position">当前位置:</strong><span class="cur">添加SKU</span></div>
+        
+        <div>
+        	名称：<input name="title" node-type="title"/>
+        </div>
+        
+        <div>
+        	图片链接：<input name="imgurl" node-type="imgurl"/>
+        </div>
+        
+        <div>
+        	价格：<input name="price_unit" node-type="price_unit"/>
+        </div>
+        
+        <div>
+        	规格：<input name="attr" node-type="attr"/>
+        </div>
+        
+        <div>
+        	备注：<input name="remark" node-type="remark"/>
+        </div>
+        
+        <a href="javascript:void(0);" class="btn btn-primary" action-type="bidBuyOrder" action-data="boid=<?=$buyOrder['boid']?>">添加</a>
+    </div>
+
+    <?php include TPL_PATH."/comm/footer.phtml"?>
+<script src="http://res.p2pbuy.net/js/jquery-1.11.1.min.js"></script>
+<script src="http://res.p2pbuy.net/js/common.js"></script>
+<script src="http://res.p2pbuy.net/js/sku/addsku.js"></script>
+</body>
+
+</html>
