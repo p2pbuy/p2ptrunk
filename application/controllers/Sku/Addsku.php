@@ -2,7 +2,7 @@
 /**
  * 添加sku
  * @author liang
- * @version 2014-8-2
+ * @version 2015-10-6
  */
 class Sku_AddskuController extends AbstractController{
 	public $authorize = self::MUSTLOGIN;

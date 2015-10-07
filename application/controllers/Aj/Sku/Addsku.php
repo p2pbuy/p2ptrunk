@@ -15,7 +15,37 @@ class Aj_Sku_AddSkuController extends AbstractController{
 			return false;
 		}
 
+		$code = Comm_Context::post('code');
+		$title = Comm_Context::post('title');
+		$imgurl = Comm_Context::post('imgurl');
+		$price_unit = Comm_Context::post('price_unit');
+		$attr = Comm_Context::post('attr');
+		$remark = Comm_Context::post('remark');
 		
+		if(empty($code) || empty($title) || empty($price_unit)){
+			return false;
+		}
+		
+		$data['code'] = $code;
+		$data['title'] = $title;
+		$data['imgurl'] = $imgurl;
+		$data['price_unit'] = $price_unit;
+		$data['attr'] = $attr;
+		$data['remark'] = $remark;
+		
+		$re = Dw_Sku::addSkuByApi($data);
+		
+		if($re == false){
+			$code = Tools_Conf::get('Show_Code.aj.fail');
+			$msg = 'fail';
+		}else{
+			$code = Tools_Conf::get('Show_Code.aj.succ');
+			$msg = 'succ';
+		}
+		
+		$this->renderAjax($code,$msg);
+		
+		return true;
 		
 		/*$boid = Comm_Context::post('boid');
 		$info = Comm_Context::post('info');
