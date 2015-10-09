@@ -13,7 +13,7 @@ class Api_Sku extends Api_Abstract{
     }
     
     /**
-     * 创建买家订单
+     * 创建SKU
      */
     public static function addSku($info){
     	$params = array(
@@ -28,5 +28,30 @@ class Api_Sku extends Api_Abstract{
         );
 
         return self::instance()->post(self::getApiUrl('api/sku/addsku'), $params);
+    }
+    
+	/**
+     * 获取SKU
+     */
+    public static function getSku($info){
+    	$params = array(
+    		'sign' => $info['sign'],
+    		'source' => $info['source'],
+        );
+
+        return self::instance()->post(self::getApiUrl('api/sku/getsku'), $params);
+    }
+    
+	/**
+     * 删除SKU
+     */
+    public static function delSku($info){
+    	$params = array(
+            'id' => $info['id'],
+    		'sign' => $info['sign'],
+    		'source' => $info['source'],
+        );
+
+        return self::instance()->post(self::getApiUrl('api/sku/delsku'), $params);
     }
 }
